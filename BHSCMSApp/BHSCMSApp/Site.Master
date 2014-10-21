@@ -41,33 +41,33 @@
 
         .login {
 
-height:150px;
+                height:150px;
 
-width:70%;
+                width:70%;
 
-/*margin: 0;*/
+                /*margin: 0;*/
 
 
-border:1px #CCC solid;
-border-radius:2px;
-padding:9px;
+                border:1px #CCC solid;
+                border-radius:2px;
+                padding:9px;
 
-background-color:white;
+                background-color:white;
 
         }
 
  
 
-input {
+            input {
 
-background: #E1FFE1;
-display:block;
-border:2px #CCC solid;
-border-radius:2px;
-width:55%;
-padding:7px;
-margin:1px;
-}
+            background: #E1FFE1;
+            /*display:inline;*/
+            border:2px #CCC solid;
+            border-radius:2px;
+            width:75%;
+            /*padding:7px;*/
+            /*margin:1px;*/
+            }
 
 
 .css-ds {
@@ -97,8 +97,9 @@ margin:1px;
            <img src="/img/BHLOUTM-P.png" style="max-width:60%; margin-top:20px"/>
            </div>
             <div class="col-md-3" style="max-width:50%">
+              
           <section id="loginForm" >    
-                    <h4 style="text-align:center; max-width:55%; background-color:#A8CB17; padding:4px; color:white; border-radius:4px">Access Portal</h4>
+                    <h4 style="text-align:center; max-width:55%; background-color:#A8CB17; padding:4px; color:white; border-radius:4px">Access Portal  <span class="glyphicon glyphicon-log-in"></span></h4>
                
                  <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -106,20 +107,20 @@ margin:1px;
                         </p>
                     </asp:PlaceHolder>
 
+                <fieldset>
 
+                 <asp:TextBox runat="server" placeholder="Username" ID="UserName"  CssClass="form-control" Width="55%" />
+                  <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" ValidationGroup="login" CssClass="text-danger" ErrorMessage="The user name field is required." />
 
-                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" Width="55%" />
-                  <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" CssClass="text-danger" ErrorMessage="The user name field is required." />
-
-                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" Text="Password" Width="55%" />
-                  <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />
-
+                 <asp:TextBox runat="server" ID="Password" placeholder="Password" TextMode="Password" CssClass="form-control" Text="Password" Width="55%" />
+                  <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ValidationGroup="login" CssClass="text-danger" ErrorMessage="The password field is required." />
+              
                 
 <%--                  <asp:CheckBox runat="server" ID="RememberMe" Text="Remember me?"/>--%>
                  <br />
                            
-                <asp:Button runat="server" Text="Log in" CssClass="btn btn-info" Width="40%" ID="LogIn" OnClick="LogIn_Click"/>
-
+                <asp:Button runat="server" Text="Log in" CssClass="btn btn-info" Width="40%" ID="LogIn" ValidationGroup="login" CausesValidation="true" OnClick="LogIn_Click"/>
+                </fieldset>
                 <p  style="font-size:small">
                     
                     Click <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">here</asp:HyperLink>
@@ -187,7 +188,7 @@ margin:1px;
    </li>--%>
      <li><a runat="server" href="~/About"><span>About</span></a></li>
     <li><a runat="server" href="~/Contact"><span>Contact Us</span></a></li>
-     <li><a runat="server" href="/Account/Register"><span>Register</span></a></li>
+     <li><a runat="server" href="Account/Register"><span>Register</span></a></li>
    
 </ul>
 </div>

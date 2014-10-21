@@ -23,16 +23,16 @@
             <asp:Label runat="server" AssociatedControlID="CompanyName" CssClass="col-md-4 control-label">Company Name*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="CompanyName" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="CompanyName"
-                    CssClass="text-danger" ErrorMessage="The company name field is required." />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="CompanyName" ValidationGroup="register" 
+                    CssClass="text-danger"  ErrorMessage="The company name field is required." />
             </div>
         </div>
 
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="PhoneNumber" CssClass="col-md-4 control-label">Phone Number*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="PhoneNumber"
+                <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="PhoneNumber" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The phone number field is required." />
             </div>
         </div>
@@ -40,15 +40,15 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FaxNumber" CssClass="col-md-4 control-label">Fax Number</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="FaxNumber" CssClass="form-control" />                
+                <asp:TextBox runat="server" ID="FaxNumber" CssClass="form-control" ValidationGroup="register" />                
             </div>
         </div>
         <br />
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Address" CssClass="col-md-4 control-label">Address*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="Address" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Address"
+                <asp:TextBox runat="server" ID="Address" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Address" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The address field is required." />
             </div>
         </div>
@@ -64,7 +64,7 @@
             <asp:Label runat="server" AssociatedControlID="City" CssClass="col-md-4 control-label">City*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="City" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="City"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="City" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The city field is required." />
             </div>
         </div>
@@ -73,8 +73,8 @@
             <asp:Label runat="server" AssociatedControlID="ddState" CssClass="col-md-4 control-label">State*</asp:Label>
             <div class="col-md-8">
                 
-                <asp:DropDownList runat="server" ID="ddState" Width="50%"  CssClass="form-control"  >
-                   
+                <asp:DropDownList runat="server" ID="ddState" Width="50%"  CssClass="form-control">
+                    <asp:ListItem></asp:ListItem>
                     <asp:ListItem Value="AL">Alabama</asp:ListItem>
 	                <asp:ListItem Value="AK">Alaska</asp:ListItem>
 	                <asp:ListItem Value="AZ">Arizona</asp:ListItem>
@@ -127,7 +127,7 @@
 	                <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
 	                <asp:ListItem Value="WY">Wyoming</asp:ListItem>
                 </asp:DropDownList>                
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ddState"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ddState" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The state field is required." />
             </div>
         </div>
@@ -136,7 +136,7 @@
             <asp:Label runat="server" AssociatedControlID="Zipcode" CssClass="col-md-4 control-label">Zip/Postal Code*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="Zipcode" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Zipcode"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Zipcode" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The zipcode field is required." />                
             </div>
         </div>
@@ -149,12 +149,18 @@
         </div>
         
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="chkCommodities" CssClass="col-md-4 control-label">Commodities</asp:Label>
-            <div class="col-md-8">               
-                <asp:DropDownCheckBoxes runat="server" ID="chkCommodities" Height="400" Width="300" CssClass="form-control">
-               <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="160" />
+            <asp:Label runat="server" AssociatedControlID="chkCommodities" CssClass="col-md-4 control-label">Categories</asp:Label>
+            <div class="col-md-8" style="text-align:left">               
+               <%-- <asp:DropDownCheckBoxes runat="server" ID="chkCommodities" CssClass="form-control" TextAlign="Left">
+               <Style SelectBoxWidth="100%" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="160"/>
                 <Texts SelectBoxCaption="Select Categories" />
-                </asp:DropDownCheckBoxes>           
+                </asp:DropDownCheckBoxes>    --%>
+                       
+                <asp:DropDownCheckBoxes ID="chkCommodities" runat="server" 
+                AddJQueryReference="True" UseSelectAllNode="True">
+                <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="130" />
+                <Texts SelectBoxCaption="Select from list" />
+            </asp:DropDownCheckBoxes>
 
                     
             </div>
@@ -171,7 +177,7 @@
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-4 control-label">User name</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The user name field is required." />
             </div>
         </div>
@@ -179,7 +185,7 @@
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-4 control-label">Password</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The password field is required." />
             </div>
         </div>
@@ -187,7 +193,7 @@
             <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-4 control-label">Confirm password</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword" ValidationGroup="register" 
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
@@ -198,7 +204,7 @@
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-4 control-label">Email*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The email address field is required." />
             </div>
         </div>
@@ -206,14 +212,14 @@
             <asp:Label runat="server" AssociatedControlID="AltEmail" CssClass="col-md-4 control-label">Alternative Email*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="AltEmail" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="AltEmail"
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="AltEmail" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The alternate email address field is required." />
             </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="TaxForm" CssClass="col-md-4 control-label">Upload Tax Form*</asp:Label>
             <div class="col-md-8">
-                <asp:FileUpload runat="server" ID="TaxForm" CssClass="form-control" Width="280" />
+                <asp:FileUpload runat="server" ID="TaxForm" CssClass="form-control" Width="75%" />
                 <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="TaxForm"
                     CssClass="text-danger" ErrorMessage="The tax form is required." />--%>
             </div>
@@ -221,14 +227,14 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="RegCode" CssClass="col-md-4 control-label">Registration Code*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="RegCode" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="RegCode" CssClass="form-control"/>
                <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
                     CssClass="text-danger" ErrorMessage="The alternate email address field is required." />--%>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
-                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-info" />
+                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" Width="40%" CssClass="btn btn-info" CausesValidation="true" ValidationGroup="register" />
             </div>
         </div>
            

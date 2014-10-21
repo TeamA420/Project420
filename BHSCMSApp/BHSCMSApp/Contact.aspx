@@ -5,13 +5,13 @@
 
     <div class="row">
 
-     <div class="col-md-4"  style="height:600px">
+     <div class="col-md-4"  style="height:600px; background-color:#E4DAD8;">
          <h3 class="headers">Contact Us</h3> 
           <hr />
          <p>Please complete the form below.</p>
          
          <br />
-        <table style="margin-left:20px">
+        <table style="margin-left:20px;">
             <!-- Name -->
             <tr>
                 <td >

@@ -17,6 +17,13 @@ namespace BHSCMSApp.Dashboard.RFI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            label1.Text = "J AND J HEALTHCARE";
+            label2.Text= "DEROYAL INDUSTRIES INC";
+            label3.Text = "CARDINAL HEALTH";
+            label4.Text = "BSN MEDICAL INC";
+            label5.Text = "MEDLINE INDUSTRIES INC";
+            label6.Text = "G&G INC";
+
             if (!Page.IsPostBack)
             {
                 //ddCategories.Items.Add(new ListItem("Select from list..."));
@@ -99,32 +106,32 @@ namespace BHSCMSApp.Dashboard.RFI
                 {
                     string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
 
-                    switch (status)
-                    {
-                        case "Approved":
-                            e.Row.Cells[6].ForeColor = System.Drawing.Color.Green; // Column color
-                            e.Row.Cells[6].Font.Bold = true;
-                            break;
+                    //switch (status)
+                    //{
+                    //    case "Approved":
+                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Green; // Column color
+                    //        e.Row.Cells[6].Font.Bold = true;
+                    //        break;
 
-                        case "Pending":
-                            e.Row.Cells[6].ForeColor = System.Drawing.Color.Blue; // Column color
-                            //e.Row.Cells[6].Font.Bold = true;
-                            break;
+                    //    case "Pending":
+                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Blue; // Column color
+                    //        //e.Row.Cells[6].Font.Bold = true;
+                    //        break;
 
-                        case "Disapproved":
-                            e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
-                            break;
+                    //    case "Disapproved":
+                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
+                    //        break;
 
-                        case "Sanctioned":
-                            e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
-                            e.Row.Cells[6].Font.Bold = true;
-                            break;
+                    //    case "Sanctioned":
+                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
+                    //        e.Row.Cells[6].Font.Bold = true;
+                    //        break;
 
-                        default:
-                            e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
-                            e.Row.Cells[6].Font.Bold = true;
-                            break;
-                    }
+                    //    default:
+                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
+                    //        e.Row.Cells[6].Font.Bold = true;
+                    //        break;
+                    //}
 
 
                 }
@@ -135,6 +142,7 @@ namespace BHSCMSApp.Dashboard.RFI
         {
             setupPanel.Visible = true;
             panelVendors.Visible = false;
+            panelvendorlist.Visible = true;
         }
 
     }

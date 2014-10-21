@@ -74,7 +74,7 @@
 }
 #cssmenu.align-right ul li ul li.has-sub:after {
   right: auto;
-  left: 15px;
+  left: 5px;
 }
 #cssmenu ul li ul li.has-sub:before {
   display: block;
@@ -106,7 +106,7 @@
   letter-spacing: 1px;
    background-color:#D4E58B;
   display: block;
-  width: 160px;
+  width: 140px;
   padding: 10px 9px 10px 19px;
   border-radius:2px;
   
@@ -114,7 +114,7 @@
 #cssmenu ul li ul li:hover > a,
 #cssmenu ul li ul li.active > a {
   color: #40B3DF;
-  text-decoration:underline;
+  /*text-decoration:underline;*/
    /*background-color:#F4F5ED;*/
 }
 #cssmenu ul li ul li:hover:after,
@@ -208,7 +208,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
   z-index: 2;
   position: relative;
 }

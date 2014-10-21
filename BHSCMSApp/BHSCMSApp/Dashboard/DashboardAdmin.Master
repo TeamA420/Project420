@@ -115,14 +115,14 @@
                          </li>
                       </ul>
                    </li>
-                    <li class='active has-sub'><a href='#'><span>RFI</span></a>
+                    <li class='active has-sub'><a href='#'><span>Manage RFI</span></a>
                       <ul>
                          <li><a href='/Dashboard/RFI/NewRFI'><span>New RFI</span></a></li>
                          <li><a href='/Dashboard/RFI/ViewRFI'><span>View RFIs</span></a>                            
                          </li>
                       </ul>
                    </li>
-                    <li class='active has-sub'><a href='#'><span>RFP</span></a>
+                    <li class='active has-sub'><a href='#'><span>Manage RFP</span></a>
                       <ul>
                          <li><a href='/Dashboard/RFP/NewRFP'><span>New RFP</span></a></li>
                          <li><a href='/Dashboard/RFP/ViewRFP'><span>View RFPs</span></a>                            
@@ -136,7 +136,7 @@
                          </li>
                       </ul>
                    </li>         
-                    <%--<li><a href="/Dashboard/Account/Profile.aspx"><span>User Account</span></a></li>--%>                
+                    <li><a href="#"><span>Reports</span></a></li>                
                 </ul>
 
                    

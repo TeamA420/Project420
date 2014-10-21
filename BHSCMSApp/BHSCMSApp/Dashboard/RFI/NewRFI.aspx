@@ -1,12 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardAdmin.Master" AutoEventWireup="true" CodeBehind="NewRFI.aspx.cs" Inherits="BHSCMSApp.Dashboard.RFI.NewRFI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
+
+
+
 <div class="row" style="background-color:white; width:100%">
 <div class="col-md-12">
             
 
 
     <div class="form-group">
+        <h4>Select the product category for RFI</h4>
+        <br />
             <asp:Label runat="server" AssociatedControlID="ddCategories" CssClass="col-md-4 control-label">Category:</asp:Label>
             <div class="col-md-8">               
                 <asp:DropDownList runat="server"  ID="ddCategories" Width="50%" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddCategories_SelectedIndexChanged">
@@ -19,7 +24,7 @@
 
     <asp:Panel runat="server" Visible="false" ID="panelVendors">
         
-      <h5>Select vendor participants:</h5>
+      <h4>Select vendor participants:</h4>
     <hr />
        
            
@@ -59,10 +64,39 @@
 
     </asp:Panel><%--ends vendor list panel--%>
 
+    <asp:Panel runat="server" Visible="false" ID="panelvendorlist" BackColor="#E4DAD8">
+
+        <h5>Vendors to participate in this RFI:</h5>
+      
+        <asp:label runat="server" ID="label1"></asp:label>
+        <br />
+        <asp:label runat="server" ID="label2"></asp:label>
+        <br />
+        <asp:label runat="server" ID="label3"></asp:label>
+        <br />
+        <asp:label runat="server" ID="label4"></asp:label>
+        <br />
+
+        <h5>Vendors that can view this RFI:</h5>
+
+        <asp:label runat="server" ID="label5"></asp:label>
+        <br />
+        <asp:label runat="server" ID="label6"></asp:label>
+
+
+    </asp:Panel>
+
+
+
+    <br />
+    <hr />
+
+
 
      <asp:Panel runat="server" Visible="false" ID="setupPanel">
         
-         
+         <h4>Select start and end date:</h4>
+         <br />
             <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
             <div class="col-md-8">               
@@ -85,7 +119,8 @@
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI:</asp:Label>
             <div class="col-md-8">               
-                <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload"/>                                   
+                <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload"/>      
+                                            
             </div>
          </div>
          
@@ -99,6 +134,7 @@
            
    
          <button type="button" class="btn btn-default" id="submit"> <span class="glyphicon glyphicon-ok"></span> Create RFI</button>
+         <button type="button" class="btn btn-default" id="cancel"> <span class="glyphicon glyphicon-remove"></span> Cancel</button>
          
 
 
@@ -136,6 +172,10 @@
     <br />
     <br />  
     <br />   
+    <br />
+    <br /> 
+    <br /> 
+        
     <br />
     <br /> 
     <br /> 

@@ -26,6 +26,7 @@ namespace BHSCMSApp.Account
             {
                 FillInCategoriesDropDownList();
             }
+            
         }
 
         /// <summary>
