@@ -14,8 +14,8 @@
         <br />
             <asp:Label runat="server" AssociatedControlID="ddCategories" CssClass="col-md-4 control-label">Category:</asp:Label>
             <div class="col-md-8">               
-                <asp:DropDownList runat="server"  ID="ddCategories" Width="50%" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddCategories_SelectedIndexChanged">
-                
+                <asp:DropDownList runat="server"  ID="ddCategories" Width="50%" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddCategories_SelectedIndexChanged">
+               <asp:ListItem></asp:ListItem>
                 </asp:DropDownList>                    
             </div>
      </div>
@@ -42,22 +42,39 @@
 
 
                         <Columns>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View RFI">
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Permissions">
                                 <ItemTemplate>
-                                    <asp:CheckBox runat="server" ID="chkview" />                                   
-                                </ItemTemplate>                               
-                            </asp:TemplateField>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Participate">
-                                <ItemTemplate>                                     
-                                    <asp:CheckBox runat="server" ID="chkbid" />                                       
-                                </ItemTemplate>
-                            </asp:TemplateField>    
+                                    <asp:RadioButtonList runat="server" >
+                                        <asp:ListItem Value="1"> Participate</asp:ListItem>
+                                        <asp:ListItem Value="2"> View</asp:ListItem>
+                                    </asp:RadioButtonList>                                  
+                                </ItemTemplate>                                                       
+                            </asp:TemplateField>                              
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/>                                              
                             <asp:BoundField DataField="CompanyName" HeaderText="Company"/> 
                             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone Number"/>
-                             <asp:BoundField DataField="State" HeaderText="State"/>                                
-                            <asp:BoundField DataField="Status" HeaderText="Status"/>      
-                            <asp:BoundField DataField="PrimaryEmail" HeaderText="Email"/>                      
+                             <asp:BoundField DataField="State" HeaderText="State"/>       
+                                                
+
+                            <asp:TemplateField HeaderText="Primary Email">
+                            <ItemTemplate>
+                          <asp:HyperLink ID="priEmail" runat="server" 
+                            NavigateUrl='<%# Eval("PrimaryEmail", "mailto:{0}") %>'
+                            Text='<%# Eval("PrimaryEmail") %>'>
+                         </asp:HyperLink>
+                          </ItemTemplate>
+                         </asp:TemplateField>
+
+                          <asp:TemplateField HeaderText="Secondary Email">
+                            <ItemTemplate>
+                          <asp:HyperLink ID="secEmail" runat="server" 
+                            NavigateUrl='<%# Eval("SecondaryEmail", "mailto:{0}") %>'
+                            Text='<%# Eval("SecondaryEmail") %>'>
+                         </asp:HyperLink>
+                          </ItemTemplate>
+                         </asp:TemplateField>
+                         
+                                              
                         </Columns>
                     </asp:GridView>
                     <asp:Button ID="btnCont" runat="server" Text="Next" CssClass="btn btn" OnClick="btnCont_Click"/>
@@ -133,7 +150,7 @@
          </asp:Button>       --%>     
            
    
-         <button type="button" class="btn btn-default" id="submit"> <span class="glyphicon glyphicon-ok"></span> Create RFI</button>
+         <asp:button runat="server" type="button" class="btn btn-info" ID="submit" Text="Submit RFI" OnClick="submit_Click"></asp:button>
          <button type="button" class="btn btn-default" id="cancel"> <span class="glyphicon glyphicon-remove"></span> Cancel</button>
          
 

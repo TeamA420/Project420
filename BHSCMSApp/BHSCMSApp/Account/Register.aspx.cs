@@ -124,9 +124,9 @@ namespace BHSCMSApp.Account
 
                         cmd.Parameters.AddWithValue("@vendorid", vendorid);
                         cmd.Parameters.AddWithValue("@categoryid", item.Value);
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery(); 
                                                
-
+                        
                         conn.Close(); 
                        
                     }

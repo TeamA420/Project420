@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BHSCMSApp.Models;
+using BHSCMSApp;
 
 namespace BHSCMSApp.Dashboard.RFI
 {
@@ -14,6 +16,7 @@ namespace BHSCMSApp.Dashboard.RFI
     {
         DataTable dt;//DataTable use to store retrieved data
         private int _categoryid;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,7 +63,7 @@ namespace BHSCMSApp.Dashboard.RFI
 
         protected void ddCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _categoryid = (ddCategories.SelectedIndex + 1);
+            _categoryid = (ddCategories.SelectedIndex);
             BindGrid(_categoryid);            
             panelVendors.Visible = true;
         }
@@ -143,6 +146,16 @@ namespace BHSCMSApp.Dashboard.RFI
             setupPanel.Visible = true;
             panelVendors.Visible = false;
             panelvendorlist.Visible = true;
+        }
+
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            List<int> vendorlist;
+            List<int> permissionid;
+          
+           
+           
+
         }
 
     }

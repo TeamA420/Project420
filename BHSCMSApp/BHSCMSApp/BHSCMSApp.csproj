@@ -304,6 +304,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="Dashboard\DashboardAdmin.Master" />
     <Content Include="Dashboard\DashboardVendor.Master" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
@@ -408,6 +409,7 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\CSCode\Functions.cs" />
+    <Compile Include="App_Code\CSCode\RFI.cs" />
     <Compile Include="App_Code\CSCode\SysUser.cs" />
     <Compile Include="App_Code\CSCode\Vendor.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
