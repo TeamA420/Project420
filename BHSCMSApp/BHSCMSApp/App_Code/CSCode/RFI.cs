@@ -17,8 +17,14 @@ namespace BHSCMSApp
 
         }
 
+
+         
+
+
+
+
         //creates new RFI
-        public void CreateNewRFI(int empid, string startdate, string enddate, int categoryid)
+        public void CreateNewRFI(int userid, string startdate, string enddate, int categoryid)
         {
             string connectionString = GetConnectionString();
 
@@ -29,9 +35,9 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string insertQry = "Insert into [BHSCMS].[dbo].[RFITable] (EmpID, StartDate, EndDate, CategoryID, CreatedDate) values (@empid, @startdate, @enddate, @categoryid, @createddate)";
+                    string insertQry = "Insert into [BHSCMS].[dbo].[RFITable] (UserID, StartDate, EndDate, CategoryID, CreatedDate) values (@userid, @startdate, @enddate, @categoryid, @createddate)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
-                    command.Parameters.AddWithValue("@empid", empid);
+                    command.Parameters.AddWithValue("@userid", userid);
                     command.Parameters.AddWithValue("@startdate", startdate);
                     command.Parameters.AddWithValue("@enddate", enddate);
                     command.Parameters.AddWithValue("@categoryid", categoryid);
@@ -56,7 +62,6 @@ namespace BHSCMSApp
 
             try
             {
-
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -98,6 +103,8 @@ namespace BHSCMSApp
 
             return id;
         }
+
+
 
 
 

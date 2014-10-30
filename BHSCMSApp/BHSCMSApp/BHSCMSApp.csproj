@@ -263,8 +263,12 @@
     <Content Include="Dashboard\Account\Profile.aspx" />
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
-    <Content Include="Dashboard\RFI\NewRFI.aspx" />
-    <Content Include="Dashboard\RFI\SQL\RFICategoryVendors.sql" />
+    <Content Include="Dashboard\ManageRFI\NewRFI.aspx" />
+    <Content Include="Dashboard\ManageRFI\SQL\RFICategoryVendors.sql" />
+    <Content Include="Dashboard\ManageRFI\SQL\ViewRFI.sql" />
+    <Content Include="Dashboard\ManageRFI\SQL\ViewRFIClosed.sql" />
+    <Content Include="Dashboard\ManageRFI\SQL\ViewRFIOpened.sql" />
+    <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
     <Content Include="img\business.jpg" />
@@ -535,12 +539,19 @@
     <Compile Include="Dashboard\Account\NewVendor.aspx.designer.cs">
       <DependentUpon>NewVendor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\RFI\NewRFI.aspx.cs">
+    <Compile Include="Dashboard\ManageRFI\NewRFI.aspx.cs">
       <DependentUpon>NewRFI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dashboard\RFI\NewRFI.aspx.designer.cs">
+    <Compile Include="Dashboard\ManageRFI\NewRFI.aspx.designer.cs">
       <DependentUpon>NewRFI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.cs">
+      <DependentUpon>ViewRFIList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.designer.cs">
+      <DependentUpon>ViewRFIList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -585,8 +596,9 @@
   <ItemGroup>
     <Folder Include="App_Code\VBCode\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Dashboard\Contract\" />
-    <Folder Include="Dashboard\RFP\" />
+    <Folder Include="Dashboard\ManageContract\" />
+    <Folder Include="Dashboard\ManageRFP\" />
+    <Folder Include="Documents\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409141614312_InitialCreate.resx">

@@ -109,7 +109,6 @@ namespace BHSCMSApp.Controls
             set { userRole = value; }
         }
 
-
         public string LastLogin
         {
             get { return lastLogin; }

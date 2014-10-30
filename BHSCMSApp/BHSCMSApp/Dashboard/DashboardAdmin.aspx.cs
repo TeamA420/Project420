@@ -12,7 +12,7 @@ namespace BHSCMSApp.Dashboard
     public partial class WebForm1 : System.Web.UI.Page
     {
         public static List<DateTime> list = new List<DateTime>();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             // Put user code to initialize the page here

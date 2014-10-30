@@ -117,8 +117,8 @@
                    </li>
                     <li class='active has-sub'><a href='#'><span>Manage RFI</span></a>
                       <ul>
-                         <li><a href='/Dashboard/RFI/NewRFI'><span>New RFI</span></a></li>
-                         <li><a href='/Dashboard/RFI/ViewRFI'><span>View RFIs</span></a>                            
+                         <li><a href='/Dashboard/ManageRFI/NewRFI'><span>New RFI</span></a></li>
+                         <li><a href='/Dashboard/ManageRFI/ViewRFIList'><span>View RFIs</span></a>                            
                          </li>
                       </ul>
                    </li>
