@@ -11,9 +11,17 @@
             
                 
            
-                    <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center"
-                        AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        DataKeyNames="UserID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
+                    <asp:GridView ID="GridView1" runat="server" Width="100%" 
+                        HorizontalAlign="Center"
+                        AutoGenerateColumns="false" 
+                        AllowPaging="true" 
+                        OnRowDataBound="GridView1_RowDataBound" 
+                        OnPageIndexChanging="GridView1_PageIndexChanging"
+                        DataKeyNames="UserID" CssClass="table" 
+                        HeaderStyle-BackColor="#40B3DF" 
+                        HeaderStyle-Font-Bold="true" 
+                        HeaderStyle-ForeColor="White"
+                        AllowSorting="true" OnSorting="GridView1_Sorting">
 
                          <pagersettings mode="Numeric" position="Bottom" pagebuttoncount="10"/>
 
@@ -39,7 +47,7 @@
                                                       
                             <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
                             <asp:BoundField DataField="State" HeaderText="State"/>
-                            <asp:BoundField DataField="Status" HeaderText="Status"/>
+                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status"  HeaderStyle-CssClass="glyphicon glyphicon-sort" />
                              <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"/>
                             <asp:BoundField DataField="UserName" HeaderText="UserName"/>
                         </Columns>
