@@ -260,6 +260,8 @@
     <Content Include="Content\themes\Supercharged\images\ui-icons_ffc905_256x240.png" />
     <Content Include="Content\themes\Supercharged\jquery-ui-1.9.0.custom.css" />
     <Content Include="Controls\UserInfoBoxControl.ascx" />
+    <Content Include="Dashboard\Account\DeleteEmployee.aspx" />
+    <Content Include="Dashboard\Account\DeleteVendor.aspx" />
     <Content Include="Dashboard\Account\Profile.aspx" />
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
@@ -439,6 +441,20 @@
     </Compile>
     <Compile Include="Controls\UserInfoBoxControl.ascx.designer.cs">
       <DependentUpon>UserInfoBoxControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Account\DeleteEmployee.aspx.cs">
+      <DependentUpon>DeleteEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Account\DeleteEmployee.aspx.designer.cs">
+      <DependentUpon>DeleteEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Account\DeleteVendor.aspx.cs">
+      <DependentUpon>DeleteVendor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Account\DeleteVendor.aspx.designer.cs">
+      <DependentUpon>DeleteVendor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Account\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

@@ -62,7 +62,11 @@ namespace BHSCMSApp.Dashboard
                 details.NavigateUrl = String.Format("/Dashboard/Account/DetailsVendor.aspx?userid={0}", userID);//
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
-                edit.NavigateUrl = String.Format("/Dashboard/Account/EditVendor.aspx?userid={0}", userID);//                
+                edit.NavigateUrl = String.Format("/Dashboard/Account/EditVendor.aspx?userid={0}", userID);// 
+
+                HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
+                delete.NavigateUrl = String.Format("/Dashboard/Account/DeleteVendor.aspx?userid={0}", userID);// 
+
             }
 
 
