@@ -66,6 +66,7 @@
                 <asp:TextBox runat="server" ID="City" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="City" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The city field is required." />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="City" runat="server" ErrorMessage="Please use letters only!" ValidationExpression="^[a-zA-Z]+"></asp:RegularExpressionValidator>
             </div>
         </div>
 
@@ -142,9 +143,10 @@
         </div>
 
          <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="TaxID" CssClass="col-md-4 control-label">TaxID</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="TaxID" CssClass="col-md-4 control-label">TaxID*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="TaxID" CssClass="form-control" />                             
+                <asp:TextBox runat="server" ID="TaxID" CssClass="form-control" />   
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControltoValidate="TaxID" ErrorMessage="TaxID field is required."></asp:RequiredFieldValidator>                          
             </div>
         </div>
         
@@ -174,23 +176,25 @@
         <h4>Enter Account Login Information</h4>
          <br />
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-4 control-label">User name</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-4 control-label">User name*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The user name field is required." />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="UserName" Display="Dynamic" ErrorMessage="Only leters and numbers are allows!" ValidationExpression="^[a-zA-Z0-9]+"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-4 control-label">Password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-4 control-label">Password*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The password field is required." />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="Password" Display="Dynamic" ErrorMessage="Your password must be 6-20 characters long!" ValidationExpression="^\w{6,20}"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-4 control-label">Confirm password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-4 control-label">Confirm password*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword" ValidationGroup="register" 
@@ -206,6 +210,7 @@
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The email address field is required." />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="Email" Display="Dynamic" ErrorMessage="Incorrect E-mail Address!" ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
@@ -214,6 +219,7 @@
                 <asp:TextBox runat="server" ID="AltEmail" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="AltEmail" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The alternate email address field is required." />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="AltEmail" ErrorMessage="Incorrect E-mail Addess!" ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
@@ -225,10 +231,10 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="RegCode" CssClass="col-md-4 control-label">Registration Code*</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="RegCode" CssClass="col-md-4 control-label">Registration Code</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="RegCode" CssClass="form-control"/>
-               <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
+                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
                     CssClass="text-danger" ErrorMessage="The alternate email address field is required." />--%>
             </div>
         </div>
@@ -260,5 +266,15 @@
              <br />
      <br />
              <br />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#PhoneNumber').mask('(000) 000-000');
+        $('#FaxNumber').mask('(000) 000-000');
+        $('#Zipcode').mask('00000-000');
+        $('#TaxID').mask('00-0000000');
+    });
+
+</script>
 </asp:Content>
 
