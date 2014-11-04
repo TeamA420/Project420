@@ -73,7 +73,13 @@
             </td>
         </tr>
 
-        
+        </table>
+        <br />
+        <br />
+        </div>
+
+        <div class="col-md-4">
+       <table class="table">
          <tr>
             <td>TaxID:
             <asp:TextBox ID="TaxID" runat="server" MaxLength="15" CssClass="form-control">
@@ -108,7 +114,7 @@
         </tr>
 
 
-         <tr>
+<%--         <tr>
             <td>Commodities:
             <asp:ListBox ID="Commodities" runat="server" selectionMode="Multiple" Width="280" CssClass="form-control">
                 <asp:ListItem>Blah</asp:ListItem>
@@ -117,7 +123,7 @@
             </asp:ListBox>
             <asp:CustomValidator runat="server" ID="cvDemoList" ClientValidationFunction="Commodities" ErrorMessage="Please Select At Least One Commodity" ></asp:CustomValidator>
             </td>
-        </tr>
+        </tr>--%>
         </table>
         <br />
         <br />
@@ -128,7 +134,7 @@
             <asp:Label ID="regdate" runat="server" CssClass"form-control">DateTime.Now.ToShortTimeString()</asp:Label>
         </tr>--%>
 
-   <div class="col-md-6">
+   <div class="col-md-4">
        <table class="table">
            <tr>
                <td>Username:
@@ -167,6 +173,7 @@
                 </td>
            </tr>
        </table>
+    
 
       <br />
 

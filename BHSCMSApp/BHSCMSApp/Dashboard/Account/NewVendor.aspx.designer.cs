@@ -139,24 +139,6 @@ namespace BHSCMSApp.Dashboard.Register {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEmailValid;
         
         /// <summary>
-        /// Commodities control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox Commodities;
-        
-        /// <summary>
-        /// cvDemoList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvDemoList;
-        
-        /// <summary>
         /// UserId control.
         /// </summary>
         /// <remarks>
