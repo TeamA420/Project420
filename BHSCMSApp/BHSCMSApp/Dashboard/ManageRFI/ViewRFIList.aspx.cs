@@ -17,6 +17,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         protected void Page_Load(object sender, EventArgs e)
         {
             BindGrid();//calls this method to get data for grid
+            
         }
 
         private void BindGrid()
@@ -69,7 +70,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 BindGridOpenedRFI();
                 
             }
-            if(ddstatusfilter.SelectedItem.Text =="Closed")
+            else if(ddstatusfilter.SelectedItem.Text =="Closed")
             {
                 BindGridClosedRFI();
             }
@@ -91,8 +92,8 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 SqlConnection conn = new SqlConnection(connString);
 
                 conn.Open();
-             
-                strSQL = String.Format(FunctionsHelper.GetFileContents("SQL/ViewRFIOpened.sql"), DateTime.Today);
+
+                strSQL = String.Format(FunctionsHelper.GetFileContents("SQL/ViewRFIOpened.sql"), DateTime.Today.ToShortDateString());
                 SqlDataAdapter adapter = new SqlDataAdapter(strSQL, conn);
 
 
@@ -144,6 +145,36 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
             }
 
+
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                string enddate = DataBinder.Eval(e.Row.DataItem, "EndDate").ToString();
+
+                if (Convert.ToDateTime(enddate) < DateTime.Today)
+                {
+                    e.Row.Cells[7].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
+                    e.Row.Cells[7].Text = "Closed";
+                }
+
+            }
+
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                int rfiId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "RFI_ID"));//gets the RFI_ID from the row clicked on grid
+
+                HyperLink details = (HyperLink)e.Row.FindControl("ResponsesLink");
+                details.NavigateUrl = String.Format("/Dashboard/ManageRFI/RFIResponses.aspx?rfiid={0}", rfiId);//
+
+                HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
+                edit.NavigateUrl = String.Format("/Dashboard/ManageRFI/EditRFI.aspx?rfiid={0}", rfiId);//                
+            }
 
         }
 
