@@ -32,7 +32,7 @@ namespace BHSCMSApp
 
 
         //This funtion is used to store documents path in the DocumentTable
-        public static void UploadDocument(int typeId, string filepath, int referenceID)
+        public static void UploadDocument(int typeId, int referenceID, byte[] documentData, string documentName, string contentType)
         {
             string connectionString = GetConnectionString();
 
@@ -43,12 +43,14 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [FilePath], [ReferenceID], [DateStamp]) values (@typeID, @filepath, @referenceID, @datestamp)";
+                    string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [ReferenceID], [DateStamp], Document_Data, Document_Name, Content_Type) values (@typeID, @referenceID, @datestamp, @data, @doc_Name, @contentType)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
                     command.Parameters.AddWithValue("@typeID", typeId);
-                    command.Parameters.AddWithValue("@filepath", filepath);
                     command.Parameters.AddWithValue("@referenceID", referenceID);
-                    command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());                    
+                    command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());
+                    command.Parameters.AddWithValue("@data", documentData);
+                    command.Parameters.AddWithValue("@doc_Name", documentName);
+                    command.Parameters.AddWithValue("@contentType", contentType);
                     command.ExecuteNonQuery();
                     connection.Close();
 

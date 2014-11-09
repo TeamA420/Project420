@@ -22,7 +22,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         private DateTime startdate;
         private DateTime enddate;
 
-        static byte[] dataHolder;
+        //static byte[] dataHolder;
+        //static List<byte[]> fileList;
+        static List<HttpPostedFile> fileList;
        
         //parallel list used to store vendors permissions
         static List<int> vendorlist;
@@ -264,22 +266,22 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                     docftpfullpath = ftpurl + rfiId + ".doc";
 
-                    if(docUpload.HasFile)
-                    {
-                        FtpWebRequest ftp = FtpWebRequest.Create(docftpfullpath) as FtpWebRequest;
-                        ftp.KeepAlive = true; 
-                        ftp.UseBinary = true;
-                        ftp.Method = WebRequestMethods.Ftp.UploadFile;
-                        ftp.UsePassive = true;
+                    //if(docUpload.HasFile)
+                    //{
+                    //    FtpWebRequest ftp = FtpWebRequest.Create(docftpfullpath) as FtpWebRequest;
+                    //    ftp.KeepAlive = true; 
+                    //    ftp.UseBinary = true;
+                    //    ftp.Method = WebRequestMethods.Ftp.UploadFile;
+                    //    ftp.UsePassive = true;
                         
                         
-                        using (Stream ftpStream = ftp.GetRequestStream())
-                        {
+                    //    using (Stream ftpStream = ftp.GetRequestStream())
+                    //    {
                             
-                            ftpStream.Write(dataHolder, 0, dataHolder.Length);
-                        }
-                        ftp.GetResponse();
-                    }
+                    //        ftpStream.Write(dataHolder, 0, dataHolder.Length);
+                    //    }
+                    //    ftp.GetResponse();
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -315,22 +317,31 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     lblenddate.Text = enddate.ToShortDateString();
 
 
-                      if (docUpload.HasFile == true)
-                      {
-                          string savelocation = Server.MapPath("~/Documents/");
-                          HttpPostedFile postedFile = docUpload.PostedFile;
-                          dataHolder = new byte[postedFile.ContentLength];
+                    if(docUpload.HasFiles)
+                    {
+                        fileList = new List<HttpPostedFile>();
+                        foreach(HttpPostedFile file in docUpload.PostedFiles)
+                        {
+                            fileList.Add(file);
+                        }
+                    }
 
-                          Stream stream = postedFile.InputStream;
-                          stream.Read(dataHolder, 0, postedFile.ContentLength);
+                      //if (docUpload.HasFile == true)
+                      //{
+                      //    string savelocation = Server.MapPath("~/Documents/");
+                      //    HttpPostedFile postedFile = docUpload.PostedFile;
+                      //    dataHolder = new byte[postedFile.ContentLength];
 
-                          string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
-                          string SaveLocation = savelocation + fn;
-                          docUpload.SaveAs(SaveLocation);
+                      //    Stream stream = postedFile.InputStream;
+                      //    stream.Read(dataHolder, 0, postedFile.ContentLength);
+
+                      //    string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
+                      //    string SaveLocation = savelocation + fn;
+                      //    docUpload.SaveAs(SaveLocation);
                           
 
-                          //filepreview.Attributes.Add("src", "http://docs.google.com/gview?url=" + ResolveUrl(SaveLocation) + "&embedded=true");
-                      }      
+                      //    //filepreview.Attributes.Add("src", "http://docs.google.com/gview?url=" + ResolveUrl(SaveLocation) + "&embedded=true");
+                      //}      
                
                 }
                 else
@@ -357,7 +368,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         {
             RFI rfi = new RFI();
             int rfiId;
- 
+
             rfi.CreateNewRFI(UserInfoBoxControl.UserID, lblstartdate.Text, lblenddate.Text, ddCategories.SelectedIndex);
             rfiId = rfi.GetLastRFI_IDinserted();
 
@@ -392,8 +403,30 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 }
             }
 
-            string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
-            FunctionsHelper.UploadDocument(2, docFullPath, rfiId);//Insert DocFullpath in the DocumentTable
+            //string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
+
+            if(fileList != null && fileList.Count >0)
+            {
+                foreach(HttpPostedFile file in fileList)
+                {
+                    byte[] fileData = null;
+                    using(BinaryReader bReader = new BinaryReader(file.InputStream))
+                    {
+                        fileData = bReader.ReadBytes(file.ContentLength);
+                    }
+                    string fileName = Path.GetFileName(file.FileName);
+                    string contentType = file.ContentType;
+                    FunctionsHelper.UploadDocument(2, rfiId, fileData, fileName, contentType);
+                }
+            }
+            else
+            {
+                //Alert the user that something bad has happened
+                string startupScript = "alert('Document Upload failed please try again. Or contact an IS Admin')";
+                ClientScript.RegisterStartupScript(GetType(), "startupScript", startupScript);
+            }
+
+
 
 
             reviewPanel.Visible = false;
@@ -404,11 +437,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             ddlCategorylabel.Visible = false;
             txtCategory.Visible = false;
             txtCategorylabel.Visible = false;
- 
+
             RFIsubmit.Visible = true;
             lblsuccess.Text = "The RFI has been successfully submitted";
 
-            dataHolder = null;
+            fileList = null;
             vendorlist = null;//static lists are cleared to be used again
             permissionlist = null;
             companylist = null;         
