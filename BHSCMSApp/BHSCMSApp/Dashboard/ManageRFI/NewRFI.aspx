@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardAdmin.Master" AutoEventWireup="true" CodeBehind="NewRFI.aspx.cs" Inherits="BHSCMSApp.Dashboard.ManageRFI.NewRFI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
    
-
 
 
 
@@ -167,11 +167,9 @@
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               
-<<<<<<< HEAD
-                <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload" />      
-=======
+
                 <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />      
->>>>>>> origin/master
+
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
                  ControlToValidate="docUpload"></asp:RequiredFieldValidator>
                                             

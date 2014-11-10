@@ -34,11 +34,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         //path used to save images
         //private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
-<<<<<<< HEAD
-        //string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
-=======
+
         string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
->>>>>>> origin/master
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -68,15 +66,6 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 Session["FileUpload1"] = docUpload;
                 Label1.Text = docUpload.FileName;
             }
-<<<<<<< HEAD
-
-
-
-=======
-
-
-
->>>>>>> origin/master
            
             if (!Page.IsPostBack)
             {
@@ -256,124 +245,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             txtCategorylabel.Visible = false;
 
         }
-        /// <summary>
-        /// Uploads file to the FTP server
-        /// </summary>
-<<<<<<< HEAD
-        //protected void FTPUpload(int rfiId)
-        //{
-
-        //    String ftpurl = "ftp://cob-it-blobfish.ad.louisville.edu/RFI/"; // ftpurl
-        //    string ftpusername = "cis420"; // username
-        //    String ftppassword = "Cis$$420"; // password
-        //    string docftpfullpath = "";
-
-        //    if (docUpload.HasFiles == true)
-        //    {
-        //        try
-        //        {
-        //            string savelocation = "C:\\App\\BHSCMSApp\\BHSCMSApp\\Documents";
-
-        //            string fn = docUpload.PostedFile.FileName;
-        //            string SaveLocation = savelocation + fn;
-
-        //            docftpfullpath = ftpurl + rfiId + ".doc";
-        //            FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(docftpfullpath);
-        //            ftp.Credentials = new NetworkCredential(ftpusername, ftppassword);
-        //            ftp.EnableSsl = true;
-        //            ftp.KeepAlive = true;
-                    
-        //            ftp.UseBinary = true;
-        //            ftp.Method = WebRequestMethods.Ftp.UploadFile;
 
 
 
-        //            docUpload.SaveAs(SaveLocation);
-
-
-        //            FileStream fs = File.OpenRead(SaveLocation);
-        //            byte[] buffer = new byte[fs.Length];
-        //            fs.Read(buffer, 0, buffer.Length);
-        //            fs.Close();
-
-        //            Stream ftpstream = ftp.GetRequestStream();
-        //            ftpstream.Write(buffer, 0, buffer.Length);
-        //            ftpstream.Close();
-
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
-
-
-        //    else
-        //    {
-        //        RequiredFieldValidator1.Text = "Please select a file to upload.";
-        //    }
-
-        //     //string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
-        //    //FunctionsHelper.UploadDocument(2, docftpfullpath, rfiId);//Insert DocFullpath in the DocumentTable
-        //}
-
-        protected void FTPUpload(int rfiId)
-        {
-            FtpWebRequest ftpRequest;
-            FtpWebResponse ftpResponse;
-
-            try   
-            {
-                //Selection of file to be uploaded
-                string savelocation = "C:\\Users\\Annia\\Documents\\GitHub\\Project420\\BHSCMSApp\\BHSCMSApp\\Documents\\";
-                //string savelocation = "C:\\App\\BHSCMSApp\\BHSCMSApp\\Documents";
-                string fn = docUpload.PostedFile.FileName;
-                string SaveLocation = savelocation + fn;
-                docUpload.SaveAs(SaveLocation);
-
-
-                //Settings required to establish a connection with the server
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create("ftp://cob-it-blobfish.ad.louisville.edu/RFI/" + rfiId + ".doc");
-                ftpRequest.Credentials = new NetworkCredential("cis420", "Cis$$420");
-                ftpRequest.EnableSsl = false;
-                ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
-                ftpRequest.Proxy = null;
-                ftpRequest.UseBinary = true;
-                
-
-              
-
-
-                FileInfo ff = new FileInfo(SaveLocation);//e.g.: c:\\Test.txt
-                byte[] fileContents = new byte[ff.Length];
-
-                //will destroy the object immediately after being used
-                using (FileStream fr = ff.OpenRead())
-                {
-                    fr.Read(fileContents, 0, Convert.ToInt32(ff.Length));
-                }
-
-                using (Stream writer = ftpRequest.GetRequestStream())
-                {
-                    writer.Write(fileContents, 0, fileContents.Length);
-                }
-
-                //Gets the FtpWebResponse of the uploading operation
-                ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
-                Response.Write(ftpResponse.StatusDescription); //Display response
-            }
-            catch (WebException webex)
-            {
-                //this.Message = webex.ToString();
-            }
-        }
-
-
-
-
-
-=======
         protected string FTPUpload(int rfiId)
         {
 
@@ -424,7 +298,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         }
 
 
->>>>>>> origin/master
+
         //reviews the RFI before submitting
         protected void review_Click(object sender, EventArgs e)
         {
@@ -443,11 +317,6 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     lblenddate.Text = enddate.ToShortDateString();
 
 
-<<<<<<< HEAD
-                      //if (docUpload.HasFiles == true)
-                      //{
-                      //    string savelocation = Server.MapPath("~/Documents/");
-=======
                     if(docUpload.HasFiles)
                     {
                         fileList = new List<DocumentFile>();
@@ -476,15 +345,14 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                       //    Stream stream = postedFile.InputStream;
                       //    stream.Read(dataHolder, 0, postedFile.ContentLength);
->>>>>>> origin/master
+
 
                       //    string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
                       //    string SaveLocation = savelocation + fn;
                       //    docUpload.SaveAs(SaveLocation);
-<<<<<<< HEAD
-=======
+
                           
->>>>>>> origin/master
+
 
                       //    //filepreview.Attributes.Add("src", "http://docs.google.com/gview?url=" + ResolveUrl(SaveLocation) + "&embedded=true");
                       //}      
@@ -547,9 +415,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 {
 
                 }
-<<<<<<< HEAD
-                
-=======
+
             }
 
             //string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
@@ -562,7 +428,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     file.TypeID = 2;
                     FunctionsHelper.UploadDocument(file);
                 }
->>>>>>> origin/master
+
             }
             else
             {
@@ -590,10 +456,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             RFIsubmit.Visible = true;
             lblsuccess.Text = "The RFI has been successfully submitted";
 
-<<<<<<< HEAD
-=======
             fileList = null;
->>>>>>> origin/master
             vendorlist = null;//static lists are cleared to be used again
             permissionlist = null;
             companylist = null;         
