@@ -24,8 +24,8 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         //static byte[] dataHolder;
         //static List<byte[]> fileList;
-        static List<HttpPostedFile> fileList;
-       
+        //static List<HttpPostedFile> fileList;
+        static List<DocumentFile> fileList;
         //parallel list used to store vendors permissions
         static List<int> vendorlist;
         static List<int> permissionlist;
@@ -319,10 +319,21 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                     if(docUpload.HasFiles)
                     {
-                        fileList = new List<HttpPostedFile>();
+                        fileList = new List<DocumentFile>();
                         foreach(HttpPostedFile file in docUpload.PostedFiles)
                         {
-                            fileList.Add(file);
+                            byte[] fileData = null;
+
+                            using(BinaryReader bReader = new BinaryReader(file.InputStream))
+                            {
+                                fileData = bReader.ReadBytes(file.ContentLength);
+                            }
+                            fileList.Add(new DocumentFile()
+                            {
+                                FileName = Path.GetFileName(file.FileName),
+                                ContentType = file.ContentType,
+                                FileData = fileData,
+                            });
                         }
                     }
 
@@ -407,16 +418,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
             if(fileList != null && fileList.Count >0)
             {
-                foreach(HttpPostedFile file in fileList)
+                foreach(DocumentFile file in fileList)
                 {
-                    byte[] fileData = null;
-                    using(BinaryReader bReader = new BinaryReader(file.InputStream))
-                    {
-                        fileData = bReader.ReadBytes(file.ContentLength);
-                    }
-                    string fileName = Path.GetFileName(file.FileName);
-                    string contentType = file.ContentType;
-                    FunctionsHelper.UploadDocument(2, rfiId, fileData, fileName, contentType);
+                    file.RFIID = rfiId;
+                    file.TypeID = 2;
+                    FunctionsHelper.UploadDocument(file);
                 }
             }
             else
