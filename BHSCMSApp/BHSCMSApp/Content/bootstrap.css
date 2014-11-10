@@ -1148,7 +1148,7 @@ pre code {
     width: 25%;
   }
   .col-md-4 {
-    width: 33.33333333333333%;
+    width: 30%;
   }
   .col-md-5 {
     width: 41.66666666666667%;
@@ -2044,7 +2044,7 @@ textarea.input-lg {
     text-align:left;
     font-size:small;
     font-family: 'Trebuchet MS';
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
   }
 }
 

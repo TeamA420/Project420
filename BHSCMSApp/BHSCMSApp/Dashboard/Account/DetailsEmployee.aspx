@@ -16,8 +16,24 @@
                                     <asp:BoundField DataField="UserID" HeaderText="UserID" />
                                     <asp:BoundField DataField="UserName" HeaderText="Username" />
                                     <asp:BoundField DataField="Password" HeaderText="Password" />
-                                    <asp:BoundField DataField="PrimaryEmail" HeaderText="Primary Email" />
-                                    <asp:BoundField DataField="SecondaryEmail" HeaderText="Secondary Email" />
+                                    
+                                    <asp:TemplateField HeaderText="Primary Email">
+                                        <ItemTemplate>
+                                      <asp:HyperLink ID="priEmail" runat="server" ToolTip="Click to send email"
+                                        NavigateUrl='<%# Eval("PrimaryEmail", "mailto:{0}") %>'
+                                        Text='<%# Eval("PrimaryEmail") %>'>
+                                     </asp:HyperLink>
+                                      </ItemTemplate>
+                                     </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Secondary Email">
+                                        <ItemTemplate>
+                                      <asp:HyperLink ID="secEmail" runat="server" ToolTip="Click to send email"
+                                        NavigateUrl='<%# Eval("SecondaryEmail", "mailto:{0}") %>'
+                                        Text='<%# Eval("SecondaryEmail") %>'>
+                                     </asp:HyperLink>
+                                      </ItemTemplate>
+                                     </asp:TemplateField>
                                     
                                 </Fields>
                             </asp:DetailsView>

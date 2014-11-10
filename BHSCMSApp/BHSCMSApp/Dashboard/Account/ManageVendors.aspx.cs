@@ -31,7 +31,7 @@ namespace BHSCMSApp.Dashboard
 
                 conn.Open();
 
-                string cmd = "Select U.UserID, U.UserName, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3";
+                string cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3";
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd, conn);
 
 
@@ -63,6 +63,20 @@ namespace BHSCMSApp.Dashboard
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
                 edit.NavigateUrl = String.Format("/Dashboard/Account/EditVendor.aspx?userid={0}", userID);//                
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+
+                if (status == "Disapproved" || status == "Sanctioned")
+                {
+                    e.Row.Cells[5].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
+                    
+                }
+
+
             }
 
 

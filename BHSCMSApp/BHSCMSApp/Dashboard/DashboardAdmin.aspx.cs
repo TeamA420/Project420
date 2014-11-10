@@ -16,8 +16,8 @@ namespace BHSCMSApp.Dashboard
         protected void Page_Load(object sender, EventArgs e)
         {
             // Put user code to initialize the page here
-            Session.Abandon();
-            FormsAuthentication.SignOut();
+            //Session.Abandon();
+            //FormsAuthentication.SignOut();
             list.Add(DateTime.Today);
             list.Add(DateTime.Today.AddDays(2));
             list.Add(DateTime.Today.AddDays(4));

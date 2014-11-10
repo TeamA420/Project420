@@ -217,7 +217,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="TaxForm" CssClass="col-md-4 control-label">Upload Tax Form*</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="TaxForm" CssClass="col-md-4 control-label">W9 Form*</asp:Label>
             <div class="col-md-8">
                 <asp:FileUpload runat="server" ID="TaxForm" CssClass="form-control" Width="75%" />
                 <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="TaxForm"

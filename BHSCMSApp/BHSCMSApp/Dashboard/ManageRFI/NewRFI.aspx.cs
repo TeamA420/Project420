@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using BHSCMSApp.Models;
 using BHSCMSApp;
 using System.Text;
+using System.IO;
+using System.Net;
+using System.Web;
+
 
 namespace BHSCMSApp.Dashboard.ManageRFI
 {
@@ -20,25 +24,47 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
        
         //parallel list used to store vendors permissions
-        static List<int> vendorlist = new List<int>();
-        static List<int> permissionlist = new List<int>();
-        private List<string> companylist = new List<string>();
+        static List<int> vendorlist;
+        static List<int> permissionlist;
+        static List<string> companylist;
 
 
         //path used to save images
-        private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
-     
+        //private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
+        //string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //label1.Text = "J AND J HEALTHCARE";
-            //label2.Text= "DEROYAL INDUSTRIES INC";
-            //label3.Text = "CARDINAL HEALTH";
-            //label4.Text = "BSN MEDICAL INC";
-            //label5.Text = "MEDLINE INDUSTRIES INC";
-            //label6.Text = "G&G INC";
+           vendorlist = new List<int>();
+           permissionlist = new List<int>();
+           companylist = new List<string>();
 
+            //If first time page is submitted and we have file in FileUpload control but not in session 
+            // Store the values to SEssion Object 
+            if (Session["FileUpload1"] == null && docUpload.HasFile)
+            {
+                Session["FileUpload1"] = docUpload;
+                Label1.Text = docUpload.FileName;
+            }
+            // Next time submit and Session has values but FileUpload is Blank 
+            // Return the values from session to FileUpload 
+            else if (Session["FileUpload1"] != null && (!docUpload.HasFile))
+            {
+                docUpload = (FileUpload)Session["FileUpload1"];
+                Label1.Text = docUpload.FileName;
+            }
+            // Now there could be another sictution when Session has File but user want to change the file 
+            // In this case we have to change the file in session object 
+            else if (docUpload.HasFile)
+            {
+                Session["FileUpload1"] = docUpload;
+                Label1.Text = docUpload.FileName;
+            }
+
+
+
+           
             if (!Page.IsPostBack)
             {
                 FillInCategoriesDropDownList();
@@ -71,6 +97,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             }
         }
 
+        /// <summary>
+        /// Fills the in gridview based on category selected.
+        /// </summary>
         protected void ddCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
             _categoryid = (ddCategories.SelectedIndex);
@@ -80,7 +109,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             panelVendors.Visible = true;
         }
 
-
+        /// <summary>
+        /// Binds the grid with the vendors that supply the category selected
+        /// </summary>
         private void BindGrid(int categoryid)
         {
             string strSQL= "";
@@ -113,46 +144,37 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                foreach (GridViewRow row in GridView1.Rows)
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+
+                switch (status)
                 {
-                    string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                   case "Disapproved":
+                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
+                        break;
 
-                    //switch (status)
-                    //{
-                    //    case "Approved":
-                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Green; // Column color
-                    //        e.Row.Cells[6].Font.Bold = true;
-                    //        break;
+                    case "Sanctioned":
+                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
+                        e.Row.Cells[6].Font.Bold = true;
+                        break;
 
-                    //    case "Pending":
-                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Blue; // Column color
-                    //        //e.Row.Cells[6].Font.Bold = true;
-                    //        break;
-
-                    //    case "Disapproved":
-                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
-                    //        break;
-
-                    //    case "Sanctioned":
-                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
-                    //        e.Row.Cells[6].Font.Bold = true;
-                    //        break;
-
-                    //    default:
-                    //        e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
-                    //        e.Row.Cells[6].Font.Bold = true;
-                    //        break;
-                    //}
-
-
+                    default:
+                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
+                        e.Row.Cells[6].Font.Bold = true;
+                        break;
                 }
             }
         }
 
+        /// <summary>
+        /// Continue button is clicked and the start date and endate are setup, also document is uploaded
+        /// </summary>
         protected void btnCont_Click(object sender, EventArgs e)
         {
             ddCategories.Visible = false;
@@ -206,6 +228,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             panelvendorlist.Visible = true;
         }
        
+
         //Go back to select category and vendors 
         protected void goback_Click(object sender, EventArgs e)
         {
@@ -220,19 +243,121 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             txtCategorylabel.Visible = false;
 
         }
+        /// <summary>
+        /// Uploads file to the FTP server
+        /// </summary>
+        //protected void FTPUpload(int rfiId)
+        //{
 
-        //upload the RFI document
-        private void UploadRFI()
+        //    String ftpurl = "ftp://cob-it-blobfish.ad.louisville.edu/RFI/"; // ftpurl
+        //    string ftpusername = "cis420"; // username
+        //    String ftppassword = "Cis$$420"; // password
+        //    string docftpfullpath = "";
+
+        //    if (docUpload.HasFiles == true)
+        //    {
+        //        try
+        //        {
+        //            string savelocation = "C:\\App\\BHSCMSApp\\BHSCMSApp\\Documents";
+
+        //            string fn = docUpload.PostedFile.FileName;
+        //            string SaveLocation = savelocation + fn;
+
+        //            docftpfullpath = ftpurl + rfiId + ".doc";
+        //            FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(docftpfullpath);
+        //            ftp.Credentials = new NetworkCredential(ftpusername, ftppassword);
+        //            ftp.EnableSsl = true;
+        //            ftp.KeepAlive = true;
+                    
+        //            ftp.UseBinary = true;
+        //            ftp.Method = WebRequestMethods.Ftp.UploadFile;
+
+
+
+        //            docUpload.SaveAs(SaveLocation);
+
+
+        //            FileStream fs = File.OpenRead(SaveLocation);
+        //            byte[] buffer = new byte[fs.Length];
+        //            fs.Read(buffer, 0, buffer.Length);
+        //            fs.Close();
+
+        //            Stream ftpstream = ftp.GetRequestStream();
+        //            ftpstream.Write(buffer, 0, buffer.Length);
+        //            ftpstream.Close();
+
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
+        //    }
+
+
+        //    else
+        //    {
+        //        RequiredFieldValidator1.Text = "Please select a file to upload.";
+        //    }
+
+        //     //string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
+        //    //FunctionsHelper.UploadDocument(2, docftpfullpath, rfiId);//Insert DocFullpath in the DocumentTable
+        //}
+
+        protected void FTPUpload(int rfiId)
         {
-            if((docUpload.PostedFile !=null) && (docUpload.PostedFile.ContentLength>0))
+            FtpWebRequest ftpRequest;
+            FtpWebResponse ftpResponse;
+
+            try   
             {
-                string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
-                string SaveLocation = Server.MapPath("Documents") + "\\" + fn;
-                //string directoryPath = Server.MapPath(string.Format("~/Documents/RFI/{0}/", txtFolderName.Text.Trim()));
+                //Selection of file to be uploaded
+                string savelocation = "C:\\Users\\Annia\\Documents\\GitHub\\Project420\\BHSCMSApp\\BHSCMSApp\\Documents\\";
+                //string savelocation = "C:\\App\\BHSCMSApp\\BHSCMSApp\\Documents";
+                string fn = docUpload.PostedFile.FileName;
+                string SaveLocation = savelocation + fn;
+                docUpload.SaveAs(SaveLocation);
 
+
+                //Settings required to establish a connection with the server
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create("ftp://cob-it-blobfish.ad.louisville.edu/RFI/" + rfiId + ".doc");
+                ftpRequest.Credentials = new NetworkCredential("cis420", "Cis$$420");
+                ftpRequest.EnableSsl = false;
+                ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
+                ftpRequest.Proxy = null;
+                ftpRequest.UseBinary = true;
+                
+
+              
+
+
+                FileInfo ff = new FileInfo(SaveLocation);//e.g.: c:\\Test.txt
+                byte[] fileContents = new byte[ff.Length];
+
+                //will destroy the object immediately after being used
+                using (FileStream fr = ff.OpenRead())
+                {
+                    fr.Read(fileContents, 0, Convert.ToInt32(ff.Length));
+                }
+
+                using (Stream writer = ftpRequest.GetRequestStream())
+                {
+                    writer.Write(fileContents, 0, fileContents.Length);
+                }
+
+                //Gets the FtpWebResponse of the uploading operation
+                ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                Response.Write(ftpResponse.StatusDescription); //Display response
             }
-
+            catch (WebException webex)
+            {
+                //this.Message = webex.ToString();
+            }
         }
+
+
+
+
 
         //reviews the RFI before submitting
         protected void review_Click(object sender, EventArgs e)
@@ -251,6 +376,18 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     lblstartdate.Text = startdate.ToShortDateString();
                     lblenddate.Text = enddate.ToShortDateString();
 
+
+                      //if (docUpload.HasFiles == true)
+                      //{
+                      //    string savelocation = Server.MapPath("~/Documents/");
+
+                      //    string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
+                      //    string SaveLocation = savelocation + fn;
+                      //    docUpload.SaveAs(SaveLocation);
+
+                      //    //filepreview.Attributes.Add("src", "http://docs.google.com/gview?url=" + ResolveUrl(SaveLocation) + "&embedded=true");
+                      //}      
+               
                 }
                 else
                 {
@@ -269,6 +406,9 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         }
 
+        /// <summary>
+        /// Submit the RFI in the system
+        /// </summary>
         protected void Submit_Click1(object sender, EventArgs e)
         {
             RFI rfi = new RFI();
@@ -306,10 +446,12 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 {
 
                 }
-
                 
-
             }
+
+
+            FTPUpload(rfiId);
+
 
             reviewPanel.Visible = false;
             setupPanel.Visible = false;
@@ -322,13 +464,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
  
             RFIsubmit.Visible = true;
             lblsuccess.Text = "The RFI has been successfully submitted";
-       
 
-            
-
-
-
-
+            vendorlist = null;//static lists are cleared to be used again
+            permissionlist = null;
+            companylist = null;         
+                                    
             
         }
 

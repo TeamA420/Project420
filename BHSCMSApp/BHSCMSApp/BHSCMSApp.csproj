@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -49,15 +49,49 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
     <Reference Include="JuiceUI">
       <HintPath>..\packages\JuiceUI.1.1.1\lib\net40\JuiceUI.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -96,16 +130,15 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <Private>True</Private>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.1\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +198,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\footer.css" />
     <Content Include="Content\menubar.css" />
+    <Content Include="Content\report.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -263,15 +297,29 @@
     <Content Include="Dashboard\Account\Profile.aspx" />
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
+    <Content Include="Dashboard\ManageContract\NewContract.aspx" />
+    <Content Include="Dashboard\ManageContract\ViewContracts.aspx" />
+    <Content Include="Dashboard\ManageRFI\EditRFI.aspx" />
     <Content Include="Dashboard\ManageRFI\NewRFI.aspx" />
     <Content Include="Dashboard\ManageRFI\SQL\RFICategoryVendors.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFI.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIClosed.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIOpened.sql" />
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
+    <Content Include="Dashboard\ManageRFP\NewRFP.aspx" />
+    <Content Include="Dashboard\ManageRFP\ViewRFP.aspx" />
+    <Content Include="Dashboard\Tools\Reports.aspx" />
+    <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
+    <Content Include="Dashboard\Tools\SQL\ReportDateRange.sql" />
+    <Content Include="Dashboard\VendorRFI\ReplyRFI.aspx" />
+    <Content Include="Dashboard\VendorRFI\SQL\VendorRFIDocQry.sql" />
+    <Content Include="Dashboard\VendorRFI\SQL\VendorRFIList.sql" />
+    <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
+    <Content Include="img\purple.png" />
     <Content Include="img\business.jpg" />
+    <Content Include="img\calendar.gif" />
     <Content Include="img\contract.jpg" />
     <Content Include="img\cream_pixels.png" />
     <Content Include="img\dashboard.png" />
@@ -309,6 +357,8 @@
     <Content Include="Dashboard\DashboardAdmin.Master" />
     <Content Include="Dashboard\DashboardVendor.Master" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="Documents\docs\Exhibit B Product Cross Reference Template.xlsx" />
+    <None Include="Properties\PublishProfiles\BHSCMS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
@@ -539,6 +589,27 @@
     <Compile Include="Dashboard\Account\NewVendor.aspx.designer.cs">
       <DependentUpon>NewVendor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\ManageContract\NewContract.aspx.cs">
+      <DependentUpon>NewContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageContract\NewContract.aspx.designer.cs">
+      <DependentUpon>NewContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageContract\ViewContracts.aspx.cs">
+      <DependentUpon>ViewContracts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageContract\ViewContracts.aspx.designer.cs">
+      <DependentUpon>ViewContracts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFI\EditRFI.aspx.cs">
+      <DependentUpon>EditRFI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFI\EditRFI.aspx.designer.cs">
+      <DependentUpon>EditRFI.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\ManageRFI\NewRFI.aspx.cs">
       <DependentUpon>NewRFI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -552,6 +623,41 @@
     </Compile>
     <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.designer.cs">
       <DependentUpon>ViewRFIList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.cs">
+      <DependentUpon>NewRFP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.designer.cs">
+      <DependentUpon>NewRFP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\ViewRFP.aspx.cs">
+      <DependentUpon>ViewRFP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\ViewRFP.aspx.designer.cs">
+      <DependentUpon>ViewRFP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Tools\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Tools\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFI\ReplyRFI.aspx.cs">
+      <DependentUpon>ReplyRFI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFI\ReplyRFI.aspx.designer.cs">
+      <DependentUpon>ReplyRFI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFI\VendorRFIList.aspx.cs">
+      <DependentUpon>VendorRFIList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFI\VendorRFIList.aspx.designer.cs">
+      <DependentUpon>VendorRFIList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -596,9 +702,7 @@
   <ItemGroup>
     <Folder Include="App_Code\VBCode\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Dashboard\ManageContract\" />
-    <Folder Include="Dashboard\ManageRFP\" />
-    <Folder Include="Documents\" />
+    <Folder Include="Documents\RFI\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409141614312_InitialCreate.resx">
@@ -633,6 +737,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

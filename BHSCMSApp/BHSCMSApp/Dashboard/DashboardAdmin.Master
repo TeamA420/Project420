@@ -35,15 +35,32 @@
                         menu.addClass('open');
                     }
                 });
-
                 $(function () {
-                    $("#startdate").datepicker();
+                    $("#startdate").datepicker({
+                        showOn: "button",
+                        buttonImage: "/img/calendar.gif",
+                        buttonImageOnly: true,
+                        buttonText: "Select start date"
+                    });
                 });
                 $(function () {
-                    $("#enddate").datepicker();
+                    $("#enddate").datepicker({
+                        showOn: "button",
+                        buttonImage: "/img/calendar.gif",
+                        buttonImageOnly: true,
+                        buttonText: "Select end date"
+                    });
                 });
 
+                //$(function () {
+                //    $("#enddate").datepicker();
+                //});
 
+                //$(function () {
+                //    $("#startdate").datepicker({
+                //        dateFormat: "yy-mm-dd"
+                //    }).datepicker("setDate", "0");
+                //});
 
             });
         })(jQuery);
@@ -135,8 +152,15 @@
                          <li><a href='/Dashboard/Contract/ViewContracts'><span>View Contracts</span></a>                            
                          </li>
                       </ul>
+                   </li>   
+                     <li class='active has-sub'><a href='#'><span>Tools</span></a>
+                      <ul>
+                         <li><a href='/Dashboard/Tools/Reports'><span>Reports</span></a></li>
+                         <li><a href='/Dashboard/Tools/Categories'><span>Modify categories</span></a>                            
+                         </li>
+                      </ul>
                    </li>         
-                    <li><a href="#"><span>Reports</span></a></li>                
+                                 
                 </ul>
 
                    
@@ -148,7 +172,7 @@
 
 
         
-
+       
      
 
         <div class="container body-content" style="float: none; margin: 0 auto; background-color:white">
@@ -161,7 +185,7 @@
             <br />
             <br />
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
-
+            
         
         </asp:ContentPlaceHolder>
 

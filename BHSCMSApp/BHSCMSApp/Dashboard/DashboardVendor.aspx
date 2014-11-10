@@ -12,7 +12,7 @@
               
           </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
       
             <h4>Upcoming Events:</h4>
             <hr />
@@ -20,16 +20,16 @@
                  Font-Bold="true" TitleFormat="Month" SelectedDayStyle-BackColor="#539BBC" cellpadding="3" cellspacing="3"/>
 
                      <hr />
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day1" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn">  </span> <asp:label runat="server" ID="day1" ForeColor="#5C5C5C"></asp:label>
               <br />
               
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day2" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day2" ForeColor="#5C5C5C"></asp:label>
               <br />
               
-               <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day3" ForeColor="DarkBlue"></asp:label>
+               <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day3" ForeColor="#5C5C5C"></asp:label>
               <br />
             
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day4" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day4" ForeColor="#5C5C5C"></asp:label>
 
 
 
@@ -62,4 +62,8 @@
     <br />   
     <br />
     <br /> 
+     
+    <br />
+    <br />   
+   
 </asp:Content>

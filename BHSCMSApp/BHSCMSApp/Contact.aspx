@@ -89,13 +89,12 @@
                  <p>We are located in:</p>
                  <address>
         
-        4000 Kresge Way <br />
-        Louisville, KY 40207<br />
+        2701 Eastpoint Pkwy <br />
+        Louisville, KY 40223<br />
         
     </address>
             <div class="embed-responsive embed-responsive-16by9">
-<iframe style="margin-right:30px" width="400" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Baptist+Health+Louisville,+Kresge+Way,+Louisville,+KY&amp;aq=0&amp;oq=baptist+&amp;sll=38.214274,-85.760586&amp;sspn=0.020231,0.052314&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;ll=38.238477,-85.640514&amp;spn=0.006295,0.006295&amp;t=m&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Baptist+Health+Louisville,+Kresge+Way,+Louisville,+KY&amp;aq=0&amp;oq=baptist+&amp;sll=38.214274,-85.760586&amp;sspn=0.020231,0.052314&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;ll=38.238477,-85.640514&amp;spn=0.006295,0.006295&amp;t=m" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-    </div>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=2701+Eastpoint+Pkwy,+Louisville,+KY+40223&amp;aq=&amp;sll=38.216885,-85.764317&amp;sspn=0.055297,0.056562&amp;ie=UTF8&amp;hq=&amp;hnear=2701+Eastpoint+Pkwy,+Louisville,+Kentucky+40223&amp;t=m&amp;z=14&amp;iwloc=A&amp;ll=38.282686,-85.509237&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=2701+Eastpoint+Pkwy,+Louisville,+KY+40223&amp;aq=&amp;sll=38.216885,-85.764317&amp;sspn=0.055297,0.056562&amp;ie=UTF8&amp;hq=&amp;hnear=2701+Eastpoint+Pkwy,+Louisville,+Kentucky+40223&amp;t=m&amp;z=14&amp;iwloc=A&amp;ll=38.282686,-85.509237" style="color:#0000FF;text-align:left">View Larger Map</a></small>    </div>
             </div>
              
 

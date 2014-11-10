@@ -8,7 +8,8 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1" >
     <li role="presentation"><a role="menuitem" tabindex="1" href="/Dashboard/Account/Profile.aspx">User Profile <span class="glyphicon glyphicon-cog"></span></a></li>
-    <li role="presentation"><a role="menuitem" tabindex="1" id="logout" href="/Default.aspx">Log Out <span class="glyphicon glyphicon-off"></span></a></li>    
+    <li><a><asp:Button runat="server" BorderStyle="None" Text="Log Out" BackColor="Transparent" ID="btnlogout" OnClick="btnlogout_Click"/><span class="glyphicon glyphicon-off"></span></a></li>
+      <%--<li role="presentation"><a role="menuitem" tabindex="1" id="logout" href="/Default.aspx">Log Out <span class="glyphicon glyphicon-off"></span></a></li>--%>    
   </ul>
 </div>
 
@@ -30,6 +31,8 @@
  
 <%--<asp:HyperLink runat="server" ID="LogOut"><b style="color:#17649A; background-color:white; border-radius:4px; padding:4px">Log Out</b></asp:HyperLink>--%>
     <br />
-
+    <script>
+     
+    </script>
 </div>
 

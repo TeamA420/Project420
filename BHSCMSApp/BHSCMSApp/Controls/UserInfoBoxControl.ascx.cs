@@ -114,5 +114,13 @@ namespace BHSCMSApp.Controls
             get { return lastLogin; }
             set { lastLogin = value; }
         }
+
+      
+        protected void btnlogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Page.Response.Redirect("/Default.aspx");
+
+        }
     }
 }

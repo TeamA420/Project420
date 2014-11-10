@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardAdmin.Master" AutoEventWireup="true" CodeBehind="NewRFI.aspx.cs" Inherits="BHSCMSApp.Dashboard.ManageRFI.NewRFI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
+   
 
 
 
 
-
-<div class="row" style="background-color:white; width:100%">
+<div class="row" style="background-color:white; width:80%; margin-left:20px">
 <div class="col-md-12">
    
     <asp:Panel runat="server" Visible="false" ID="RFIsubmit">
@@ -14,7 +14,7 @@
     <asp:Label runat="server" ID="lblsuccess"></asp:Label> <span class="glyphicon glyphicon-ok"></span>
      <br />
         <br />
-    <asp:HyperLink runat="server" ID="viewRFI" NavigateUrl="~/Dashboard/ManageRFI/ViewRFIList.aspx" Text="Go to RFI's list" ForeColor="#6BBAEC"></asp:HyperLink>
+    <asp:HyperLink runat="server" ID="viewRFI" NavigateUrl="/Dashboard/ManageRFI/ViewRFIList.aspx" Text="Go to RFI's list" ForeColor="#6BBAEC"></asp:HyperLink>
        
      </asp:Panel>
 
@@ -59,13 +59,16 @@
 
 
                         <Columns>
+                               
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Permissions">
                                 <ItemTemplate>
-                                    <asp:RadioButtonList runat="server" ID="radiolist">
+                                    <asp:RadioButtonList runat="server" ID="radiolist" >
                                         <asp:ListItem Value="1"> Participate</asp:ListItem>
                                         <asp:ListItem Value="2"> View</asp:ListItem>
-                                    </asp:RadioButtonList>                                  
-                                </ItemTemplate>                                                       
+                                    </asp:RadioButtonList>  
+                                                               
+                                </ItemTemplate> 
+                                                                                     
                             </asp:TemplateField>                              
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/>                                              
                             <asp:BoundField DataField="CompanyName" HeaderText="Company"/> 
@@ -105,7 +108,7 @@
         <br />
         <div class="form-group">
         
-       <h5>Participants:</h5>
+       <h5 style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">Participants:</h5>
 
         <asp:label runat="server" ID="participatelist"></asp:label>
         <br />
@@ -113,7 +116,7 @@
 
          <div class="form-group">
         
-         <h5>View Only:</h5>
+          <h5 style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">View Only:</h5>
         <asp:label runat="server" ID="viewlist"></asp:label>
         <br />
        </div>
@@ -160,15 +163,18 @@
 
          <br />
          <br />
+         <hr />
          <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI:</asp:Label>
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               
-                <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload"/>      
+                <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload" />      
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
+                 ControlToValidate="docUpload"></asp:RequiredFieldValidator>
                                             
             </div>
          </div>
            
-
+         <asp:Label runat="server" ID="Label1" Visible="false"></asp:Label>
           <br />
          <br />
            
@@ -199,6 +205,8 @@
         <br />
        </div>
             <br />
+
+            <hr />
 
          <asp:button runat="server" type="button" class="btn btn-default" ID="back" Text="Go Back" OnClick="back_Click"></asp:button>
          <asp:button runat="server" type="button" class="btn btn-info" ID="Submit" Text="Submit RFI" OnClick="Submit_Click1"></asp:button>

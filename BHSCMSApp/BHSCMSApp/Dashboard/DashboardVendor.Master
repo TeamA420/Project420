@@ -86,7 +86,7 @@
                          </li>
                       </ul>
                    </li> --%>                   
-                    <li><a href='#'><span>RFI</span></a></li>
+                    <li><a href='/Dashboard/VendorRFI/VendorRFIList'><span>RFI</span></a></li>
                     <li><a href='#'><span>RFP</span></a></li>
                     <li><a href='#'><span>Contracts</span></a></li>
                      <li><a href='#'><span>Request</span></a></li>
@@ -97,6 +97,10 @@
 
        <div class="row" style="width:100%">
         
+            <br />
+            <br />
+            <br />
+            <br />
        
          
         <asp:ContentPlaceHolder ID="MainContent" runat="server">

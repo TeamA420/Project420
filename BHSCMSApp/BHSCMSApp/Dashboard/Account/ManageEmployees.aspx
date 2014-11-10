@@ -4,8 +4,24 @@
      <div class="row" style="background-color:white; width:100%">
           <div class="col-md-12">
               
-      <h4>List of employees registered in the system:</h4>
-    <hr />             
+      <h4>List of employees registered in the system</h4>
+    <hr />         
+              <div class="form-group">     
+               <asp:Label runat="server" AssociatedControlID="ddrolefilter" CssClass="col-md-2 control-label">Filter by Role:</asp:Label>
+                 
+                 <div class="col-md-8">
+             
+                  <asp:DropDownList runat="server" ID="ddrolefilter" AutoPostBack="true" CssClass="form-control" Width="20%">
+                    <asp:ListItem Value="1">Show All</asp:ListItem>
+                    <asp:ListItem Value="2">Admin</asp:ListItem>
+                    <asp:ListItem Value="3">Employee</asp:ListItem>                      
+                </asp:DropDownList>
+
+             </div>
+        </div>
+              <br />
+                
+           <br />    
                      
                 
            
@@ -19,17 +35,17 @@
                          <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="DetailsLink" runat="server" Text="Details"> <span class="glyphicon glyphicon-zoom-in"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="DetailsLink" runat="server" Text="Details" ToolTip="Click to see details"> <span class="glyphicon glyphicon-zoom-in"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
-                                    <asp:HyperLink ID="EditLink" runat="server" Text="Edit"> <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>                                
+                                    <asp:HyperLink ID="EditLink" runat="server" Text="Edit" ToolTip="Click to edit info"> <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>                                
                                 </ItemTemplate>
                             </asp:TemplateField>     
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
-                                    <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                
+                                    <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete" ToolTip="Click to delete user"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                
                                 </ItemTemplate>
                             </asp:TemplateField>                           
                             

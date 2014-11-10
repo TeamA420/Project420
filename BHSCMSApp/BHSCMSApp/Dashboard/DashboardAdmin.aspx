@@ -6,7 +6,9 @@
 
 
           <div class="col-md-8">
-              <h3>Notifications:</h3>
+              
+              
+              <div style="width:50%; margin-left:10px"><img  src="../img/purple.png" class="img-responsive" alt="Responsive image" width="50%"/></div>
               <hr />
               <asp:HyperLink runat="server" ID="vendorlink" NavigateUrl="~/Dashboard/Account/ManageVendors.aspx"></asp:HyperLink>
               <asp:label runat="server" ID="vendor"></asp:label>
@@ -35,16 +37,16 @@
                  Font-Bold="true" TitleFormat="Month" SelectedDayStyle-BackColor="#539BBC" cellpadding="3" cellspacing="3"/>
 
               <hr />
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day1" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day1" ForeColor="DarkBlue"></asp:label>
               <br />
               
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day2" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day2" ForeColor="DarkBlue"></asp:label>
               <br />
               
-               <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day3" ForeColor="DarkBlue"></asp:label>
+               <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day3" ForeColor="DarkBlue"></asp:label>
               <br />
             
-              <span class="glyphicon glyphicon-flag"> </span> <asp:label runat="server" ID="day4" ForeColor="DarkBlue"></asp:label>
+              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day4" ForeColor="DarkBlue"></asp:label>
 
 
             </div>

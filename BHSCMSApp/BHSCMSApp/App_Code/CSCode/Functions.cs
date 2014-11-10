@@ -31,6 +31,47 @@ namespace BHSCMSApp
 
 
 
+        //This funtion is used to store documents path in the DocumentTable
+        public static void UploadDocument(int typeId, string filepath, int referenceID)
+        {
+            string connectionString = GetConnectionString();
+
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [FilePath], [ReferenceID], [DateStamp]) values (@typeID, @filepath, @referenceID, @datestamp)";
+                    SqlCommand command = new SqlCommand(insertQry, connection);
+                    command.Parameters.AddWithValue("@typeID", typeId);
+                    command.Parameters.AddWithValue("@filepath", filepath);
+                    command.Parameters.AddWithValue("@referenceID", referenceID);
+                    command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());                    
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+        }
+
+
+        //this method returns BHSCMS connection string
+        protected static string GetConnectionString()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+            return connString;
+        }
+
+
 
     }
 }
