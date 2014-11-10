@@ -40,29 +40,23 @@
                          <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-<<<<<<< HEAD
-                                    <asp:HyperLink ID="DetailsLink" runat="server" Text="Details" ToolTip="Click to see details"> <span class="glyphicon glyphicon-zoom-in"></span></asp:HyperLink>
-=======
+
                                     <asp:HyperLink ID="DetailsLink" runat="server" Text="Details" > <span class="glyphicon glyphicon-zoom-in" ></span> </asp:HyperLink>
->>>>>>> origin/master
+
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
-<<<<<<< HEAD
-                                    <asp:HyperLink ID="EditLink" runat="server" Text="Edit" ToolTip="Click to edit info"> <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>                                
-=======
+
                                     <asp:HyperLink ID="EditLink" runat="server" Text="Edit" > <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>
->>>>>>> origin/master
+
                                 </ItemTemplate>
                             </asp:TemplateField>     
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
-<<<<<<< HEAD
-                                    <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete" ToolTip="Click to delete user"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                
-=======
+
                                     <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete" > <span class="glyphicon glyphicon-trash" style="cursor:pointer;"></span></asp:HyperLink>                                
->>>>>>> origin/master
+
                                 </ItemTemplate>
                             </asp:TemplateField>                           
                             

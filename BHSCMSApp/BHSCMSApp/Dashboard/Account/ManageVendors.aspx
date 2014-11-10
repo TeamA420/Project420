@@ -25,12 +25,7 @@
         </div>
               <br />
                 
-<<<<<<< HEAD
-           <br />
-                    <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center"
-                        AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        DataKeyNames="UserID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
-=======
+
            
                     <asp:GridView ID="GridView1" runat="server" Width="100%" 
                         HorizontalAlign="Center"
@@ -43,7 +38,7 @@
                         HeaderStyle-Font-Bold="true" 
                         HeaderStyle-ForeColor="White"
                         AllowSorting="true" OnSorting="GridView1_Sorting">
->>>>>>> origin/master
+
 
                          <pagersettings mode="Numeric" position="Bottom" pagebuttoncount="10"/>
 
