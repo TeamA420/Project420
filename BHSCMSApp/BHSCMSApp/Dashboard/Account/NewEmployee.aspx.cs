@@ -22,29 +22,31 @@ namespace BHSCMSApp.Dashboard.Register
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            Employee emp = new Employee();
-            //instantiate a new employee from Employee Class
+            if(validEmpID.IsValid && validFirstName.IsValid && validLastName.IsValid && validPassword.IsValid && validPriEmail.IsValid && validRole.IsValid && validUserName.IsValid)
+            {
+                Employee emp = new Employee();
+                //instantiate a new employee from Employee Class
 
-            //variables used to create the new employee
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-            string priEmail = txtPriEmail.Text;
-            string secEmail = txtSecEmail.Text;
-            int roleid = ddrole.SelectedIndex + 1;
-            int empid = Convert.ToInt32(txtEmpID.Text);
-            string lastname = txtLast.Text;
-            string firstname = txtFirst.Text;
-                     
+                //variables used to create the new employee
+                string username = txtUsername.Text;
+                string password = txtPassword.Text;
+                string priEmail = txtPriEmail.Text;
+                string secEmail = txtSecEmail.Text;
+                int roleid = ddrole.SelectedIndex + 1;
+                int empid = Convert.ToInt32(txtEmpID.Text);
+                string lastname = txtLast.Text;
+                string firstname = txtFirst.Text;
 
-            emp.RegisterUser(username, password, priEmail, secEmail, roleid);//register the emp in the sysusertable
-            
-            
-            int userid = emp.GetLastUserIDinserted();//gets the user id from the sysusertable
 
-            emp.RegisterEmployee(empid, userid, lastname, firstname, roleid);//registers the emp in the employeetable
+                emp.RegisterUser(username, password, priEmail, secEmail, roleid);//register the emp in the sysusertable
 
-            Page.Response.Redirect("/Dashboard/Account/ManageEmployees.aspx");           
-            
+
+                int userid = emp.GetLastUserIDinserted();//gets the user id from the sysusertable
+
+                emp.RegisterEmployee(empid, userid, lastname, firstname, roleid);//registers the emp in the employeetable
+
+                Page.Response.Redirect("/Dashboard/Account/ManageEmployees.aspx");           
+            }
         }
                 
     }    

@@ -22,7 +22,10 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         private DateTime startdate;
         private DateTime enddate;
 
-       
+        //static byte[] dataHolder;
+        //static List<byte[]> fileList;
+        //static List<HttpPostedFile> fileList;
+        static List<DocumentFile> fileList;
         //parallel list used to store vendors permissions
         static List<int> vendorlist;
         static List<int> permissionlist;
@@ -31,7 +34,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         //path used to save images
         //private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
+<<<<<<< HEAD
         //string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
+=======
+        string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
+>>>>>>> origin/master
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -61,9 +68,15 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 Session["FileUpload1"] = docUpload;
                 Label1.Text = docUpload.FileName;
             }
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> origin/master
            
             if (!Page.IsPostBack)
             {
@@ -246,6 +259,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         /// <summary>
         /// Uploads file to the FTP server
         /// </summary>
+<<<<<<< HEAD
         //protected void FTPUpload(int rfiId)
         //{
 
@@ -359,6 +373,58 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
 
 
+=======
+        protected string FTPUpload(int rfiId)
+        {
+
+            String ftpurl = "ftp://cob-it-blobfish.ad.louisville.edu/RFI/"; // ftpurl
+            string docftpfullpath = "";
+            
+            if (docUpload.HasFiles == true)
+            {
+                try
+                {
+                    string savelocation = Server.MapPath("~/Documents/");
+
+                    string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
+                    string SaveLocation = savelocation + fn;
+
+                    docftpfullpath = ftpurl + rfiId + ".doc";
+
+                    //if(docUpload.HasFile)
+                    //{
+                    //    FtpWebRequest ftp = FtpWebRequest.Create(docftpfullpath) as FtpWebRequest;
+                    //    ftp.KeepAlive = true; 
+                    //    ftp.UseBinary = true;
+                    //    ftp.Method = WebRequestMethods.Ftp.UploadFile;
+                    //    ftp.UsePassive = true;
+                        
+                        
+                    //    using (Stream ftpStream = ftp.GetRequestStream())
+                    //    {
+                            
+                    //        ftpStream.Write(dataHolder, 0, dataHolder.Length);
+                    //    }
+                    //    ftp.GetResponse();
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
+            else
+            {
+                RequiredFieldValidator1.Text = "Please select a file to upload.";
+            }
+
+            return docftpfullpath;
+        }
+
+
+>>>>>>> origin/master
         //reviews the RFI before submitting
         protected void review_Click(object sender, EventArgs e)
         {
@@ -377,13 +443,48 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     lblenddate.Text = enddate.ToShortDateString();
 
 
+<<<<<<< HEAD
                       //if (docUpload.HasFiles == true)
                       //{
                       //    string savelocation = Server.MapPath("~/Documents/");
+=======
+                    if(docUpload.HasFiles)
+                    {
+                        fileList = new List<DocumentFile>();
+                        foreach(HttpPostedFile file in docUpload.PostedFiles)
+                        {
+                            byte[] fileData = null;
+
+                            using(BinaryReader bReader = new BinaryReader(file.InputStream))
+                            {
+                                fileData = bReader.ReadBytes(file.ContentLength);
+                            }
+                            fileList.Add(new DocumentFile()
+                            {
+                                FileName = Path.GetFileName(file.FileName),
+                                ContentType = file.ContentType,
+                                FileData = fileData,
+                            });
+                        }
+                    }
+
+                      //if (docUpload.HasFile == true)
+                      //{
+                      //    string savelocation = Server.MapPath("~/Documents/");
+                      //    HttpPostedFile postedFile = docUpload.PostedFile;
+                      //    dataHolder = new byte[postedFile.ContentLength];
+
+                      //    Stream stream = postedFile.InputStream;
+                      //    stream.Read(dataHolder, 0, postedFile.ContentLength);
+>>>>>>> origin/master
 
                       //    string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
                       //    string SaveLocation = savelocation + fn;
                       //    docUpload.SaveAs(SaveLocation);
+<<<<<<< HEAD
+=======
+                          
+>>>>>>> origin/master
 
                       //    //filepreview.Attributes.Add("src", "http://docs.google.com/gview?url=" + ResolveUrl(SaveLocation) + "&embedded=true");
                       //}      
@@ -413,7 +514,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         {
             RFI rfi = new RFI();
             int rfiId;
- 
+
             rfi.CreateNewRFI(UserInfoBoxControl.UserID, lblstartdate.Text, lblenddate.Text, ddCategories.SelectedIndex);
             rfiId = rfi.GetLastRFI_IDinserted();
 
@@ -446,8 +547,32 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 {
 
                 }
+<<<<<<< HEAD
                 
+=======
             }
+
+            //string docFullPath = FTPUpload(rfiId);//calls the UploadRFI method to upload file and save the path in the DocumentTable
+
+            if(fileList != null && fileList.Count >0)
+            {
+                foreach(DocumentFile file in fileList)
+                {
+                    file.RFIID = rfiId;
+                    file.TypeID = 2;
+                    FunctionsHelper.UploadDocument(file);
+                }
+>>>>>>> origin/master
+            }
+            else
+            {
+                //Alert the user that something bad has happened
+                string startupScript = "alert('Document Upload failed please try again. Or contact an IS Admin')";
+                ClientScript.RegisterStartupScript(GetType(), "startupScript", startupScript);
+            }
+
+
+
 
 
             FTPUpload(rfiId);
@@ -461,10 +586,14 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             ddlCategorylabel.Visible = false;
             txtCategory.Visible = false;
             txtCategorylabel.Visible = false;
- 
+
             RFIsubmit.Visible = true;
             lblsuccess.Text = "The RFI has been successfully submitted";
 
+<<<<<<< HEAD
+=======
+            fileList = null;
+>>>>>>> origin/master
             vendorlist = null;//static lists are cleared to be used again
             permissionlist = null;
             companylist = null;         

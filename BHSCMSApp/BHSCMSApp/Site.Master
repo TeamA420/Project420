@@ -118,12 +118,13 @@
                 
 <%--                  <asp:CheckBox runat="server" ID="RememberMe" Text="Remember me?"/>--%>
                  <br />
-                           
+                <br />
                 <asp:Button runat="server" Text="Log in" CssClass="btn btn-info" Width="40%" ID="LogIn" ValidationGroup="login" CausesValidation="true" OnClick="LogIn_Click"/>
+                    <br />
                 </fieldset>
                 <p  style="font-size:small">
                     
-                    Click <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">here</asp:HyperLink>
+                    Click <asp:HyperLink runat="server" style="text-decoration:underline; color:blue;" ID="RegisterHyperLink" ViewStateMode="Disabled">here</asp:HyperLink>
                     if you are a new Vendor.
                 </p>
                 </section>

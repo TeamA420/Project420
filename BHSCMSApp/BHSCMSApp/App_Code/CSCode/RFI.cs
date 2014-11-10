@@ -27,7 +27,7 @@ namespace BHSCMSApp
         public void CreateNewRFI(int userid, string startdate, string enddate, int categoryid)
         {
             string connectionString = GetConnectionString();
-
+            
             try
             {
 
@@ -35,13 +35,14 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
+                    
                     string insertQry = "Insert into [BHSCMS].[dbo].[RFITable] (UserID, StartDate, EndDate, CategoryID, CreatedDate) values (@userid, @startdate, @enddate, @categoryid, @createddate)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
                     command.Parameters.AddWithValue("@userid", userid);
                     command.Parameters.AddWithValue("@startdate", startdate);
                     command.Parameters.AddWithValue("@enddate", enddate);
                     command.Parameters.AddWithValue("@categoryid", categoryid);
-                    command.Parameters.AddWithValue("@createddate", DateTime.Today.ToShortDateString()); 
+                    command.Parameters.AddWithValue("@createddate", DateTime.Today.ToShortDateString());
                     command.ExecuteNonQuery();
                     connection.Close();
 
@@ -53,7 +54,6 @@ namespace BHSCMSApp
                 //System.Console.Error.Write(e.Message);
 
             }
-
         }
 
         public void AddVendorstoRFI(int rfiID, List<int> vendorid, List<int> permissionID)

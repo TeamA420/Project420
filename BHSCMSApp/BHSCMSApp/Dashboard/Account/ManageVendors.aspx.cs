@@ -14,6 +14,9 @@ namespace BHSCMSApp.Dashboard
     {
         DataTable dt;//DataTable use to store retrieved data
 
+        const string ASCENDING = " ASC";
+        const string DESCENDING = " DESC";
+
         private SysUser u = new SysUser();//instantiate a new user from User Class
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,7 +65,11 @@ namespace BHSCMSApp.Dashboard
                 details.NavigateUrl = String.Format("/Dashboard/Account/DetailsVendor.aspx?userid={0}", userID);//
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
-                edit.NavigateUrl = String.Format("/Dashboard/Account/EditVendor.aspx?userid={0}", userID);//                
+                edit.NavigateUrl = String.Format("/Dashboard/Account/EditVendor.aspx?userid={0}", userID);// 
+
+                HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
+                delete.NavigateUrl = String.Format("/Dashboard/Account/DeleteVendor.aspx?userid={0}", userID);// 
+
             }
 
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -94,7 +101,49 @@ namespace BHSCMSApp.Dashboard
             GridView1.PageIndex = e.NewPageIndex;
             BindGrid();
         }
-             
+
+        protected void GridView1_Sorting(object sender, GridViewSortEventArgs e)
+        {
+
+            
+
+            string sortExpression = e.SortExpression;
+
+            if (GridViewSortDirection == SortDirection.Ascending)
+            {
+                GridViewSortDirection = SortDirection.Descending;
+                SortGridView(sortExpression, DESCENDING);
+            }
+            else
+            {
+                GridViewSortDirection = SortDirection.Ascending;
+                SortGridView(sortExpression, ASCENDING);
+            }   
+        }
+
+        public SortDirection GridViewSortDirection
+        {
+            get
+            {
+                if (ViewState["sortDirection"] == null)
+                    ViewState["sortDirection"] = SortDirection.Ascending;
+
+                return (SortDirection)ViewState["sortDirection"];
+            }
+            set { ViewState["sortDirection"] = value; }
+        }
+
+        private void SortGridView(string sortExpression, string direction)
+        {
+            DataTable dt = GridView1.DataSource as DataTable;
+            DataView dvsort = new DataView(dt);
+
+            
+            dvsort.Sort = sortExpression + direction;
+
+            GridView1.DataSource = dvsort;
+            GridView1.DataBind();
+        }
 
 
     }

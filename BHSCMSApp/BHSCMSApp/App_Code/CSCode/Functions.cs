@@ -5,6 +5,7 @@ using System.Web;
 using BHSCMSApp;
 using System.Data.SqlClient;
 using System.Configuration;
+using BHSCMSApp.Models;
 
 namespace BHSCMSApp
 {
@@ -32,7 +33,11 @@ namespace BHSCMSApp
 
 
         //This funtion is used to store documents path in the DocumentTable
+<<<<<<< HEAD
         public static void UploadDocument(int typeId, string filepath, int referenceID)
+=======
+        public static void UploadDocument(DocumentFile file)
+>>>>>>> origin/master
         {
             string connectionString = GetConnectionString();
 
@@ -43,12 +48,23 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
+<<<<<<< HEAD
                     string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [FilePath], [ReferenceID], [DateStamp]) values (@typeID, @filepath, @referenceID, @datestamp)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
                     command.Parameters.AddWithValue("@typeID", typeId);
                     command.Parameters.AddWithValue("@filepath", filepath);
                     command.Parameters.AddWithValue("@referenceID", referenceID);
                     command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());                    
+=======
+                    string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [ReferenceID], [DateStamp], Document_Data, Document_Name, Content_Type) values (@typeID, @referenceID, @datestamp, @data, @doc_Name, @contentType)";
+                    SqlCommand command = new SqlCommand(insertQry, connection);
+                    command.Parameters.AddWithValue("@typeID", file.TypeID);
+                    command.Parameters.AddWithValue("@referenceID", file.RFIID);
+                    command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());
+                    command.Parameters.AddWithValue("@data", file.FileData);
+                    command.Parameters.AddWithValue("@doc_Name", file.FileName);
+                    command.Parameters.AddWithValue("@contentType", file.ContentType);
+>>>>>>> origin/master
                     command.ExecuteNonQuery();
                     connection.Close();
 

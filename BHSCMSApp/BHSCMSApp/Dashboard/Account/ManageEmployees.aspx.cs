@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace BHSCMSApp.Dashboard
 {
-    public partial class ManageEmployees : System.Web.UI.Page
+    public partial class ManageEmployees : Page
     {
         DataTable dt;//DataTable use to store retrieved data
 
@@ -63,13 +63,14 @@ namespace BHSCMSApp.Dashboard
                 int userID = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "UserID"));//gets the userID from the row clicked on grid
 
                 HyperLink details = (HyperLink)e.Row.FindControl("DetailsLink");
-                details.NavigateUrl = String.Format("/Dashboard/Account/DetailsEmployee.aspx?userid={0}", userID);//
+                details.NavigateUrl = String.Format("/Dashboard/Account/DetailsEmployee.aspx?userid={0}", userID);
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
-                edit.NavigateUrl = String.Format("/Dashboard/Account/EditEmployee.aspx?userid={0}", userID);//
+                edit.NavigateUrl = String.Format("/Dashboard/Account/EditEmployee.aspx?userid={0}", userID);
 
+                HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
+                delete.NavigateUrl = String.Format("/Dashboard/Account/DeleteEmployee.aspx?userid={0}", userID);
 
-                
             }
         }
 
@@ -78,6 +79,5 @@ namespace BHSCMSApp.Dashboard
             GridView1.PageIndex = e.NewPageIndex;
             BindGrid();
         }
-
     }
 }

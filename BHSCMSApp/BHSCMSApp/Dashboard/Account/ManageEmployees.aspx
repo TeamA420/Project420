@@ -25,8 +25,13 @@
                      
                 
            
-                    <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center" 
-                        AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" OnPageIndexChanging="GridView1_PageIndexChanging"
+                    <asp:GridView ID="GridView1" 
+                        runat="server" Width="100%" 
+                        HorizontalAlign="Center" 
+                        AutoGenerateColumns="false" 
+                        AllowPaging="true" 
+                        OnRowDataBound="GridView1_RowDataBound" 
+                        OnPageIndexChanging="GridView1_PageIndexChanging"
                         DataKeyNames="UserID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
                          <pagersettings mode="NextPreviousFirstLast" position="Bottom" pagebuttoncount="10"/>
 
@@ -35,17 +40,29 @@
                          <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
+<<<<<<< HEAD
                                     <asp:HyperLink ID="DetailsLink" runat="server" Text="Details" ToolTip="Click to see details"> <span class="glyphicon glyphicon-zoom-in"></span></asp:HyperLink>
+=======
+                                    <asp:HyperLink ID="DetailsLink" runat="server" Text="Details" > <span class="glyphicon glyphicon-zoom-in" ></span> </asp:HyperLink>
+>>>>>>> origin/master
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
+<<<<<<< HEAD
                                     <asp:HyperLink ID="EditLink" runat="server" Text="Edit" ToolTip="Click to edit info"> <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>                                
+=======
+                                    <asp:HyperLink ID="EditLink" runat="server" Text="Edit" > <span class="glyphicon glyphicon-pencil"></span></asp:HyperLink>
+>>>>>>> origin/master
                                 </ItemTemplate>
                             </asp:TemplateField>     
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>                                     
+<<<<<<< HEAD
                                     <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete" ToolTip="Click to delete user"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                
+=======
+                                    <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete" > <span class="glyphicon glyphicon-trash" style="cursor:pointer;"></span></asp:HyperLink>                                
+>>>>>>> origin/master
                                 </ItemTemplate>
                             </asp:TemplateField>                           
                             
