@@ -321,6 +321,7 @@
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
+    <Content Include="img\purple-Notifications2.png" />
     <Content Include="img\purple.png" />
     <Content Include="img\business.jpg" />
     <Content Include="img\calendar.gif" />
@@ -469,6 +470,7 @@
     </Compile>
     <Compile Include="App_Code\CSCode\Functions.cs" />
     <Compile Include="App_Code\CSCode\RFI.cs" />
+    <Compile Include="App_Code\CSCode\RFP.cs" />
     <Compile Include="App_Code\CSCode\SysUser.cs" />
     <Compile Include="App_Code\CSCode\Vendor.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

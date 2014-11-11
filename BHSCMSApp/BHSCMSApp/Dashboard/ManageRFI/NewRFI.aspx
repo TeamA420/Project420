@@ -167,7 +167,7 @@
                 <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />      
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
-                 ControlToValidate="docUpload"></asp:RequiredFieldValidator>
+                 ControlToValidate="docUpload" class="text-danger"></asp:RequiredFieldValidator>
                                             
             </div>
          </div>
@@ -206,8 +206,8 @@
 
             <hr />
 
-         <asp:button runat="server" type="button" class="btn btn-default" ID="back" Text="Go Back" OnClick="back_Click"></asp:button>
-         <asp:button runat="server" type="button" class="btn btn-info" ID="Submit" Text="Submit RFI" OnClick="Submit_Click1"></asp:button>
+         <asp:button runat="server" type="button" class="btn btn-default" ID="back" Text="Go Back" OnClick="back_Click" CausesValidation="false"></asp:button>
+         <asp:button runat="server" type="button" class="btn btn-info" ID="Submit" Text="Submit RFI" OnClick="Submit_Click1" CausesValidation="true"></asp:button>
 
        
          </asp:Panel><%--ends review panel--%>

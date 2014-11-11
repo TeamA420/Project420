@@ -234,6 +234,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         //Go back to select category and vendors 
         protected void goback_Click(object sender, EventArgs e)
         {
+            
             panelVendors.Visible = true;
             setupPanel.Visible = false;
             panelvendorlist.Visible = false;

@@ -18,11 +18,6 @@ namespace BHSCMSApp
         }
 
 
-         
-
-
-
-
         //creates new RFI
         public void CreateNewRFI(int userid, string startdate, string enddate, int categoryid)
         {
@@ -66,7 +61,7 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string insertQry = "Insert into [BHSCMS].[dbo].[RFIVendorTable] (RFI_ID, VendorID, PermissionID) values (@rfiID, @vendorid, @permissionid)";
+                    string insertQry = "Insert into [BHSCMS].[dbo].[VendorRFITable] (RFI_ID, VendorID, PermissionID) values (@rfiID, @vendorid, @permissionid)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
 
 
