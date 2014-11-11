@@ -22,7 +22,7 @@ namespace BHSCMSApp.Dashboard.Register
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            if(validEmpID.IsValid && validFirstName.IsValid && validLastName.IsValid && validPassword.IsValid && validPriEmail.IsValid && validRole.IsValid && validUserName.IsValid)
+            if(validFirstName.IsValid && validLastName.IsValid && validPassword.IsValid && validPriEmail.IsValid && validRole.IsValid && validUserName.IsValid)
             {
                 Employee emp = new Employee();
                 //instantiate a new employee from Employee Class
@@ -33,7 +33,6 @@ namespace BHSCMSApp.Dashboard.Register
                 string priEmail = txtPriEmail.Text;
                 string secEmail = txtSecEmail.Text;
                 int roleid = ddrole.SelectedIndex + 1;
-                int empid = Convert.ToInt32(txtEmpID.Text);
                 string lastname = txtLast.Text;
                 string firstname = txtFirst.Text;
 
@@ -43,7 +42,7 @@ namespace BHSCMSApp.Dashboard.Register
 
                 int userid = emp.GetLastUserIDinserted();//gets the user id from the sysusertable
 
-                emp.RegisterEmployee(empid, userid, lastname, firstname, roleid);//registers the emp in the employeetable
+                emp.RegisterEmployee(userid, lastname, firstname, roleid);//registers the emp in the employeetable
 
                 Page.Response.Redirect("/Dashboard/Account/ManageEmployees.aspx");           
             }

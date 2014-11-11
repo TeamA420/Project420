@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <table class="table">
-        <tr>
+        <%--<tr>
             <td>EmpID: 
                 <asp:TextBox ID="txtEmpID" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="validEmpID" ControlToValidate="txtEmpID" runat="server" CssClass="text-danger" 
                     ErrorMessage="A Employee ID is required."/>
             </td>
-        </tr>
+        </tr>--%>
         <tr>
             <td>Role : 
                 <asp:DropDownList ID="ddrole" runat="server" CssClass="form-control" Width="15%">

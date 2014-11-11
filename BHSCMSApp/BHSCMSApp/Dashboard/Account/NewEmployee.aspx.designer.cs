@@ -13,24 +13,6 @@ namespace BHSCMSApp.Dashboard.Register {
     public partial class NewEmployee {
         
         /// <summary>
-        /// txtEmpID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmpID;
-        
-        /// <summary>
-        /// validEmpID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validEmpID;
-        
-        /// <summary>
         /// ddrole control.
         /// </summary>
         /// <remarks>

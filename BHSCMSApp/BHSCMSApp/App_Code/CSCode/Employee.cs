@@ -22,16 +22,15 @@ namespace BHSCMSApp
         }
 
 
-        public void RegisterEmployee(int EmpID, int userID, string lastName, string firstName, int roleId)
+        public void RegisterEmployee(int userID, string lastName, string firstName, int roleId)
         {           
             string connectionString = GetConnectionString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string insertQry = "Insert into [BHSCMS].[dbo].[EmployeeTable] (EmpID, UserID, LastName, FirstName, RoleID) values (@empid,@userid,@lastname,@firstname,@roleid)";
+                string insertQry = "Insert into [BHSCMS].[dbo].[EmployeeTable] (UserID, LastName, FirstName, RoleID) values (@userid,@lastname,@firstname,@roleid)";
                 SqlCommand command = new SqlCommand(insertQry, connection);
-                command.Parameters.AddWithValue("@empid", EmpID);
                 command.Parameters.AddWithValue("@userID", userID);
                 command.Parameters.AddWithValue("@lastname", lastName);
                 command.Parameters.AddWithValue("@firstname", firstName);
