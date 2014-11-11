@@ -2,9 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
-   
-
-
 
 <div class="row" style="background-color:white; width:80%; margin-left:20px">
 <div class="col-md-12">
@@ -62,11 +59,10 @@
                                
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Permissions">
                                 <ItemTemplate>
-                                    <asp:RadioButtonList runat="server" ID="radiolist" >
-                                        <asp:ListItem Value="1"> Participate</asp:ListItem>
-                                        <asp:ListItem Value="2"> View</asp:ListItem>
-                                    </asp:RadioButtonList>  
-                                                               
+                                    <asp:CheckBoxList runat="server" ID="chkBoxParticipate">
+                                        <asp:ListItem Value="1" Text="Participate" />
+                                        <asp:ListItem Value="2" Text="View" />
+                                    </asp:CheckBoxList>
                                 </ItemTemplate> 
                                                                                      
                             </asp:TemplateField>                              

@@ -31,7 +31,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         static List<int> permissionlist;
         static List<string> companylist;
 
-
+        
         //path used to save images
         //private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
 
@@ -187,7 +187,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
             foreach (GridViewRow row in GridView1.Rows)
             {
-                RadioButtonList rb = (RadioButtonList)row.FindControl("radiolist");
+                CheckBoxList rb = (CheckBoxList)row.FindControl("chkBoxParticipate");
                 
                 if (rb.SelectedItem.Value == "1" || rb.SelectedItem.Value == "2")
                {
@@ -470,8 +470,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             setupPanel.Visible = true;
         }
 
-
-
+        protected void rdoParticipate_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rdoBtn = sender as RadioButton;
+            rdoBtn.Checked = false;
+        }
 
     }
 }
