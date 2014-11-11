@@ -114,25 +114,18 @@
         </tr>
 
 
-<%--         <tr>
-            <td>Commodities:
-            <asp:ListBox ID="Commodities" runat="server" selectionMode="Multiple" Width="280" CssClass="form-control">
-                <asp:ListItem>Blah</asp:ListItem>
-                <asp:ListItem>Blah</asp:ListItem>
-                <asp:ListItem>Blah</asp:ListItem>
-            </asp:ListBox>
-            <asp:CustomValidator runat="server" ID="cvDemoList" ClientValidationFunction="Commodities" ErrorMessage="Please Select At Least One Commodity" ></asp:CustomValidator>
+        <tr>
+            <td>Product Categories:
+                <asp:DropDownCheckBoxes ID="chkCommodities" runat="server" AddJQueryReference="True" UseSelectAllNode="True">
+                <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="130" />
+                <Texts SelectBoxCaption="Select from list" />
+            </asp:DropDownCheckBoxes>
             </td>
-        </tr>--%>
+        </tr>
         </table>
         <br />
         <br />
         </div>
-
-     <%--   <tr>
-            <td>Registration Date/Time</td>
-            <asp:Label ID="regdate" runat="server" CssClass"form-control">DateTime.Now.ToShortTimeString()</asp:Label>
-        </tr>--%>
 
    <div class="col-md-4">
        <table class="table">

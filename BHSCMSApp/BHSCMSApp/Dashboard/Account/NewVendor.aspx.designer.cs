@@ -139,6 +139,15 @@ namespace BHSCMSApp.Dashboard.Register {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEmailValid;
         
         /// <summary>
+        /// chkCommodities control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Saplin.Controls.DropDownCheckBoxes chkCommodities;
+        
+        /// <summary>
         /// UserId control.
         /// </summary>
         /// <remarks>

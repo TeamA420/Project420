@@ -48,7 +48,7 @@ namespace BHSCMSApp.Account
                 ddlCategories = cmd.ExecuteReader();
 
                 chkCommodities.DataSource = ddlCategories;
-                chkCommodities.DataValueField = "ID";
+                chkCommodities.DataValueField = "CategoryID";
                 chkCommodities.DataTextField = "Category";
                 chkCommodities.DataBind();
             }

@@ -93,7 +93,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 ddlCategories = cmd.ExecuteReader();
 
                 ddCategories.DataSource = ddlCategories;
-                ddCategories.DataValueField = "ID";
+                ddCategories.DataValueField = "CategoryID";
                 ddCategories.DataTextField = "Category";
                 ddCategories.DataBind();
             }
