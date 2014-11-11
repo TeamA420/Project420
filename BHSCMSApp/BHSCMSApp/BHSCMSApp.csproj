@@ -310,6 +310,7 @@
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
     <Content Include="Dashboard\ManageRFI\ManageRFP\NewRFP.aspx" />
     <Content Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx" />
+    <Content Include="Dashboard\Request\VendorRequest.aspx" />
     <Content Include="Dashboard\SQL\RFIclosingdate.sql" />
     <Content Include="Dashboard\Tools\Reports.aspx" />
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
@@ -658,6 +659,13 @@
     </Compile>
     <Compile Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx.designer.cs">
       <DependentUpon>ViewRFP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Request\VendorRequest.aspx.cs">
+      <DependentUpon>VendorRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Request\VendorRequest.aspx.designer.cs">
+      <DependentUpon>VendorRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Tools\Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
