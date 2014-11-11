@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace BHSCMSApp.Dashboard.Tools
 {
     public partial class Reports : System.Web.UI.Page
@@ -38,10 +39,8 @@ namespace BHSCMSApp.Dashboard.Tools
                 else
                 {
                     FillInRFPDropDownList(_startDate, _endDate);
-                    txtstartdate.Text = _startDate;
-                    txtenddate.Text = _endDate;
-                    pnldateselected.Visible = true;
-                    pnldateapply.Visible = false;
+                   
+                    
                 }
 
             }
@@ -125,29 +124,60 @@ namespace BHSCMSApp.Dashboard.Tools
 
         }
 
+
+        /// <summary>
+        /// Bind savings grid
+        /// </summary>
+        protected void BindCalculateSavings()
+        {
+            int rfpID = Convert.ToInt32(ddlrfp.SelectedValue);
+
+            try
+            {
+                //Fetch data from BHSCMS database
+                string connString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connString);
+
+                conn.Open();
+
+                string cmd = string.Format(FunctionsHelper.GetFileContents("SQL/CalculateSavings.sql"), rfpID);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd, conn);
+
+
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dt = ds.Tables[0];
+                //Bind the fetched data to gridview
+                GridView2.DataSource = dt;
+                GridView2.DataBind();
+
+                //lblProduct.Text = ds.Tables[0].Columns[0].;
+
+            }
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+        }
+
         protected void genReport_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(ddlrfp.SelectedValue) >= 1)
+            if(ddlrfp.SelectedIndex <1)
             {
-                if (rbtnReporttype.SelectedValue == "1" || rbtnReporttype.SelectedValue == "2")
-               {
-                   if (rbtnReporttype.SelectedValue == "1")
-                   {
-                       BindComparePrices();
-                       pnlcompare.Visible = true;
-                   }
-               }
-               else
-               {
-                   ErrorMessage.Visible = true;
-                   FailureText.Text = "Please select report type";
-               }
+                ErrorMessage.Visible = true;
+                FailureText.Text = "Please select RFP from list to generate report";   
+
             }
             else
             {
-                ErrorMessage.Visible = true;
-                FailureText.Text = "Please RFP from list";
+                lblProduct.Text = "RFP Product: " + ddlrfp.SelectedItem.Text;
+                BindComparePrices();
+                BindCalculateSavings();
+                pnlReport.Visible = true;
             }
+           
 
         }
 
@@ -166,6 +196,23 @@ namespace BHSCMSApp.Dashboard.Tools
                 }
 
             }
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                decimal savings = Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Savings").ToString());
+
+                if (savings <0 )
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
+
+                }
+
+            }
+
         }
        
     }

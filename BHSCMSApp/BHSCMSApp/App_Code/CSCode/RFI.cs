@@ -142,6 +142,22 @@ namespace BHSCMSApp
         }
 
 
+        //this method will return the number of closed RFI
+        public int CountClosedRFI()
+        {
+            int count;
+            string connectionString = GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = string.Format("select Count(RFI_ID) as Count from BHSCMS.dbo.RFITable where EndDate< '{0}'", DateTime.Today.ToShortDateString());
+                SqlCommand command = new SqlCommand(qry, connection);
+                connection.Open();
+                count = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            return count;
+        }
+
 
         //this method returns BHSCMS connection string
         protected string GetConnectionString()

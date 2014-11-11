@@ -13,42 +13,6 @@ namespace BHSCMSApp.Dashboard.Tools {
     public partial class Reports {
         
         /// <summary>
-        /// pnldateselected control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnldateselected;
-        
-        /// <summary>
-        /// txtstartdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstartdate;
-        
-        /// <summary>
-        /// txtenddate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtenddate;
-        
-        /// <summary>
-        /// pnldateapply control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnldateapply;
-        
-        /// <summary>
         /// StartDate control.
         /// </summary>
         /// <remarks>
@@ -85,24 +49,6 @@ namespace BHSCMSApp.Dashboard.Tools {
         protected global::System.Web.UI.WebControls.DropDownList ddlrfp;
         
         /// <summary>
-        /// rbtnReporttype control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtnReporttype;
-        
-        /// <summary>
-        /// RadioButtonList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
-        
-        /// <summary>
         /// ErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -130,13 +76,13 @@ namespace BHSCMSApp.Dashboard.Tools {
         protected global::System.Web.UI.WebControls.Button genReport;
         
         /// <summary>
-        /// pnlcompare control.
+        /// pnlReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlcompare;
+        protected global::System.Web.UI.WebControls.Panel pnlReport;
         
         /// <summary>
         /// lblProduct control.
@@ -155,5 +101,14 @@ namespace BHSCMSApp.Dashboard.Tools {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
     }
 }

@@ -132,5 +132,23 @@ namespace BHSCMSApp
         }
 
 
+        //this method will return the number of pending vendors
+        public int CountPendingVendors()
+        {
+            int count;
+            string connectionString = GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "select Count(VendorID) as Count from BHSCMS.dbo.VendorTable where StatusID=2";
+                SqlCommand command = new SqlCommand(qry, connection);
+                connection.Open();
+                count = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            return count;
+        }
+
+
+
     }
 }

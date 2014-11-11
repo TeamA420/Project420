@@ -12,9 +12,22 @@ namespace BHSCMSApp.Dashboard
     public partial class WebForm1 : System.Web.UI.Page
     {
         public static List<DateTime> list = new List<DateTime>();
-        
+        Vendor v = new Vendor();
+        RFI r = new RFI();
+        int pendingvendors;
+        int closedRfi;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            pendingvendors = v.CountPendingVendors();
+            closedRfi = r.CountClosedRFI();
+
+            if(!Page.IsPostBack)
+            {
+              
+            }
+
             // Put user code to initialize the page here
             //Session.Abandon();
             //FormsAuthentication.SignOut();
@@ -22,6 +35,7 @@ namespace BHSCMSApp.Dashboard
             list.Add(DateTime.Today.AddDays(2));
             list.Add(DateTime.Today.AddDays(4));
             list.Add(DateTime.Today.AddDays(6));
+      
 
 
             foreach (DateTime dt in list)
@@ -30,10 +44,10 @@ namespace BHSCMSApp.Dashboard
             }
 
           
-            vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", 3);
+            vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", pendingvendors);
            
 
-            rfilink.Text = string.Format("You have {0} closed RFI waiting for decision", 2);
+            rfilink.Text = string.Format("You have {0} closed RFI waiting for decision", closedRfi);
 
             rfp.Text = string.Format("You have {0} closed RFP waiting for decision", 1);
 
