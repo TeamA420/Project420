@@ -76,39 +76,30 @@ namespace BHSCMSApp.Dashboard {
         protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
-        /// day1 control.
+        /// lblRficlosing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day1;
+        protected global::System.Web.UI.WebControls.Label lblRficlosing;
         
         /// <summary>
-        /// day2 control.
+        /// lblRfpclosing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day2;
+        protected global::System.Web.UI.WebControls.Label lblRfpclosing;
         
         /// <summary>
-        /// day3 control.
+        /// lblContracts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day3;
-        
-        /// <summary>
-        /// day4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day4;
+        protected global::System.Web.UI.WebControls.Label lblContracts;
     }
 }

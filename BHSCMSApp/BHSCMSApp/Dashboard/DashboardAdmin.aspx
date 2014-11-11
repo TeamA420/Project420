@@ -5,23 +5,23 @@
     <div class="row" style="background-color:white; width:100%">
 
 
-          <div class="col-md-8">
+          <div class="col-md-6">
               
               
-              <div style="width:50%; margin-left:10px"><img  src="../img/purple.png" class="img-responsive" alt="Responsive image" width="50%"/></div>
+              <div style="width:70%; margin-left:10px"><img  src="../img/purple.png" class="img-responsive" alt="Responsive image" width="50%"/></div>
               <hr />
-              <asp:HyperLink runat="server" ID="vendorlink" NavigateUrl="~/Dashboard/Account/ManageVendors.aspx"></asp:HyperLink>
+              <asp:HyperLink runat="server" ID="vendorlink" NavigateUrl="~/Dashboard/Account/ManageVendors.aspx" ForeColor="#5C5F60"></asp:HyperLink>
               <asp:label runat="server" ID="vendor"></asp:label>
               <br />
               <br />
-              <asp:HyperLink runat="server" ID="rfilink" NavigateUrl="~/Dashboard/RFI/NewRFI.aspx"></asp:HyperLink>
-              <asp:label runat="server" ID="rfi"></asp:label>
+              <asp:HyperLink runat="server" ID="rfilink" NavigateUrl="~/Dashboard/RFI/NewRFI.aspx" ForeColor="#5C5F60"></asp:HyperLink>
+              <asp:label runat="server" ID="rfi" ForeColor="#5C5F60"></asp:label>
               <br />
               <br />
-               <asp:label runat="server" ID="rfp"></asp:label>
+               <asp:label runat="server" ID="rfp" ForeColor="#5C5F60"></asp:label>
               <br />
               <br />
-              <asp:label runat="server" ID="contract"></asp:label>
+              <asp:label runat="server" ID="contract" ForeColor="#5C5F60"></asp:label>
 
              
           </div>
@@ -29,24 +29,25 @@
               
           </div>--%>
 
-        <div class="col-md-4">
-      
-            <h4>Upcoming Events:</h4>
-            <hr />
-            <asp:Calendar runat="server" Width="100%" ID="calendar" TitleStyle-BackColor="#D06730" TitleStyle-ForeColor="White"
-                 Font-Bold="true" TitleFormat="Month" SelectedDayStyle-BackColor="#539BBC" cellpadding="3" cellspacing="3"/>
+        <div class="col-md-6">
+            <div style="width:80%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="60%"/></div>
 
+            <%--<h4> Upcoming Events:</h4>--%>
+            <hr />
+            <asp:Calendar runat="server" Width="80%" ID="calendar" TitleStyle-BackColor="#D06730" TitleStyle-ForeColor="White"
+                 Font-Bold="true" TitleFormat="Month" SelectedDayStyle-BackColor="#539BBC" cellpadding="3" cellspacing="3"/>
+              
               <hr />
-              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day1" ForeColor="DarkBlue"></asp:label>
+               <asp:label runat="server" ID="lblRficlosing" ForeColor="#5C5F60"></asp:label>
               <br />
               
-              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day2" ForeColor="DarkBlue"></asp:label>
+              <asp:label runat="server" ID="lblRfpclosing" ForeColor="#5C5F60"></asp:label>
               <br />
               
-               <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day3" ForeColor="DarkBlue"></asp:label>
+              <asp:label runat="server" ID="lblContracts" ForeColor="#5C5F60"></asp:label>
               <br />
             
-              <span class="glyphicon glyphicon-bullhorn"> </span> <asp:label runat="server" ID="day4" ForeColor="DarkBlue"></asp:label>
+              
 
 
             </div>

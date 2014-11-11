@@ -310,6 +310,7 @@
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
     <Content Include="Dashboard\ManageRFI\ManageRFP\NewRFP.aspx" />
     <Content Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx" />
+    <Content Include="Dashboard\SQL\RFIclosingdate.sql" />
     <Content Include="Dashboard\Tools\Reports.aspx" />
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
     <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
@@ -351,6 +352,7 @@
     <Content Include="img\logo.png" />
     <Content Include="img\p6_%402X.png" />
     <Content Include="img\tw.png" />
+    <Content Include="img\upcoming.png" />
     <Content Include="logo.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

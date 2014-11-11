@@ -75,7 +75,7 @@ namespace BHSCMSApp
 
 
         //Returns the EmployeeID that matches the UserID
-        public int GetEmpIDbyUserName(int userid)
+        public int GetEmpIDbyUserID(int userid)
         {
             int empid = 0;
             string connectionString = GetConnectionString();

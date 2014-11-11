@@ -6,58 +6,99 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Drawing;
+using System.Data;
+using System.Text;
 
 namespace BHSCMSApp.Dashboard
 {
     public partial class WebForm1 : System.Web.UI.Page
-    {
-        public static List<DateTime> list = new List<DateTime>();
+    {        
+        DataTable rfidt;//DataTable use to store retrieved data
+             
+
+        public static List<DateTime> rfidates = new List<DateTime>();
+        public static List<string> rfiproducts = new List<string>();
+        
         Vendor v = new Vendor();
         RFI r = new RFI();
         int pendingvendors;
         int closedRfi;
-
+        int closedRfp;
+        int expiringContracts;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            pendingvendors = v.CountPendingVendors();
-            closedRfi = r.CountClosedRFI();
+            SetLabels();
+
+            SetCalendar();                     
+                            
 
             if(!Page.IsPostBack)
             {
               
             }
-
-            // Put user code to initialize the page here
-            //Session.Abandon();
-            //FormsAuthentication.SignOut();
-            list.Add(DateTime.Today);
-            list.Add(DateTime.Today.AddDays(2));
-            list.Add(DateTime.Today.AddDays(4));
-            list.Add(DateTime.Today.AddDays(6));
-      
-
-
-            foreach (DateTime dt in list)
-            {
-                calendar.SelectedDates.Add(dt);
-            }
-
-          
-            vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", pendingvendors);
            
+        }
 
+        //protected void calendar_DayRender(object sender, DayRenderEventArgs e)
+        //{
+        //   if(e.Day.IsSelected)
+        //   {
+        //       Label aLabel = new Label();
+        //       aLabel.Text = " <br>" + "";
+        //       e.Cell.Controls.Add(aLabel);
+        //   }
+           
+           
+        //}
+
+        protected void SetLabels()
+        {
+            pendingvendors = v.CountPendingVendors();
+            closedRfi = r.CountClosedRFI();
+            //missing RFP and contracts
+
+
+            vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", pendingvendors);
             rfilink.Text = string.Format("You have {0} closed RFI waiting for decision", closedRfi);
-
             rfp.Text = string.Format("You have {0} closed RFP waiting for decision", 1);
-
             contract.Text = string.Format("You have {0} expired contracts", 2);
 
-            day1.Text = string.Format("Neuro Sponges RFI closes on {0}", DateTime.Today.ToShortDateString());
-            day2.Text = string.Format("Ace Bandages contract expires on {0}", DateTime.Today.AddDays(2).ToShortDateString());
-            day3.Text = string.Format("Anesthesia Supplies RFP closes on {0}", DateTime.Today.AddDays(4).ToShortDateString());
-            day4.Text = string.Format("Disposable sharps RFP closes on {0}", DateTime.Today.AddDays(6).ToShortDateString());
-           
+        }
+
+        protected void SetCalendar()
+        {
+            StringBuilder builderRFIclosing = new StringBuilder();
+
+            rfidt = FunctionsHelper.GetRFIClosingDates();
+
+            rfidates = (from dr in rfidt.AsEnumerable()
+                        select dr.Field<DateTime>("EndDate")).ToList<DateTime>();
+
+            rfiproducts = (from dr in rfidt.AsEnumerable()
+                           select dr.Field<string>("ProductDescription")).ToList<string>();
+
+
+            foreach (DateTime dt in rfidates)
+            {
+                calendar.SelectedDates.Add(dt);
+
+            }
+
+            int index=0;
+
+            foreach(string rfi in rfiproducts)
+            {
+                string date = rfidates[index].ToShortDateString();
+                
+                builderRFIclosing.Append(rfi).Append(" is closing on: ").AppendFormat(date).Append("<br />"); // Append string to StringBuilder
+                index++;
+            }
+
+            lblRficlosing.Text = builderRFIclosing.ToString();
+
+
+             
         }
     }
 }

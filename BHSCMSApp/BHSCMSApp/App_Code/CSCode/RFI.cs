@@ -109,7 +109,7 @@ namespace BHSCMSApp
 
 
         //Updates existing RFI
-        public void UpdateRFI(int empid, string startdate, string enddate, int categoryid, int id)
+        public void UpdateRFI(int userid, string startdate, string enddate, int id)
         {
 
             string connectionString = GetConnectionString();
@@ -119,14 +119,14 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string updateQry = "update BHSCMS.dbo.RFITable set EmpID=@empid, StartDate=@startdate, EndDate=@enddate, CategoryID=@categoryid, ModifiedDate=@modifieddate where RFI_ID=@id";
+                    string updateQry = "update BHSCMS.dbo.RFITable set UserID=@userid, StartDate=@startdate, EndDate=@enddate, ModifiedDate=@modifieddate where RFI_ID=@id";
 
                     SqlCommand updateCmd = new SqlCommand(updateQry, connection);
 
-                    updateCmd.Parameters.AddWithValue("@empid", empid);
+                    updateCmd.Parameters.AddWithValue("@userid", userid);
                     updateCmd.Parameters.AddWithValue("@startdate", startdate);
                     updateCmd.Parameters.AddWithValue("@enddate", enddate);
-                    updateCmd.Parameters.AddWithValue("@categoryid", categoryid);
+                    //updateCmd.Parameters.AddWithValue("@categoryid", categoryid);
                     updateCmd.Parameters.AddWithValue("@modifieddate", DateTime.Today.ToShortDateString()); 
                     updateCmd.Parameters.AddWithValue("@id", id);
                     updateCmd.ExecuteNonQuery();

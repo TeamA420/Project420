@@ -13,6 +13,15 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
     public partial class EditRFI {
         
         /// <summary>
+        /// UserInfoBoxControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BHSCMSApp.Controls.UserInfoBoxControl UserInfoBoxControl;
+        
+        /// <summary>
         /// rfiid control.
         /// </summary>
         /// <remarks>
@@ -31,22 +40,40 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         protected global::System.Web.UI.WebControls.TextBox category;
         
         /// <summary>
-        /// hdnstartDate control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnstartDate;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
-        /// hdnendDate control.
+        /// FailureText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnendDate;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
+        
+        /// <summary>
+        /// StartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StartDate;
+        
+        /// <summary>
+        /// EndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EndDate;
         
         /// <summary>
         /// rfiDoc control.

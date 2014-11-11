@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardAdmin.Master" AutoEventWireup="true" CodeBehind="EditRFI.aspx.cs" Inherits="BHSCMSApp.Dashboard.ManageRFI.EditRFI" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false"/>
 
     <div class="row" style="background-color:white; width:100%">
        
@@ -29,30 +32,38 @@
                             <br />
                              
                             <hr />
-                            <asp:HiddenField ID="hdnstartDate" runat="server" />
+
+                          <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                        <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                        </p>
+                        </asp:PlaceHolder>
+
                           <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
                         <div class="col-md-8">               
-                            <input type="text" id="startdate" readonly="true" name="startdate" value="2014/11/02"/>                           
+                              <asp:TextBox ID="StartDate" runat="server" ReadOnly="true" />                           
                         </div>
                          </div>
      
 
                          <br />
                          <br />
-                           <asp:HiddenField ID="hdnendDate" runat="server"/>
+                         
                           <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">End Date:</asp:Label>
                             <div class="col-md-8">               
-                                <input type="text" id="enddate" readonly="true" name="enddate" value="2014/11/30"/>                        
+                                 <asp:TextBox ID="EndDate" runat="server" ReadOnly="true"/>                           
                             </div>
                          </div>
+
 						<br />
                             <br />
                             <br />
                         <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI Documents:</asp:Label>
-                            <div class="col-md-8">   
+                            <div class="col-md-8"> 
+                             
                              <asp:HyperLink runat="server" ID="rfiDoc" ForeColor="#529ABB" NavigateUrl="ftp://cis420:Cis$$420@cob-it-blobfish.ad.louisville.edu:21/RFI/56.doc"><span class="glyphicon glyphicon-download"></span>Price notification letter</asp:HyperLink>	 
                              <br />                                                              
 
@@ -62,7 +73,6 @@
 
 
                              
-                       <%--<iframe src="http://docs.google.com/gview?url=ftp://cis420:Cis$$420@cob-it-blobfish.ad.louisville.edu:21/RFI/56.doc&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>      <br />--%>
                            <br />		
 							
 						<hr />					
@@ -114,7 +124,7 @@
     <div class="row" style="background-color:white; width:100%">
                 <div class="col-md-12">
         <div class="form-actions">
-								<asp:Button runat="server" Text="Save changes" ID="savebtn" class="btn btn-info"/>
+								<asp:Button runat="server" Text="Save changes" ID="savebtn" class="btn btn-info" OnClick="savebtn_Click"/>
                                 <asp:Button runat="server" Text="Cancel" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click"/>
 		</div>
          </div>
@@ -129,43 +139,25 @@
     <br /> 
 
    <script>
-       (function ($) {
-           $(document).ready(function() {
-               $("#startdate").datepicker();
-  
-               dtString = $("#<%=hdnstartDate.ClientID%>").val();
-  dtString = dtString.split('/');
-  var defaultDate = new Date(dtString[2], dtString[1], dtString[0]);
-  $("#startdate").datepicker("setDate",defaultDate);
+       $(function () {
+           $("#<%= StartDate.ClientID %>").datepicker({
+               defaultDate: "+1w",
+               changeMonth: true,
+               numberOfMonths: 3,
+               onClose: function (selectedDate) {
+                   $("#to").datepicker("option", "minDate", selectedDate);
+               }
+           });
+           $("#<%= EndDate.ClientID %>").datepicker({
+               defaultDate: "+1w",
+               changeMonth: true,
+               numberOfMonths: 3,
+               onClose: function (selectedDate) {
+                   $("#from").datepicker("option", "maxDate", selectedDate);
+               }
+           });
+       });
 
-          });
-               <%-- $(function () {
-                    $("#startdate").datepicker();
-
-                    dtString = $("#<%=hdnendDate.ClientID%>").val();
-                    dtString = dtString.split('/');
-                    var defaultDate = new Date(dtString[0], dtString[1], dtString[2]);
-                    $("#StartDate").datepicker("setDate", defaultDate);
-                    
-                });--%>
-                $(function () {
-                    $("#enddate").datepicker();
-
-                    dtString = $("#<%=hdnendDate.ClientID%>").val();
-                    dtString = dtString.split('/');
-                    var defaultDate = new Date(dtString[2], dtString[1], dtString[0]);
-                    $("#enddate").datepicker("setDate", defaultDate);
-
-                });
-
-                //$(function () {
-                //    $("#startdate").datepicker({
-                //        dateFormat: "yy-mm-dd"
-                //    }).datepicker("setDate", "0");
-                //});
-
-            });
-        
 
     </script>
     

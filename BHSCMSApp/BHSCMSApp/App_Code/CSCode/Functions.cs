@@ -6,6 +6,7 @@ using BHSCMSApp;
 using System.Data.SqlClient;
 using System.Configuration;
 using BHSCMSApp.Models;
+using System.Data;
 
 namespace BHSCMSApp
 {
@@ -69,6 +70,53 @@ namespace BHSCMSApp
             }
 
         }
+
+
+
+        //This funtion is used to retrieve RFI closing dates for the following two months
+
+        public static DataTable GetRFIClosingDates()
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();//DataTable use to store retrieved data
+
+
+            string connectionString = GetConnectionString();
+            string strSQL = "";
+            int thismonth = Convert.ToInt32(DateTime.Today.Month);
+            int nextmonth = Convert.ToInt32(DateTime.Today.AddMonths(1).Month);
+            int year = Convert.ToInt32(DateTime.Today.Year);
+
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    strSQL = string.Format(FunctionsHelper.GetFileContents("/Dashboard/SQL/RFIclosingdate.sql"), thismonth, nextmonth, year);
+                    SqlDataAdapter adapter = new SqlDataAdapter(strSQL, connection);
+
+                    adapter.Fill(ds);
+                    dt = ds.Tables[0];
+                    
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+            return dt;
+
+        }
+
+
+
 
 
         //this method returns BHSCMS connection string

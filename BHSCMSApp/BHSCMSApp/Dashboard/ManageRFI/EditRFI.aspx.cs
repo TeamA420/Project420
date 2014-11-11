@@ -12,6 +12,8 @@ namespace BHSCMSApp.Dashboard.ManageRFI
     public partial class EditRFI : System.Web.UI.Page
     {
         private int _rfiid;
+        RFI rfi = new RFI();
+        Employee emp = new Employee();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,8 +41,8 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 {
                     this.rfiid.Text = reader["RFI_ID"].ToString();
                     this.category.Text = reader["Category"].ToString();
-                    hdnstartDate.Value = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();                    
-                    hdnendDate.Value = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
+                    this.StartDate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();                    
+                    this.EndDate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
                 }
 
 
@@ -57,6 +59,22 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         protected void cancelbtn_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect("ViewRFIList.aspx");
+        }
+
+        protected void savebtn_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(Request.Form[EndDate.UniqueID]) < Convert.ToDateTime(Request.Form[StartDate.UniqueID]))
+            {
+                ErrorMessage.Visible = true;
+                FailureText.Text = "Invalid date range";
+            }
+            else
+            {
+                rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], _rfiid);
+                Page.Response.Redirect("ViewRFIList.aspx");
+            }
+
+            
         }
     }
 }
