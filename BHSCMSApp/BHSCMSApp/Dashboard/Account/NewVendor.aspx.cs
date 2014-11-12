@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +13,30 @@ namespace BHSCMSApp.Dashboard.Register
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+                FillInCategoriesDropDownList();
         }
+        protected void FillInCategoriesDropDownList()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                string qry = "SELECT * FROM [BHSCMS].[dbo].[CategoryTable]";
+
+                SqlCommand cmd = new SqlCommand(qry, connection);
+                cmd.Connection.Open();
+
+                SqlDataReader ddlCategories;
+                ddlCategories = cmd.ExecuteReader();
+
+                chkCommodities.DataSource = ddlCategories;
+                chkCommodities.DataValueField = "CategoryID";
+                chkCommodities.DataTextField = "Category";
+                chkCommodities.DataBind();
+            }
+        }
         protected void addButton_Click(object sender, EventArgs e)
         {
             if (ValidTaxID.IsValid == true)
@@ -40,7 +63,7 @@ namespace BHSCMSApp.Dashboard.Register
                 string password = Password.Text;
                 DateTime registrationDate = System.DateTime.Now;
                 int status = 1;
-                int roleid = 2;
+                int roleid = 3;
 
 
 
@@ -51,9 +74,49 @@ namespace BHSCMSApp.Dashboard.Register
 
                 vend.RegisterVendor(company, userid, phone, fax, address1, address2, city, state, zipcode, status, registrationDate.ToString(), taxid);//registers the vendor in the VendorTable
 
+                AddVendorCategories(vend);
+
                 Page.Response.Redirect("/Dashboard/Account/ManageVendors.aspx");
             }
 
         }
+
+        public void AddVendorCategories(Vendor v)
+        {
+            int vendorid;
+
+            vendorid = v.GetLastVendorIDinserted();
+
+            foreach (System.Web.UI.WebControls.ListItem item in chkCommodities.Items)
+            {
+                if (item.Selected)
+                {
+                    try
+                    {
+                        string insertQry = "Insert into [BHSCMS].[dbo].[SellTable] (VendorID, ID) Values (@vendorid, @categoryid)";
+
+                        string connString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(connString);
+                        SqlCommand cmd = new SqlCommand(insertQry, conn);
+                        conn.Open();
+
+                        cmd.Parameters.AddWithValue("@vendorid", vendorid);
+                        cmd.Parameters.AddWithValue("@categoryid", item.Value);
+                        cmd.ExecuteNonQuery();
+
+
+                        conn.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+            }
+
+        }
+
     }
 }
