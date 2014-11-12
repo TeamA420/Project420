@@ -8,7 +8,7 @@ namespace BHSCMSApp.Models
     public class DocumentFile
     {
         public int TypeID { get; set; }
-        public int RFIID { get; set; }
+        public int ReferenceID { get; set; }
         public string FileName { get; set; }
         public string ContentType { get; set; }
         public byte[] FileData { get; set; }

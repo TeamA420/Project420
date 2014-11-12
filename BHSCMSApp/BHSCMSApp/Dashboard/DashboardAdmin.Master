@@ -141,8 +141,8 @@
                    </li>
                     <li class='active has-sub'><a href='#'><span>Manage RFP</span></a>
                       <ul>
-                         <li><a href='/Dashboard/RFP/NewRFP'><span>New RFP</span></a></li>
-                         <li><a href='/Dashboard/RFP/ViewRFP'><span>View RFPs</span></a>                            
+                         <li><a href='/Dashboard/ManageRFP/NewRFP'><span>New RFP</span></a></li>
+                         <li><a href='/Dashboard/ManageRFP/ViewRFP'><span>View RFPs</span></a>                            
                          </li>
                       </ul>
                    </li>

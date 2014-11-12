@@ -51,7 +51,7 @@ namespace BHSCMSApp
                     string insertQry = "Insert into [BHSCMS].[dbo].[DocumentTable] ([TypeID], [ReferenceID], [DateStamp], Document_Data, Document_Name, Content_Type) values (@typeID, @referenceID, @datestamp, @data, @doc_Name, @contentType)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
                     command.Parameters.AddWithValue("@typeID", file.TypeID);
-                    command.Parameters.AddWithValue("@referenceID", file.RFIID);
+                    command.Parameters.AddWithValue("@referenceID", file.ReferenceID);
                     command.Parameters.AddWithValue("@datestamp", DateTime.Today.ToShortDateString());
                     command.Parameters.AddWithValue("@data", file.FileData);
                     command.Parameters.AddWithValue("@doc_Name", file.FileName);

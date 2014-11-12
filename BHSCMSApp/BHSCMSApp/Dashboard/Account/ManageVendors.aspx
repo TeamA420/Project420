@@ -64,7 +64,7 @@
                                                       
                             <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
                             <asp:BoundField DataField="State" HeaderText="State"/>
-                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status"  HeaderStyle-CssClass="glyphicon glyphicon-sort" />
+                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status"  HeaderStyle-CssClass="glyphicon glyphicon-sort" HeaderStyle-BorderColor="Transparent" />
                              <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"/>
                            <asp:TemplateField HeaderText="Primary Email">
                             <ItemTemplate>

@@ -308,8 +308,9 @@
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIClosed.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIOpened.sql" />
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
-    <Content Include="Dashboard\ManageRFI\ManageRFP\NewRFP.aspx" />
-    <Content Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx" />
+    <Content Include="Dashboard\ManageRFP\NewRFP.aspx" />
+    <Content Include="Dashboard\ManageRFP\SQL\RFP_RFIVendors.sql" />
+    <Content Include="Dashboard\ManageRFP\ViewRFP.aspx" />
     <Content Include="Dashboard\SQL\RFIclosingdate.sql" />
     <Content Include="Dashboard\Tools\Reports.aspx" />
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
@@ -645,18 +646,18 @@
     <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.designer.cs">
       <DependentUpon>ViewRFIList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\ManageRFI\ManageRFP\NewRFP.aspx.cs">
+    <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.cs">
       <DependentUpon>NewRFP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dashboard\ManageRFI\ManageRFP\NewRFP.aspx.designer.cs">
+    <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.designer.cs">
       <DependentUpon>NewRFP.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx.cs">
+    <Compile Include="Dashboard\ManageRFP\ViewRFP.aspx.cs">
       <DependentUpon>ViewRFP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dashboard\ManageRFI\ManageRFP\ViewRFP.aspx.designer.cs">
+    <Compile Include="Dashboard\ManageRFP\ViewRFP.aspx.designer.cs">
       <DependentUpon>ViewRFP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Tools\Reports.aspx.cs">
