@@ -33,9 +33,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            vendorlist = new List<int>();
-            permissionlist = new List<int>();
-            companylist = new List<string>();
+           
 
             //If first time page is submitted and we have file in FileUpload control but not in session 
             // Store the values to SEssion Object 
@@ -62,6 +60,9 @@ namespace BHSCMSApp.Dashboard.ManageRFP
             if (!Page.IsPostBack)
             {
                 FillInRFIDropDownList();
+                vendorlist = new List<int>();
+                permissionlist = new List<int>();
+                companylist = new List<string>();
             }
         }
 

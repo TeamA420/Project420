@@ -79,11 +79,11 @@
                            <div class="control-group">
                             <asp:Label runat="server" class="control-label" AssociatedControlID="ddstatus" Text="Status:   "/>
                             <div class="controls">
-                            <asp:DropDownList ID="ddstatus" runat="server" CssClass="form-control" Width="25%">
-                                            <asp:ListItem>Approved</asp:ListItem>
-                                            <asp:ListItem>Pending</asp:ListItem>
-                                             <asp:ListItem>Disapproved</asp:ListItem>
-                                             <asp:ListItem>Sanctioned</asp:ListItem>
+                            <asp:DropDownList ID="ddstatus" runat="server" CssClass="form-control" Width="25%" OnSelectedIndexChanged="ddstatus_SelectedIndexChanged">
+                                            <asp:ListItem Value="1">Approved</asp:ListItem>
+                                            <asp:ListItem Value="2">Pending</asp:ListItem>
+                                             <asp:ListItem Value="3">Disapproved</asp:ListItem>
+                                             <asp:ListItem Value="4">Sanctioned</asp:ListItem>
                             </asp:DropDownList>
                            </div>
 						   </div>								

@@ -308,6 +308,7 @@
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIClosed.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIOpened.sql" />
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
+    <Content Include="Dashboard\ManageRFP\EditRFP.aspx" />
     <Content Include="Dashboard\ManageRFP\NewRFP.aspx" />
     <Content Include="Dashboard\ManageRFP\SQL\RFP_RFIVendors.sql" />
     <Content Include="Dashboard\ManageRFP\SQL\ViewRFP.sql" />
@@ -324,6 +325,8 @@
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIDocQry.sql" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIList.sql" />
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
+    <Content Include="Dashboard\VendorRFP\SQL\VendorRFPList.sql" />
+    <Content Include="Dashboard\VendorRFP\VendorRFPList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
     <Content Include="img\purple-Notifications2.png" />
@@ -650,6 +653,13 @@
     <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.designer.cs">
       <DependentUpon>ViewRFIList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\ManageRFP\EditRFP.aspx.cs">
+      <DependentUpon>EditRFP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\EditRFP.aspx.designer.cs">
+      <DependentUpon>EditRFP.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.cs">
       <DependentUpon>NewRFP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -691,6 +701,13 @@
     </Compile>
     <Compile Include="Dashboard\VendorRFI\VendorRFIList.aspx.designer.cs">
       <DependentUpon>VendorRFIList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\VendorRFPList.aspx.cs">
+      <DependentUpon>VendorRFPList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\VendorRFPList.aspx.designer.cs">
+      <DependentUpon>VendorRFPList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

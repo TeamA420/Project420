@@ -1,7 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardVendor.Master" AutoEventWireup="true" CodeBehind="VendorRFIList.aspx.cs" Inherits="BHSCMSApp.Dashboard.VendorRFI.VendorRFIList" %>
-
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardVendor.Master" AutoEventWireup="true" CodeBehind="VendorRFPList.aspx.cs" Inherits="BHSCMSApp.Dashboard.VendorRFP.VendorRFPList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
@@ -9,7 +6,7 @@
      <div class="row" style="background-color:white; width:90%;  margin-left:10px">
           <div class="col-md-12">
               
-      <h4>My RFIs</h4>
+      <h4>My RFPs</h4>
     <hr />        
               <div class="form-group">     
                <asp:Label runat="server" AssociatedControlID="ddpermissionFilter" CssClass="col-md-2 control-label" Width="20%">Filter by Permission:</asp:Label>
@@ -28,7 +25,7 @@
               <br />
                     <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center" OnRowDataBound="GridView1_RowDataBound"
                         AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        DataKeyNames="RFI_ID, PermissionID, EndDate, VendorID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
+                        DataKeyNames="RFP_ID, PermissionID, EndDate, VendorID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
                          <pagersettings mode="NextPreviousFirstLast" position="Bottom" pagebuttoncount="10"/>
 
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center" />
@@ -41,13 +38,14 @@
                             </asp:TemplateField>
                                                      
                               <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
-                            <asp:BoundField DataField="RFI_ID" HeaderText="RFI_ID" Visible="false" />
+                            <asp:BoundField DataField="RFP_ID" HeaderText="RFI_ID" Visible="false" />
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/> 
                              <asp:BoundField DataField="PermissionID" HeaderText="Permission" Visible="false" />                          
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
                             <asp:BoundField DataField="Category" HeaderText="Category" />
-                             <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
+                            <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
+                            <asp:BoundField DataField="GatewayPrice" HeaderText="Gateway Price" DataFormatString="{0:C}"  />
                         
 
                         </Columns>

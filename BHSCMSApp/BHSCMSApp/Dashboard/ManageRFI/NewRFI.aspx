@@ -8,7 +8,7 @@
    
     <asp:Panel runat="server" Visible="false" ID="RFIsubmit">
         
-    <asp:Label runat="server" ID="lblsuccess"></asp:Label> <span class="glyphicon glyphicon-ok"></span>
+    <asp:Label runat="server" ID="lblsuccess" CssClass="text-success"></asp:Label> <span class="glyphicon glyphicon-ok"></span>
      <br />
         <br />
     <asp:HyperLink runat="server" ID="viewRFI" NavigateUrl="/Dashboard/ManageRFI/ViewRFIList.aspx" Text="Go to RFI's list" ForeColor="#6BBAEC"></asp:HyperLink>

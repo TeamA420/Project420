@@ -16,20 +16,20 @@ namespace BHSCMSApp.Dashboard.Register
         //declaring variables
         #region
         public int _userID;
-        //public string _company;
-        //public string _phone;
-        //public string _fax;
-        //public string _address1;
-        //public string _address2;
-        //public string _city;
-        //public string _state;
-        //public string _zipcode;
-        //public int _status;
-        //public int _taxid;
-        //public string _username;
-        //public string _password;
-        //public string _priEmail;
-        //public string _secEmail;
+        public string _company;
+        public string _phone;
+        public string _fax;
+        public string _address1;
+        public string _address2;
+        public string _city;
+        public string _state;
+        public string _zipcode;
+        public int _status;
+        public int _taxid;
+        public string _username;
+        public string _password;
+        public string _priEmail;
+        public string _secEmail;
         
         #endregion
        
@@ -38,7 +38,13 @@ namespace BHSCMSApp.Dashboard.Register
         {
             _userID = Convert.ToInt32(Request.QueryString["userID"]);//gets and convert to int the userid passed in the querystring
 
-            BindGrid();//calls this method to get data for the fields     
+            BindGrid();//calls this method to get data for the fields  
+
+            //if(!IsPostBack)
+            //{
+            //    _status = ddstatus.SelectedIndex + 1;
+            //}
+            
         }
 
         private void BindGrid()
@@ -105,32 +111,36 @@ namespace BHSCMSApp.Dashboard.Register
 
             //assigns input fields data to variables which are used to update
             #region
-            //_company = this.txtCompany.Text;
-            //_phone = this.txtPhone.Text;
-            //_fax = this.txtFax.Text;
-            //_address1 = this.txtAddress1.Text;
-            //_address2 = this.txtAddress2.Text;
-            //_city = this.txtCity.Text;
-            //_state = this.txtState.Text;
-            //_zipcode = this.txtZipCode.Text;
-            //_status = (this.ddstatus.SelectedIndex) + 1;
-            //_taxid = Convert.ToInt32(this.txtTaxID.Text);
-            //_username = this.txtUsername.Text;
-            //_password = this.txtPassword.Text;
-            //_priEmail = this.txtPriEmail.Text;
-            //_secEmail = this.txtSecEmail.Text;
+            _company = Request.Form[txtcompany.UniqueID];
+            _phone = Request.Form[txtphone.UniqueID];
+            _fax = Request.Form[txtfax.UniqueID];
+            _address1 = Request.Form[txtaddress1.UniqueID];
+            _address2 = Request.Form[txtaddress2.UniqueID]; 
+            _city = Request.Form[txtcity.UniqueID]; 
+            _state = Request.Form[txtstate.UniqueID]; 
+            _zipcode = Request.Form[txtZipcode.UniqueID];             
+            _taxid = Convert.ToInt32(Request.Form[txttaxid.UniqueID]); 
+            _username = Request.Form[txtusername.UniqueID]; 
+            _password = Request.Form[txtpassword.UniqueID]; 
+            _priEmail = Request.Form[txtpriemail.UniqueID]; 
+            _secEmail = Request.Form[txtsecemail.UniqueID]; 
             #endregion
 
             //v.UpdateUser(this.txtUsername.Text, this.txtPassword.Text, this.txtPriEmail.Text, this.txtSecEmail.Text, 3, _userID);
             //v.UpdateVendor(_userID, this.txtcompany.Text, this.txtPhone.Text, this.txtFax.Text, this.txtAddress1.Text, this.txtAddress2.Text, this.txtCity.Text, this.txtState.Text, this.txtZipCode.Text, (this.ddstatus.SelectedIndex) + 1 , Convert.ToInt32(this.txtTaxID.Text));
 
 
-            v.UpdateUser(this.txtusername.Text, this.txtpassword.Text, this.txtpriemail.Text, this.txtsecemail.Text, 3, _userID);
-            v.UpdateVendor(_userID, this.txtcompany.Text, this.txtphone.Text, this.txtfax.Text, this.txtaddress1.Text, this.txtaddress2.Text, this.txtcity.Text, this.txtstate.Text, this.txtZipcode.Text, (this.ddstatus.SelectedIndex) + 1, Convert.ToInt32(this.txttaxid.Text));
+            v.UpdateUser(_username, _password, _priEmail, _secEmail, 3, _userID);
+            v.UpdateVendor(_userID, _company, _phone, _fax, _address1, _address2, _city, _state, _zipcode, _status, _taxid);
 
 
             Page.Response.Redirect("ManageVendors.aspx");
 
+        }
+
+        protected void ddstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _status = Convert.ToInt32(ddstatus.SelectedItem.Value);
         }
 
        
