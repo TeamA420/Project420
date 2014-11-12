@@ -38,7 +38,7 @@
       <h3><span class="glyphicon glyphicon-file"></span>Select RFP</h3>
       <ul style="height:60px">
         <asp:DropDownList runat="server" AutoPostBack="true" ForeColor="#5C5F60" ID="ddlrfp" AppendDataBoundItems="true">
-            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Select RFP...</asp:ListItem>
         </asp:DropDownList>
          
       </ul>  

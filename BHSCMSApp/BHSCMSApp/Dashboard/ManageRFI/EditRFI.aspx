@@ -39,6 +39,30 @@
                         </p>
                         </asp:PlaceHolder>
 
+                           <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description:</asp:Label>
+            <div class="col-md-8">        
+                <asp:TextBox runat="server" ID="productDescription"></asp:TextBox>   
+                   <asp:RequiredFieldValidator runat="server" ControlToValidate="productDescription" 
+                    CssClass="text-danger" ErrorMessage="The product description field is required." />                                 
+            </div>
+         </div>
+         <br />
+         <br />
+         
+          <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Current Price:</asp:Label>
+            <div class="col-md-8">        
+                <asp:TextBox runat="server" ID="currentPrice"></asp:TextBox>   
+                 <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="currentPrice" CssClass="text-danger"
+          ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
+
+                                      
+            </div>
+         </div>
+         <br />
+         <br />
+
                           <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
                         <div class="col-md-8">               
@@ -125,7 +149,7 @@
                 <div class="col-md-12">
         <div class="form-actions">
 								<asp:Button runat="server" Text="Save changes" ID="savebtn" class="btn btn-info" OnClick="savebtn_Click"/>
-                                <asp:Button runat="server" Text="Cancel" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click"/>
+                                <asp:Button runat="server" Text="Cancel" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click" CausesValidation="false"/>
 		</div>
          </div>
               </div>

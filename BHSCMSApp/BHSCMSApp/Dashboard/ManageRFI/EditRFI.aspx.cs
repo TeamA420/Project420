@@ -36,7 +36,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                 conn.Open();
 
-                SqlCommand command = new SqlCommand(String.Format("Select R.RFI_ID, R.StartDate, R.EndDate, C.Category from BHSCMS.dbo.RFITable R join BHSCMS.dbo.CategoryTable C on R.CategoryID=C.CategoryID Where R.RFI_ID={0}", _rfiid), conn);
+                SqlCommand command = new SqlCommand(String.Format("Select R.RFI_ID, R.StartDate, R.EndDate, C.Category, R.CurrentPrice, R.ProductDescription from BHSCMS.dbo.RFITable R join BHSCMS.dbo.CategoryTable C on R.CategoryID=C.CategoryID Where R.RFI_ID={0}", _rfiid), conn);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -46,11 +46,10 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     this.category.Text = reader["Category"].ToString();
                     this.StartDate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();                    
                     this.EndDate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
+                    this.currentPrice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["CurrentPrice"]));
+                    this.productDescription.Text = reader["ProductDescription"].ToString();
                 }
-
-
-
-
+                
             }
             catch (Exception ex)
             {
@@ -73,7 +72,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             }
             else
             {
-                rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], _rfiid);
+                rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(Request.Form[currentPrice.UniqueID]), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
                 Page.Response.Redirect("ViewRFIList.aspx");
             }
 

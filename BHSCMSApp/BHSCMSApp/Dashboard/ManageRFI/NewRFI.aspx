@@ -139,6 +139,33 @@
                         </p>
          </asp:PlaceHolder>
 
+
+          <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description:</asp:Label>
+            <div class="col-md-8">        
+                <asp:TextBox runat="server" ID="productDescription"></asp:TextBox>   
+                   <asp:RequiredFieldValidator runat="server" ControlToValidate="productDescription" 
+                    CssClass="text-danger" ErrorMessage="The product description field is required." />                                 
+            </div>
+         </div>
+         <br />
+         <br />
+         
+          <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Current Price:</asp:Label>
+            <div class="col-md-8">        
+                <asp:TextBox runat="server" ID="currentPrice"></asp:TextBox>   
+                 <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="currentPrice" CssClass="text-danger"
+          ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
+
+                                      
+            </div>
+         </div>
+         <br />
+         <br />
+
+
+
             <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
             <div class="col-md-8">               
@@ -155,7 +182,7 @@
                 <input type="text" id="enddate" readonly="true" name="enddate"/>                        
             </div>
          </div>
-      
+        
 
          <br />
          <br />
@@ -179,7 +206,7 @@
      
            
    
-         <asp:button runat="server" type="button" class="btn btn-default" ID="goback" Text="Go Back" OnClick="goback_Click"></asp:button>
+         <asp:button runat="server" type="button" class="btn btn-default" ID="goback" Text="Go Back" OnClick="goback_Click" CausesValidation="false"></asp:button>
           <asp:button runat="server" type="button" class="btn btn-default" ID="review" Text="Review RFI" OnClick="review_Click"></asp:button>
 
        

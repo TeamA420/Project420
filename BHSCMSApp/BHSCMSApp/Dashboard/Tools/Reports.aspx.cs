@@ -39,8 +39,13 @@ namespace BHSCMSApp.Dashboard.Tools
                 else
                 {
                     FillInRFPDropDownList(_startDate, _endDate);
-                   
-                    
+
+                    if (ddlrfp.Items.Count == 1)
+                    {
+                        ErrorMessage.Visible = true;
+                        FailureText.Text = "There are no RFPs for the date range provided";
+
+                    }
                 }
 
             }
@@ -78,6 +83,8 @@ namespace BHSCMSApp.Dashboard.Tools
                     ddlrfp.DataValueField = "RFP_ID";
                     ddlrfp.DataTextField = "ProductDescription";
                     ddlrfp.DataBind();
+
+                    
                 }
             }
             catch (Exception e)

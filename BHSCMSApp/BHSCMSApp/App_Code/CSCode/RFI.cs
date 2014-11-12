@@ -19,7 +19,7 @@ namespace BHSCMSApp
 
 
         //creates new RFI
-        public void CreateNewRFI(int userid, string startdate, string enddate, int categoryid)
+        public void CreateNewRFI(int userid, string startdate, string enddate, int categoryid, decimal currentPrice, string productDescr)
         {
             string connectionString = GetConnectionString();
             
@@ -30,14 +30,16 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    
-                    string insertQry = "Insert into [BHSCMS].[dbo].[RFITable] (UserID, StartDate, EndDate, CategoryID, CreatedDate) values (@userid, @startdate, @enddate, @categoryid, @createddate)";
+
+                    string insertQry = "Insert into [BHSCMS].[dbo].[RFITable] (UserID, StartDate, EndDate, CategoryID, CreatedDate, CurrentPrice, ProductDescription) values (@userid, @startdate, @enddate, @categoryid, @createddate, @currentprice, @productdescription)";
                     SqlCommand command = new SqlCommand(insertQry, connection);
                     command.Parameters.AddWithValue("@userid", userid);
                     command.Parameters.AddWithValue("@startdate", startdate);
                     command.Parameters.AddWithValue("@enddate", enddate);
                     command.Parameters.AddWithValue("@categoryid", categoryid);
                     command.Parameters.AddWithValue("@createddate", DateTime.Today.ToShortDateString());
+                    command.Parameters.AddWithValue("@currentprice", currentPrice);
+                    command.Parameters.AddWithValue("@productdescription", productDescr);
                     command.ExecuteNonQuery();
                     connection.Close();
 
@@ -104,7 +106,7 @@ namespace BHSCMSApp
 
 
         //Updates existing RFI
-        public void UpdateRFI(int userid, string startdate, string enddate, int id)
+        public void UpdateRFI(int userid, string startdate, string enddate, decimal currentPrice, string productdescription, int id)
         {
 
             string connectionString = GetConnectionString();
@@ -114,7 +116,7 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string updateQry = "update BHSCMS.dbo.RFITable set UserID=@userid, StartDate=@startdate, EndDate=@enddate, ModifiedDate=@modifieddate where RFI_ID=@id";
+                    string updateQry = "update BHSCMS.dbo.RFITable set UserID=@userid, StartDate=@startdate, EndDate=@enddate, ModifiedDate=@modifieddate, CurrentPrice=@currentprice, ProductDescription=@productdescription where RFI_ID=@id";
 
                     SqlCommand updateCmd = new SqlCommand(updateQry, connection);
 
@@ -122,7 +124,9 @@ namespace BHSCMSApp
                     updateCmd.Parameters.AddWithValue("@startdate", startdate);
                     updateCmd.Parameters.AddWithValue("@enddate", enddate);
                     //updateCmd.Parameters.AddWithValue("@categoryid", categoryid);
-                    updateCmd.Parameters.AddWithValue("@modifieddate", DateTime.Today.ToShortDateString()); 
+                    updateCmd.Parameters.AddWithValue("@modifieddate", DateTime.Today.ToShortDateString());
+                    updateCmd.Parameters.AddWithValue("@currentprice", currentPrice);
+                    updateCmd.Parameters.AddWithValue("@productdescription", productdescription);
                     updateCmd.Parameters.AddWithValue("@id", id);
                     updateCmd.ExecuteNonQuery();
                 }

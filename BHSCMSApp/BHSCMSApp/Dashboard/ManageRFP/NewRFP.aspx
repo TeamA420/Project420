@@ -138,13 +138,7 @@
                             <asp:Literal runat="server" ID="FailureText" />
                         </p>
          </asp:PlaceHolder>
-            <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Gateway Price:</asp:Label>
-            <div class="col-md-8">               
-                <asp:TextBox runat="server" ID="txtgatewayPrice"></asp:TextBox>                      
-            </div>
-     </div>
-
+          
 
             <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
@@ -167,6 +161,14 @@
          <br />
          <br />
          <hr />
+           <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Gateway Price:</asp:Label>
+            <div class="col-md-8">               
+                <asp:TextBox runat="server" ID="txtgatewayPrice"></asp:TextBox>                      
+            </div>
+     </div>
+          <br />
+         <br />
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               

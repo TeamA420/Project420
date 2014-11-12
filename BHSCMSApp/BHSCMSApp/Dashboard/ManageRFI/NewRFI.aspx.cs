@@ -22,21 +22,13 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         private DateTime startdate;
         private DateTime enddate;
 
-        //static byte[] dataHolder;
-        //static List<byte[]> fileList;
-        //static List<HttpPostedFile> fileList;
-        static List<DocumentFile> fileList;
-        //parallel list used to store vendors permissions
+     
         static List<int> vendorlist;
         static List<int> permissionlist;
         static List<string> companylist;
-
+        static List<DocumentFile> fileList;
         
-        //path used to save images
-        //private String fileSavePath = "\\\\cob-blobfish.cbpa.louisville.edu\\BHStorage\\RFI\\";
-
-        string CompleteDPath = "ftp://cob-it-blobfish.ad.louisville.edu/";
-
+      
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -247,59 +239,6 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         }
 
-
-
-        //protected string FTPUpload(int rfiId)
-        //{
-
-        //    String ftpurl = "ftp://cob-it-blobfish.ad.louisville.edu/RFI/"; // ftpurl
-        //    string docftpfullpath = "";
-            
-        //    if (docUpload.HasFiles == true)
-        //    {
-        //        try
-        //        {
-        //            string savelocation = Server.MapPath("~/Documents/");
-
-        //            string fn = System.IO.Path.GetFileName(docUpload.PostedFile.FileName);
-        //            string SaveLocation = savelocation + fn;
-
-        //            docftpfullpath = ftpurl + rfiId + ".doc";
-
-        //            //if(docUpload.HasFile)
-        //            //{
-        //            //    FtpWebRequest ftp = FtpWebRequest.Create(docftpfullpath) as FtpWebRequest;
-        //            //    ftp.KeepAlive = true; 
-        //            //    ftp.UseBinary = true;
-        //            //    ftp.Method = WebRequestMethods.Ftp.UploadFile;
-        //            //    ftp.UsePassive = true;
-                        
-                        
-        //            //    using (Stream ftpStream = ftp.GetRequestStream())
-        //            //    {
-                            
-        //            //        ftpStream.Write(dataHolder, 0, dataHolder.Length);
-        //            //    }
-        //            //    ftp.GetResponse();
-        //            //}
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
-
-
-        //    else
-        //    {
-        //        RequiredFieldValidator1.Text = "Please select a file to upload.";
-        //    }
-
-        //    return docftpfullpath;
-        //}
-
-
-
         //reviews the RFI before submitting
         protected void review_Click(object sender, EventArgs e)
         {
@@ -365,7 +304,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             RFI rfi = new RFI();
             int rfiId;
 
-            rfi.CreateNewRFI(UserInfoBoxControl.UserID, lblstartdate.Text, lblenddate.Text, ddCategories.SelectedIndex);
+            rfi.CreateNewRFI(UserInfoBoxControl.UserID, lblstartdate.Text, lblenddate.Text, ddCategories.SelectedIndex, Convert.ToDecimal(this.currentPrice.Text), this.productDescription.Text);
             rfiId = rfi.GetLastRFI_IDinserted();
 
             int index = 0;//index use to step through the permissionlist 
@@ -434,10 +373,11 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             RFIsubmit.Visible = true;
             lblsuccess.Text = "The RFI has been successfully submitted";
 
-            fileList = null;
+            
             vendorlist = null;//static lists are cleared to be used again
             permissionlist = null;
-            companylist = null;         
+            companylist = null;
+            fileList = null;
                                     
             
         }

@@ -74,7 +74,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
             txtRFIProduct.Text = (ddRFI.SelectedItem.Text);
 
-            BindGrid();
+            BindGrid(_rfiId);
 
             panelVendors.Visible = true;
         }
@@ -109,7 +109,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
         /// <summary>
         /// Binds the grid with the vendors that are participating in the RFI
         /// </summary>
-        private void BindGrid()
+        private void BindGrid(int rfiid)
         {
             string strSQL = "";
 
@@ -121,7 +121,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
                 conn.Open();
 
-                strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/RFP_RFI.sql"), _rfiId);
+                strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/RFP_RFIVendors.sql"), rfiid);
                 SqlDataAdapter adapter = new SqlDataAdapter(strSQL, conn);
 
 
@@ -283,7 +283,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
             RFP rfp = new RFP();
             decimal gatewayPrice = Convert.ToDecimal(this.txtgatewayPrice.Text);
             int rfpid;
-            rfp.CreateNewRFP(_rfiId,UserInfoBoxControl.UserID, gatewayPrice, lblstartdate.Text, lblenddate.Text);
+            rfp.CreateNewRFP(ddRFI.SelectedIndex, UserInfoBoxControl.UserID, gatewayPrice, lblstartdate.Text, lblenddate.Text);
             rfpid = rfp.GetLastRFP_IDinserted();
             
 
