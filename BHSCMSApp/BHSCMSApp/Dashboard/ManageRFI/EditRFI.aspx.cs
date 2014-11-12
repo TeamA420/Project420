@@ -1,7 +1,10 @@
-﻿using System;
+﻿using BHSCMSApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -33,7 +36,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                 conn.Open();
 
-                SqlCommand command = new SqlCommand(String.Format("Select R.RFI_ID, R.StartDate, R.EndDate, C.Category from BHSCMS.dbo.RFITable R join BHSCMS.dbo.CategoryTable C on R.CategoryID=C.ID Where R.RFI_ID={0}", _rfiid), conn);
+                SqlCommand command = new SqlCommand(String.Format("Select R.RFI_ID, R.StartDate, R.EndDate, C.Category from BHSCMS.dbo.RFITable R join BHSCMS.dbo.CategoryTable C on R.CategoryID=C.CategoryID Where R.RFI_ID={0}", _rfiid), conn);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -75,6 +78,45 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             }
 
             
+        }
+
+        protected void rfiDoc_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            string qry = "Select Document_Data, Document_Name, Content_Type From DocumentTable DT Where DT.TypeID = 2 AND DT.ReferenceID = @RFIID";
+            using(SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(qry,con))
+                {
+                    com.Parameters.AddWithValue("@RFIID", rfiid.Text);
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                DocumentFile dFile = new DocumentFile()
+                {
+                    FileData = dr[0] as byte[],
+                    FileName = dr[1].ToString(),
+                    ContentType = dr[2].ToString(),
+
+                };
+                Response.ClearContent();
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + dFile.FileName);
+                Response.ContentType = dFile.ContentType;
+                Response.AddHeader("Content-Length", dFile.FileData.Length.ToString());
+                Response.BinaryWrite(dFile.FileData);
+                Response.Flush();
+                Response.End();
+
+            }
+            
+
         }
     }
 }
