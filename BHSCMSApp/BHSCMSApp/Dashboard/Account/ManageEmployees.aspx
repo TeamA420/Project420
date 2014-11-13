@@ -64,7 +64,7 @@
                             <asp:BoundField DataField="UserName" HeaderText="UserName" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" />
-                            <asp:BoundField DataField="Name" HeaderText="Role" />
+                            <asp:BoundField DataField="Role" HeaderText="Role" />
                         </Columns>
                     </asp:GridView>
                     <asp:Button ID="btnAdd" runat="server" Text="Add New Employee" CssClass="btn btn-info" OnClick="btnAdd_Click" />

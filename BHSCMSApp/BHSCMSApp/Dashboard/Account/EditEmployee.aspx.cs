@@ -68,8 +68,8 @@ namespace BHSCMSApp.Dashboard.Register
         {
             Employee emp = new Employee();
 
-            emp.UpdateUser(this.txtUsername.Text, this.txtPassword.Text, this.txtPriEmail.Text, this.txtSecEmail.Text, (this.ddrole.SelectedIndex)+1, _userID);
-            emp.UpdateEmployee(this.txtFirst.Text, this.txtLast.Text, _userID);
+            emp.UpdateUser(Request.Form[txtUsername.UniqueID], Request.Form[txtPassword.UniqueID], Request.Form[txtPriEmail.UniqueID], Request.Form[txtSecEmail.UniqueID], Convert.ToInt32(Request.Form[ddrole.UniqueID]), _userID);
+            emp.UpdateEmployee(Request.Form[txtFirst.UniqueID], Request.Form[txtLast.UniqueID], _userID);
 
             Page.Response.Redirect("ManageEmployees.aspx");
                 

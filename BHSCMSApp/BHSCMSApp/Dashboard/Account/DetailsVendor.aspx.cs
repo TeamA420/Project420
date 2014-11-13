@@ -34,7 +34,7 @@ namespace BHSCMSApp.Dashboard.Register
                 conn.Open();
 
                 //string cmd = String.Format("Select E.EmpID, E.LastName, E.FirstName, R.Name, U.UserID, U.UserName, U.Password, U.PrimaryEmail, U.SecondaryEmail from BHSCMS.dbo.EmployeeTable E join BHSCMS.dbo.SysUserTable U on e.UserID=u.UserID join BHSCMS.dbo.RoleTable R on E.RoleID=u.UserID Where U.UserID={0}", _userID);
-                string cmd = String.Format("Select V.VendorID, V.CompanyName, V.PhoneNumber, V.FaxNumber, V.AddressLine1, V.AddressLine2, V.City, V.State, V.ZipCode, S.Status, v.TaxID, v.RegistrationDate, U.UserID, u.UserName, u.Password, u.PrimaryEmail, u.SecondaryEmail, r.Name from BHSCMS.dbo.SysUserTable U inner join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.RoleTable R on u.RoleID=r.RoleID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where V.UserID={0}", _userID);
+                string cmd = String.Format("Select V.VendorID, V.CompanyName, V.PhoneNumber, V.FaxNumber, V.AddressLine1, V.AddressLine2, V.City, V.State, V.ZipCode, S.Status, v.TaxID, v.RegistrationDate, U.UserID, u.UserName, u.Password, u.PrimaryEmail, u.SecondaryEmail, r.Role from BHSCMS.dbo.SysUserTable U inner join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.RoleTable R on u.RoleID=r.RoleID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where V.UserID={0}", _userID);
                 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd, conn);
 

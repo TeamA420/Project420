@@ -14,11 +14,12 @@
               <asp:label runat="server" ID="vendor"></asp:label>
               <br />
               <br />
-              <asp:HyperLink runat="server" ID="rfilink" NavigateUrl="~/Dashboard/RFI/NewRFI.aspx" ForeColor="#5C5F60"></asp:HyperLink>
+              <asp:HyperLink runat="server" ID="rfilink" NavigateUrl="~/Dashboard/ManageRFI/ViewRFIList.aspx" ForeColor="#5C5F60"></asp:HyperLink>
               <asp:label runat="server" ID="rfi" ForeColor="#5C5F60"></asp:label>
               <br />
               <br />
-               <asp:label runat="server" ID="rfp" ForeColor="#5C5F60"></asp:label>
+               <asp:HyperLink runat="server" ID="rfplink" NavigateUrl="~/Dashboard/ManageRFP/ViewRFP.aspx" ForeColor="#5C5F60"></asp:HyperLink>
+              <asp:label runat="server" ID="rfp" ForeColor="#5C5F60"></asp:label>
               <br />
               <br />
               <asp:label runat="server" ID="contract" ForeColor="#5C5F60"></asp:label>

@@ -148,8 +148,8 @@
                    </li>
                     <li class='active has-sub'><a href='#'><span>Contracts</span></a>
                       <ul>
-                         <li><a href='/Dashboard/Contract/NewContract'><span>New Contract</span></a></li>
-                         <li><a href='/Dashboard/Contract/ViewContracts'><span>View Contracts</span></a>                            
+                         <li><a href='/Dashboard/ManageContract/NewContract'><span>New Contract</span></a></li>
+                         <li><a href='/Dashboard/ManageContract/ViewContracts'><span>View Contracts</span></a>                            
                          </li>
                       </ul>
                    </li>   

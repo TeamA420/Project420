@@ -476,6 +476,7 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\CSCode\Contract.cs" />
     <Compile Include="App_Code\CSCode\Functions.cs" />
     <Compile Include="App_Code\CSCode\RFI.cs" />
     <Compile Include="App_Code\CSCode\RFP.cs" />

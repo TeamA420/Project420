@@ -37,13 +37,12 @@ namespace BHSCMSApp.Dashboard.Register
         protected void Page_Load(object sender, EventArgs e)
         {
             _userID = Convert.ToInt32(Request.QueryString["userID"]);//gets and convert to int the userid passed in the querystring
+                       
 
-            BindGrid();//calls this method to get data for the fields  
-
-            //if(!IsPostBack)
-            //{
-            //    _status = ddstatus.SelectedIndex + 1;
-            //}
+            if (!IsPostBack)
+            {
+                BindGrid();//calls this method to get data for the fields  
+            }
             
         }
 
@@ -119,7 +118,8 @@ namespace BHSCMSApp.Dashboard.Register
             _city = Request.Form[txtcity.UniqueID]; 
             _state = Request.Form[txtstate.UniqueID]; 
             _zipcode = Request.Form[txtZipcode.UniqueID];             
-            _taxid = Convert.ToInt32(Request.Form[txttaxid.UniqueID]); 
+            _taxid = Convert.ToInt32(Request.Form[txttaxid.UniqueID]);
+            _status = Convert.ToInt32(Request.Form[ddstatus.UniqueID]);
             _username = Request.Form[txtusername.UniqueID]; 
             _password = Request.Form[txtpassword.UniqueID]; 
             _priEmail = Request.Form[txtpriemail.UniqueID]; 
@@ -138,11 +138,7 @@ namespace BHSCMSApp.Dashboard.Register
 
         }
 
-        protected void ddstatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _status = Convert.ToInt32(ddstatus.SelectedItem.Value);
-        }
-
+        
        
         
 

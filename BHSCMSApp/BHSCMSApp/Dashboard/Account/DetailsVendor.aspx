@@ -23,13 +23,12 @@
                                     <asp:BoundField DataField="ZipCode" HeaderText="ZipCode" />
                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                     <asp:BoundField DataField="TaxID" HeaderText="TaxID" />
-                                    <asp:BoundField DataField="RegistrationDate" HeaderText="RegistrationDate" />
-
-                                    
+                                    <asp:BoundField DataField="RegistrationDate" HeaderText="RegistrationDate" />                                    
                                     <asp:BoundField DataField="UserID" HeaderText="UserID" />
                                     <asp:BoundField DataField="UserName" HeaderText="Username" />
                                     <asp:BoundField DataField="Password" HeaderText="Password" />
-                                       <asp:TemplateField HeaderText="Primary Email">
+                                      
+                                     <asp:TemplateField HeaderText="Primary Email">
                                         <ItemTemplate>
                                       <asp:HyperLink ID="priEmail" runat="server" ToolTip="Click send email"
                                         NavigateUrl='<%# Eval("PrimaryEmail", "mailto:{0}") %>'

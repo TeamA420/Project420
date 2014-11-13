@@ -11,7 +11,7 @@
                                     <asp:BoundField DataField="EmpID" HeaderText="EmployeeID" />
                                     <asp:BoundField DataField="LastName" HeaderText="LastName" />
                                     <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
-                                    <asp:BoundField DataField="Name" HeaderText="Role" />
+                                    <asp:BoundField DataField="Role" HeaderText="Role" />
                                     
                                     <asp:BoundField DataField="UserID" HeaderText="UserID" />
                                     <asp:BoundField DataField="UserName" HeaderText="Username" />

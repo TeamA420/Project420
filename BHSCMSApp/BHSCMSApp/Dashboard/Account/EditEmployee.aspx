@@ -21,8 +21,8 @@
                                  <tr>
                                     <td>Role : 
                                         <asp:DropDownList ID="ddrole" runat="server" CssClass="form-control" Width="15%">
-                                            <asp:ListItem>Admin</asp:ListItem>
-                                            <asp:ListItem>Employee</asp:ListItem>
+                                            <asp:ListItem Value="1">Admin</asp:ListItem>
+                                            <asp:ListItem Value="2">Employee</asp:ListItem>
                                         </asp:DropDownList>                                
                                     </td>
                                 </tr>
