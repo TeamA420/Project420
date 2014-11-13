@@ -103,13 +103,13 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         protected global::System.Web.UI.WebControls.TextBox EndDate;
         
         /// <summary>
-        /// rfiDoc control.
+        /// rfi_Documents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton rfiDoc;
+        protected global::System.Web.UI.WebControls.ListBox rfi_Documents;
         
         /// <summary>
         /// participatelist control.

@@ -87,8 +87,9 @@
                         <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI Documents:</asp:Label>
                             <div class="col-md-8"> 
-                             <%--NavigateUrl="ftp://cis420:Cis$$420@cob-it-blobfish.ad.louisville.edu:21/RFI/56.doc"--%>
-                             <asp:LinkButton runat="server"  OnClick="rfiDoc_Click" ID="rfiDoc" ForeColor="#529ABB" ><span class="glyphicon glyphicon-download"></span>Price notification letter</asp:LinkButton>	 
+                                
+                             <asp:ListBox ID="rfi_Documents" runat="server"  OnSelectedIndexChanged="rfi_Documents_SelectedIndexChanged" OnLoad="rfi_Documents_Load" AutoPostBack="true" SelectionMode="Single" />
+                             <%--<asp:LinkButton runat="server"  OnClick="rfiDoc_Click" ID="rfiDoc" ForeColor="#529ABB"  ><span class="glyphicon glyphicon-download"></span>Price notification letter</asp:LinkButton>	 --%>
                              <br />                                                              
 
                             </div>

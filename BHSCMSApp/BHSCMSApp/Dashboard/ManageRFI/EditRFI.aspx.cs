@@ -23,6 +23,31 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             _rfiid = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
            
             GetRFIData();
+            
+            
+
+        }
+        protected void rfi_Documents_Load(object sender, EventArgs e)
+        {
+            InitializeDocumentsListBox();
+        }
+        private void InitializeDocumentsListBox()
+        {
+            if(!Page.IsPostBack)
+            {
+                DataTable dt = InitializeRFIDocuments();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    //Put the name and the id in the Listitem so that it can be referenced when clicked
+                    //See: rfi_Documents_SelectedIndexChanged
+                    string docName = dr[1].ToString();
+                    string doc_ID = dr[3].ToString();
+                    ListItem li = new ListItem(docName, doc_ID);
+                    rfi_Documents.Items.Add(li);
+                }
+            }
+            
+
         }
 
         protected void GetRFIData()
@@ -79,43 +104,73 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             
         }
 
-        protected void rfiDoc_Click(object sender, EventArgs e)
+        private DataTable InitializeRFIDocuments()
         {
             DataTable dt = new DataTable();
-            string qry = "Select Document_Data, Document_Name, Content_Type From DocumentTable DT Where DT.TypeID = 2 AND DT.ReferenceID = @RFIID";
-            using(SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+            string qry = "Select Document_Data, Document_Name, Content_Type, DocID From DocumentTable DT Where DT.TypeID = 2 AND DT.ReferenceID = @RFIID";
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
             {
                 con.Open();
-                using (SqlCommand com = new SqlCommand(qry,con))
+                using (SqlCommand com = new SqlCommand(qry, con))
                 {
                     com.Parameters.AddWithValue("@RFIID", rfiid.Text);
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
                     {
                         adapter.Fill(dt);
                     }
                 }
             }
+            return dt;
+        }
 
-            foreach(DataRow dr in dt.Rows)
-            {
-                DocumentFile dFile = new DocumentFile()
-                {
-                    FileData = dr[0] as byte[],
-                    FileName = dr[1].ToString(),
-                    ContentType = dr[2].ToString(),
-
-                };
-                Response.ClearContent();
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + dFile.FileName);
-                Response.ContentType = dFile.ContentType;
-                Response.AddHeader("Content-Length", dFile.FileData.Length.ToString());
-                Response.BinaryWrite(dFile.FileData);
-                Response.Flush();
-                Response.End();
-
-            }
+        //protected void rfiDoc_Click(object sender, EventArgs e)
+        //{
             
 
+            //foreach(DataRow dr in dt.Rows)
+            //{
+            //    DocumentFile dFile = new DocumentFile()
+            //    {
+            //        FileData = dr[0] as byte[],
+            //        FileName = dr[1].ToString(),
+            //        ContentType = dr[2].ToString(),
+
+            //    };
+            //    Response.ClearContent();
+            //    Response.AddHeader("Content-Disposition", "attachment; filename=" + dFile.FileName);
+            //    Response.ContentType = dFile.ContentType;
+            //    Response.AddHeader("Content-Length", dFile.FileData.Length.ToString());
+            //    Response.BinaryWrite(dFile.FileData);
+            //    Response.Flush();
+            //    Response.End();
+
+            //}
+            
+
+        //}
+
+        protected void rfi_Documents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = rfi_Documents.SelectedItem.Text;
+            int id = int.Parse(rfi_Documents.SelectedValue);
+            DataTable dt = InitializeRFIDocuments();
+            foreach(DataRow dr in dt.Rows)
+            {
+                if (int.Parse(dr[3].ToString()).Equals(id))//Check to make sure the item is the same one
+                {
+                    byte[] data = dr[0] as byte[];
+                    Response.ClearContent();
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + dr[1].ToString());
+                    Response.ContentType = dr[2].ToString();
+                    Response.AddHeader("Content-Length", data.Length.ToString());
+                    Response.BinaryWrite(data);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+
         }
+
+        
     }
 }
