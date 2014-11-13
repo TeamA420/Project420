@@ -236,7 +236,7 @@
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="RegCode" CssClass="form-control"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
-                    CssClass="text-danger" ErrorMessage="Registration Code is required." />
+                    CssClass="text-danger" ValidationGroup="register" ErrorMessage="Registration Code is required." />
             </div>
         </div>
         <div class="form-group">

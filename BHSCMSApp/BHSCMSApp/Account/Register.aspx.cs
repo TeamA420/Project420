@@ -63,16 +63,47 @@ namespace BHSCMSApp.Account
 
         public bool BooleanRegistration()
         {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
-            conn.Open();
-
+            //Create Connection String & SQL statement
+            string connStr = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+            string selectStr = "Select RegistrationCode from [BHSCMS].[dbo].[RegistrationTable]";
             string regCode = RegCode.Text;
-            SqlCommand cmd = new SqlCommand("Select RegistrationCode from [BHSCMS].[dbo].[RegistrationTable] where RegistrationCode = @regCode", conn);
-            cmd.Parameters.Add(new SqlParameter("@regCode", RegCode));
 
-            string result = ((string)cmd.ExecuteScalar());
+            SqlConnection conn = new SqlConnection(connStr);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = selectStr;
+
+            SqlParameter regcode = new SqlParameter("@RegistrationCode",SqlDbType.VarChar, 10);
+            regcode.Value = RegCode.Text.Trim().ToString();
+            cmd.Parameters.Add(regcode);
+
+            conn.Open();
+            string result = (string)cmd.ExecuteScalar();
             conn.Close();
+
+            
+
+
+
+
+
+
+
+
+
+
+
+            //SqlConnection conn = new SqlConnection();
+            //conn.ConnectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+            //conn.Open();
+
+            
+            //SqlCommand cmd = new SqlCommand("Select RegistrationCode from [BHSCMS].[dbo].[RegistrationTable] where RegistrationCode = @regCode", conn);
+            //cmd.Parameters.Add(new SqlParameter("@regCode", RegCode));
+
+            //string result = ((string)cmd.ExecuteScalar());
+            //conn.Close();
             
 
             if(result == regCode)
@@ -134,7 +165,7 @@ namespace BHSCMSApp.Account
 
             else
             {
-                ErrorMessage.Text = "Invalid field input.";
+                ErrorMessage.Text = "Invalid field input or Registration Code is Incorrect.";
             }
         }
 
