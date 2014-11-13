@@ -6,11 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Text;
+using System.Net;
+using System.Net.Mail;
 
 namespace BHSCMSApp.Dashboard.Register
 {
     public partial class NewVendor : System.Web.UI.Page
     {
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -73,12 +79,60 @@ namespace BHSCMSApp.Dashboard.Register
                 int userid = vend.GetLastUserIDinserted();//gets the user id from the sysusertable
 
                 vend.RegisterVendor(company, userid, phone, fax, address1, address2, city, state, zipcode, status, registrationDate.ToString(), taxid);//registers the vendor in the VendorTable
+                
+                string emailmessage = "Hi " + CompanyName.Text.Trim() + " !\n" +
+                        "Thanks for showing interest and registering with <a href='http://www.cob-blobfish.cbpa.louisville.edu'>Baptist Health Supply Chain Solution<a>" +
+                        " You can now go your account and enjoy our services. Thanks!";
 
-                AddVendorCategories(vend);
+                sendemail(email, emailmessage);
 
-                Page.Response.Redirect("/Dashboard/Account/ManageVendors.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Thank you for Registering!!!');", true);
+
+                Page.Response.Redirect("../ManageVendors.aspx");
+            } 
+        }
+
+        public static void sendemail(string email, string emailmessage)
+        {
+            string to = email;
+            String subject = "Registration Confirmation!";
+            String Body = emailmessage;
+
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("tdngo0003@gmail.com", "LangTu-718"),
+                EnableSsl = true
+            };
+
+            MailMessage message = new MailMessage("tdngo0003@gmail.com", to, subject, Body);
+            message.From = new MailAddress("tdngo0003@gmail.com", "Baptist Health Supply Chain Solutions");
+            message.IsBodyHtml = true;
+
+            try
+            {
+                client.Send(message);
             }
-
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+        }
+        private void clear_control()
+        {
+            Email.Text = string.Empty;  
+            CompanyName.Text = string.Empty;
+            EmailSec.Text = string.Empty;
+            Password.Text = string.Empty;
+            UserId.Text = string.Empty;
+            PhoneNumber.Text = string.Empty;
+            Fax.Text = string.Empty;
+            PAddress.Text = string.Empty;
+            BAddress.Text = string.Empty;
+            City.Text = string.Empty;
+            State.Text = string.Empty;
+            ZipCode.Text = string.Empty;
+            TaxID.Text = string.Empty;
+            CompanyName.Focus();
         }
 
         public void AddVendorCategories(Vendor v)
@@ -119,4 +173,5 @@ namespace BHSCMSApp.Dashboard.Register
         }
 
     }
+
 }

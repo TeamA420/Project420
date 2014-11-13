@@ -11,6 +11,11 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Net;
+
+
+
 
 namespace BHSCMSApp.Account
 {
@@ -19,7 +24,7 @@ namespace BHSCMSApp.Account
 
         Vendor v = new Vendor();
         //instantiate a new vendor from Vendor Class
-
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -105,7 +110,6 @@ namespace BHSCMSApp.Account
             string secEmail = AltEmail.Text;
             int roleid = 3;//vendor role is number 3               
             #endregion
-
            
             if (IsValid && BooleanRegistration() == true)
             {
@@ -116,12 +120,16 @@ namespace BHSCMSApp.Account
                 v.RegisterVendor(company, userid, phone, fax, address1, address2, city, state, zipcode, 2, regDate, taxid);
 
                 AddVendorCategories();//inserts categories the vendor sells in the bridge SellTable
+                string emailmessage = "Hi " + CompanyName.Text.Trim() + " !\n" +
+                        "Thanks for showing interest and registering with <a href='http://www.cob-blobfish.cbpa.louisville.edu'>Baptist Health Supply Chain Solution<a>" +
+                        " You can now go your account and enjoy our services. Thanks!";
 
-                Page.Response.Redirect("../Default.aspx");          
-                
+                sendemail(priEmail, emailmessage);
 
-                //IdentityHelper.SignIn(manager, user, isPersistent: false);
-                //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Thank you for Registering!!!');", true);
+
+                Page.Response.Redirect("../Default.aspx");
+
             }
 
             else
@@ -130,6 +138,50 @@ namespace BHSCMSApp.Account
             }
         }
 
+        private void clear_control()
+        {
+            Email.Text = string.Empty;
+            CompanyName.Text = string.Empty;
+            Email.Text = string.Empty;
+            Password.Text = string.Empty;
+            UserName.Text = string.Empty;
+            PhoneNumber.Text = string.Empty;
+            FaxNumber.Text = string.Empty;
+            Address.Text = string.Empty;
+            Address2.Text = string.Empty;
+            City.Text = string.Empty;
+            ddState.SelectedItem.Value = string.Empty;
+            Zipcode.Text = string.Empty;
+            TaxID.Text = string.Empty;
+            RegCode.Text = string.Empty;
+            CompanyName.Focus();
+        }
+
+        public static void sendemail(string email, string emailmessage)
+        {
+            string to = email;
+            String subject = "Registration Confirmation!";
+            String Body = emailmessage;
+
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("tdngo0003@gmail.com", "LangTu-718"),
+                EnableSsl = true
+            };
+
+            MailMessage message = new MailMessage("tdngo0003@gmail.com", to, subject, Body);
+            message.From = new MailAddress("tdngo0003@gmail.com", "Baptist Health Supply Chain Solutions");
+            message.IsBodyHtml = true;
+
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+        }
         //Records in SellTable the categories the vendor sells
         public void AddVendorCategories()
         {
@@ -164,7 +216,8 @@ namespace BHSCMSApp.Account
                         
                     }
                 }
-            }                       
+            }  
+                     
 
         }
 

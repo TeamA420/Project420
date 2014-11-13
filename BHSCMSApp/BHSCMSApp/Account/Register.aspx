@@ -34,6 +34,7 @@
                 <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PhoneNumber" ValidationGroup="register" 
                     CssClass="text-danger" ErrorMessage="The phone number field is required." />
+                
             </div>
         </div>
 
@@ -64,9 +65,9 @@
             <asp:Label runat="server" AssociatedControlID="City" CssClass="col-md-4 control-label">City*</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="City" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="City" ValidationGroup="register" 
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="City" ValidationGroup="register" Display="Dynamic" 
                     CssClass="text-danger" ErrorMessage="The city field is required." />
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="City" runat="server" ErrorMessage="Please use letters only!" ValidationExpression="^[a-zA-Z]+"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="City" runat="server" CssClass="text-danger" ErrorMessage="Please use letters only!" Display="Dynamic" ValidationExpression="^[a-zA-Z]+"></asp:RegularExpressionValidator>
             </div>
         </div>
 
@@ -267,14 +268,17 @@
      <br />
              <br />
 
-<script type="text/javascript">
+    <script src="~/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="~/jquery.maskedinput-1.2.2.js" type="text/javascript"></script>
+    
+     <script type="text/javascript">
     $(document).ready(function () {
-        $('#PhoneNumber').mask('(000) 000-000');
-        $('#FaxNumber').mask('(000) 000-000');
+        $("#<%=FaxNumber.ClientID%>").mask("(000) 000-000");
         $('#Zipcode').mask('00000-000');
         $('#TaxID').mask('00-0000000');
     });
+         </script>
 
-</script>
+
 </asp:Content>
 
