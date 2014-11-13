@@ -300,6 +300,9 @@
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
     <Content Include="Dashboard\ManageContract\NewContract.aspx" />
+    <Content Include="Dashboard\ManageContract\SQL\ViewContracts.sql" />
+    <Content Include="Dashboard\ManageContract\SQL\ViewExistingContracts.sql" />
+    <Content Include="Dashboard\ManageContract\SQL\ViewExpiredContracts.sql" />
     <Content Include="Dashboard\ManageContract\ViewContracts.aspx" />
     <Content Include="Dashboard\ManageRFI\EditRFI.aspx" />
     <Content Include="Dashboard\ManageRFI\NewRFI.aspx" />

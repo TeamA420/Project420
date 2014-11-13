@@ -67,6 +67,15 @@ namespace BHSCMSApp.Dashboard {
         protected global::System.Web.UI.WebControls.Label rfp;
         
         /// <summary>
+        /// contractlink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink contractlink;
+        
+        /// <summary>
         /// contract control.
         /// </summary>
         /// <remarks>

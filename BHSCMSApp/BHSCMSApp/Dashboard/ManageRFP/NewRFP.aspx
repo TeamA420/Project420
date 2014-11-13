@@ -164,7 +164,9 @@
            <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Gateway Price:</asp:Label>
             <div class="col-md-8">               
-                <asp:TextBox runat="server" ID="txtgatewayPrice"></asp:TextBox>                      
+                <asp:TextBox runat="server" ID="txtgatewayPrice"></asp:TextBox>                 
+                <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="txtgatewayPrice" CssClass="text-danger"
+          ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>     
             </div>
      </div>
           <br />

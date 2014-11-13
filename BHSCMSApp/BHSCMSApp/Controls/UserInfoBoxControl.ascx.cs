@@ -122,5 +122,17 @@ namespace BHSCMSApp.Controls
             Page.Response.Redirect("/Default.aspx");
 
         }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            if(UserInfoBoxControl.roleid==3)
+            {
+                Page.Response.Redirect("/Dashboard/Account/VendorProfile.aspx");
+            }
+            else
+            {
+                Page.Response.Redirect("/Dashboard/Account/Profile.aspx");
+            }
+        }
     }
 }

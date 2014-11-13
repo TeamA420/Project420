@@ -21,16 +21,23 @@
         <br />
             <asp:Label runat="server" AssociatedControlID="ddRFP" CssClass="col-md-4 control-label" Visible="true" ID="ddlRFIlabel">Select RFP:</asp:Label>
             <div class="col-md-8">               
-                <asp:DropDownList runat="server" ID="ddRFP" Width="50%" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddRFP_SelectedIndexChanged" Visible="true">
-               <asp:ListItem></asp:ListItem>
+                <asp:DropDownList runat="server" ID="ddRFP" Width="50%" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddRFP_SelectedIndexChanged" AppendDataBoundItems="true" Visible="true" placeholder="Select RFP...">
+               
                 </asp:DropDownList>                    
             </div>
      </div>
     <div class="form-group">
         
         <br />
-            <asp:Label runat="server" AssociatedControlID="txtRFIProduct" CssClass="col-md-4 control-label" Visible="false" ID="txtRFIProductlabel">RFI Product Description:</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="txtRFIProduct" CssClass="col-md-4 control-label" Visible="false" ID="txtRFIProductlabel">Product Description:</asp:Label>
            <asp:TextBox runat="server" CssClass="form-control" Visible="false" ReadOnly="true" ID="txtRFIProduct"></asp:TextBox>
+
+     </div>
+    <br />
+    <div class="form-group">        
+        <br />
+            <asp:Label runat="server" AssociatedControlID="txtvendor" CssClass="col-md-4 control-label" Visible="false" ID="lblselectedvendor">Vendor:</asp:Label>
+           <asp:TextBox runat="server" CssClass="form-control" Visible="false" ReadOnly="true" ID="txtvendor"></asp:TextBox>
 
      </div>
     <br />
@@ -41,12 +48,14 @@
         <br />
             <asp:Label runat="server" AssociatedControlID="ddvendor" CssClass="col-md-4 control-label" Visible="true" ID="lblvendor">Select Vendor:</asp:Label>
             <div class="col-md-8">               
-                <asp:DropDownList runat="server" ID="ddvendor" Width="50%" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" Visible="true">
-               <asp:ListItem></asp:ListItem>
+                <asp:DropDownList runat="server" ID="ddvendor" Width="50%" Enabled="false" CssClass="form-control" AutoPostBack="true" Visible="true">
+               
                 </asp:DropDownList>                    
             </div>
      </div>
-
+    <br />
+    <hr />
+ <asp:Button ID="btnCont" runat="server" Text="Next" CssClass="btn btn" OnClick="btnCont_Click"/>
 
     
     
@@ -101,27 +110,40 @@
      </div>
           <br />
          <br />
+          <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Contract Price:</asp:Label>
+            <div class="col-md-8">        
+                <asp:TextBox runat="server" ID="contractPrice"></asp:TextBox>   
+                 <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="contractPrice" CssClass="text-danger"
+          ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
+
+                                      
+            </div>
+         </div>
+         <br />
+         <br />
+         <hr />
          <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload Contract document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               
 
                 <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />      
 
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFP document" 
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload Contract document" 
                  ControlToValidate="docUpload" class="text-danger"></asp:RequiredFieldValidator>
                                             
             </div>
          </div>
            
          <asp:Label runat="server" ID="Label1" Visible="false"></asp:Label>
-          <br />
+           <br />
          <br />
-           
+         <hr />
      
            
    
-         <asp:button runat="server" type="button" class="btn btn-default" ID="goback" Text="Go Back" OnClick="goback_Click" ></asp:button>
-          <asp:button runat="server" type="button" class="btn btn-default" ID="review" Text="Review RFP" OnClick="review_Click"></asp:button>
+         <asp:button runat="server" type="button" class="btn btn-default" ID="goback" Text="Go Back" OnClick="goback_Click" CausesValidation="false" ></asp:button>
+          <asp:button runat="server" type="button" class="btn btn-default" ID="review" Text="Review Contract" OnClick="review_Click"></asp:button>
 
        
          </asp:Panel><%--ends setup panel--%>

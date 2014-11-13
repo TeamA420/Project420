@@ -22,6 +22,7 @@
               <asp:label runat="server" ID="rfp" ForeColor="#5C5F60"></asp:label>
               <br />
               <br />
+              <asp:HyperLink runat="server" ID="contractlink" NavigateUrl="~/Dashboard/ManageContract/ViewContracts.aspx" ForeColor="#5C5F60"></asp:HyperLink>
               <asp:label runat="server" ID="contract" ForeColor="#5C5F60"></asp:label>
 
              

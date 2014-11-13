@@ -61,12 +61,9 @@ namespace BHSCMSApp.Dashboard.ManageContract
         /// Fills vendor dropdownlist based on RFP selected.
         /// </summary>
         protected void ddRFP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _rfpId = ddRFP.SelectedIndex; 
-
+        {                    
             
-            FillInVendorDropDownList(_rfpId);
-
+            FillInVendorDropDownList();
             
         }
 
@@ -76,6 +73,7 @@ namespace BHSCMSApp.Dashboard.ManageContract
         /// </summary>
         protected void FillInRFPDropDownList()
         {
+           
             string connectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -100,14 +98,18 @@ namespace BHSCMSApp.Dashboard.ManageContract
         /// <summary>
         /// Fills the in Vendor dropdown list.
         /// </summary>
-        protected void FillInVendorDropDownList(int rfpid)
+        protected void FillInVendorDropDownList()
         {
+
+            _rfpId = Convert.ToInt32(ddRFP.SelectedValue);
+            ddvendor.Enabled = true;
+
             string connectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                string qry = string.Format("SELECT V.VendorID, V.CompanyName FROM [BHSCMS].[dbo].[VendorTable] V inner join [BHSCMS].[dbo].[VendorRFPTable] VR on V.VendorID=VR.VendorID where VR.RFP_ID={0} ", rfpid);
+                string qry = string.Format("SELECT V.VendorID, V.CompanyName FROM [BHSCMS].[dbo].[VendorTable] V inner join [BHSCMS].[dbo].[VendorRFPTable] VR on V.VendorID=VR.VendorID where VR.RFP_ID={0} ", _rfpId);
 
                 SqlCommand cmd = new SqlCommand(qry, connection);
                 cmd.Connection.Open();
@@ -132,13 +134,20 @@ namespace BHSCMSApp.Dashboard.ManageContract
 
             ddRFP.Visible = false;
             ddlRFIlabel.Visible = false;
+            ddvendor.Visible = false;
+            lblvendor.Visible = false;
 
+            txtRFIProduct.Text = ddRFP.SelectedItem.Text;
             txtRFIProduct.Visible = true;
-
             txtRFIProductlabel.Visible = true;
 
-            
 
+            txtvendor.Text = ddvendor.SelectedItem.Text;
+            txtvendor.Visible = true;
+            lblselectedvendor.Visible = true;
+
+
+            btnCont.Visible = false;
             setupPanel.Visible = true;
             
 
@@ -227,7 +236,7 @@ namespace BHSCMSApp.Dashboard.ManageContract
 
             int contractid;
             
-            c.CreateNewContract(this.txtTitle.Text, this.txtDescription.Text, lblstartdate.Text, lblenddate.Text, ddvendor.SelectedIndex, UserInfoBoxControl.UserID, ddRFP.SelectedIndex);
+            c.CreateNewContract(this.txtTitle.Text, this.txtDescription.Text, lblstartdate.Text, lblenddate.Text, Convert.ToInt32(ddvendor.SelectedValue), UserInfoBoxControl.UserID, Convert.ToInt32(ddRFP.SelectedValue), Convert.ToDecimal(this.contractPrice.Text));
             contractid = c.GetLastContract_IDinserted();
           
 
@@ -263,7 +272,8 @@ namespace BHSCMSApp.Dashboard.ManageContract
             ddlRFIlabel.Visible = false;
             txtRFIProduct.Visible = false;
             txtRFIProductlabel.Visible = false;
-
+            txtvendor.Visible = false;
+            lblselectedvendor.Visible = false;
             Contractsubmit.Visible = true;
             lblsuccess.Text = "The Contract has been successfully submitted";
 

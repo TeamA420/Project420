@@ -17,7 +17,7 @@ namespace BHSCMSApp
         }
 
         //creates new Contract
-        public void CreateNewContract(string title, string description, string startdate, string enddate, int vendorid, int userid, int rfpid)
+        public void CreateNewContract(string title, string description, string startdate, string enddate, int vendorid, int userid, int rfpid, decimal contractprice)
         {
             string connectionString = GetConnectionString();
 
@@ -39,6 +39,7 @@ namespace BHSCMSApp
                     command.Parameters.AddWithValue("@userid", userid);
                     command.Parameters.AddWithValue("@rfpid", rfpid);
                     command.Parameters.AddWithValue("@createddate", DateTime.Today.ToShortDateString());
+                    command.Parameters.AddWithValue("@contractprice", contractprice);
                     command.ExecuteNonQuery();
                     connection.Close();
 
@@ -54,7 +55,7 @@ namespace BHSCMSApp
 
 
         //creates new Contract
-        public void UpdateContract(string title, string description, string startdate, string enddate, int vendorid, int userid, int rfpid)
+        public void UpdateContract(string title, string description, string startdate, string enddate, int vendorid, int userid, int rfpid, decimal contractprice)
         {
             string connectionString = GetConnectionString();
 
@@ -65,7 +66,7 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string updateQry = "update BHSCMS.dbo.ContractTable set Title=@title, Description=@description, StartDate=@startdate, EndDate=@enddate, VendorID=@vendorid, UserID=@userid where ContractID=@id";
+                    string updateQry = "update BHSCMS.dbo.ContractTable set Title=@title, Description=@description, StartDate=@startdate, EndDate=@enddate, VendorID=@vendorid, UserID=@userid, ContractPrice=@contractprice where ContractID=@id";
 
                     SqlCommand command = new SqlCommand(updateQry, connection);
                     command.Parameters.AddWithValue("@title", title);
@@ -76,6 +77,7 @@ namespace BHSCMSApp
                     command.Parameters.AddWithValue("@userid", userid);
                     command.Parameters.AddWithValue("@rfpid", rfpid);
                     command.Parameters.AddWithValue("@createddate", DateTime.Today.ToShortDateString());
+                    command.Parameters.AddWithValue("@contractprice", contractprice);
                     command.ExecuteNonQuery();
                     connection.Close();
 

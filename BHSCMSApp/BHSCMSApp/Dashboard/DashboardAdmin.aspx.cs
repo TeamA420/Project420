@@ -22,6 +22,7 @@ namespace BHSCMSApp.Dashboard
         Vendor v = new Vendor();
         RFI i = new RFI();
         RFP p = new RFP();
+        Contract ct = new Contract();
         int pendingvendors;
         int closedRfi;
         int closedRfp;
@@ -58,13 +59,16 @@ namespace BHSCMSApp.Dashboard
             pendingvendors = v.CountPendingVendors();
             closedRfi = i.CountClosedRFI();
             closedRfp = p.CountClosedRFP();
-            //missing RFP and contracts
+            expiringContracts = ct.CountExpiredContracts();
+            
+            
+
 
 
             vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", pendingvendors);
             rfilink.Text = string.Format("You have {0} closed RFI waiting for decision", closedRfi);
             rfplink.Text = string.Format("You have {0} closed RFP waiting for decision", closedRfp);
-            contract.Text = string.Format("You have {0} expired contracts", 2);
+            contract.Text = string.Format("You have {0} expired contracts", expiringContracts);
 
         }
 

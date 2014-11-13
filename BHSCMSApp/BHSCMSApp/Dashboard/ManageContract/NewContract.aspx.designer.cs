@@ -85,6 +85,24 @@ namespace BHSCMSApp.Dashboard.ManageContract {
         protected global::System.Web.UI.WebControls.TextBox txtRFIProduct;
         
         /// <summary>
+        /// lblselectedvendor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblselectedvendor;
+        
+        /// <summary>
+        /// txtvendor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtvendor;
+        
+        /// <summary>
         /// lblvendor control.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace BHSCMSApp.Dashboard.ManageContract {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddvendor;
+        
+        /// <summary>
+        /// btnCont control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCont;
         
         /// <summary>
         /// setupPanel control.
@@ -146,6 +173,24 @@ namespace BHSCMSApp.Dashboard.ManageContract {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// contractPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox contractPrice;
+        
+        /// <summary>
+        /// revNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNumber;
         
         /// <summary>
         /// docUpload control.

@@ -65,12 +65,13 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         protected void ddstatusfilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddstatusfilter.SelectedItem.Text=="Opened")
+                
+            if(Request.Form[ddstatusfilter.UniqueID]=="2")
             {
                 BindGridOpenedRFI();
                 
             }
-            else if(ddstatusfilter.SelectedItem.Text =="Closed")
+            else if (Request.Form[ddstatusfilter.UniqueID] == "3")
             {
                 BindGridClosedRFI();
             }
