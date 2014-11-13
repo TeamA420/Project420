@@ -112,58 +112,49 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         protected global::System.Web.UI.WebControls.ListBox rfi_Documents;
         
         /// <summary>
-        /// participatelist control.
+        /// gridEditVendors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label participatelist;
+        protected global::System.Web.UI.WebControls.GridView gridEditVendors;
         
         /// <summary>
-        /// p1 control.
+        /// particpantsHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label p1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl particpantsHeader;
         
         /// <summary>
-        /// Label1 control.
+        /// listBoxParticipants control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.ListBox listBoxParticipants;
         
         /// <summary>
-        /// viewlist control.
+        /// viewersHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label viewlist;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl viewersHeader;
         
         /// <summary>
-        /// Label2 control.
+        /// listBoxViewers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.ListBox listBoxViewers;
         
         /// <summary>
         /// Button1 control.
@@ -173,6 +164,15 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// btnVendorCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVendorCancel;
         
         /// <summary>
         /// savebtn control.

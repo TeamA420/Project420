@@ -23,10 +23,66 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             _rfiid = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
            
             GetRFIData();
-            
+            if(!IsPostBack)
+            { InitializeParticipantsAndViewers(); }
+            ControlVendorBoxVisibility();
+            gridEditVendors.Visible = false;
+            btnVendorCancel.Visible = false;
+        }
+
+        private void InitializeParticipantsAndViewers()
+        {
+            DataTable dt = new DataTable();
+            string qry = "Select VT.CompanyName, VRT.PermissionID From VendorTable VT Left Join VendorRFITable VRT ON VRT.VendorID = VT.VendorID Where VRT.RFI_ID = @rfiID";
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+            {
+                con.Open();
+                using(SqlCommand com = new SqlCommand(qry,con))
+                {
+                    com.Parameters.AddWithValue("@rfiID", _rfiid);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+
+            }
+
+            if(dt != null && dt.Rows.Count > 0)
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    string companyName = dr[0].ToString();
+                    int permission = int.Parse(dr[1].ToString());
+                    if(permission == 1)
+                    {
+                        listBoxParticipants.Items.Add(new ListItem(companyName));
+                    }
+                    else if(permission == 0 )
+                    {
+                        listBoxViewers.Items.Add(new ListItem(companyName));
+                    }
+                }
+
+            }
+
             
 
+
         }
+
+        private void ControlVendorBoxVisibility()
+        {
+            if (listBoxParticipants.Items.Count == 0)
+                listBoxParticipants.Visible = false;
+            else
+                listBoxParticipants.Visible = true;
+            if (listBoxViewers.Items.Count == 0)
+                listBoxViewers.Visible = false;
+            else
+                listBoxViewers.Visible = true;
+        }
+
         protected void rfi_Documents_Load(object sender, EventArgs e)
         {
             InitializeDocumentsListBox();
@@ -98,10 +154,18 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             else
             {
                 rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(Request.Form[currentPrice.UniqueID]), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
+
+
                 Page.Response.Redirect("ViewRFIList.aspx");
             }
 
             
+        }
+
+
+        private void UpdateVendorParticipation()
+        {
+
         }
 
         private DataTable InitializeRFIDocuments()
@@ -123,32 +187,6 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             return dt;
         }
 
-        //protected void rfiDoc_Click(object sender, EventArgs e)
-        //{
-            
-
-            //foreach(DataRow dr in dt.Rows)
-            //{
-            //    DocumentFile dFile = new DocumentFile()
-            //    {
-            //        FileData = dr[0] as byte[],
-            //        FileName = dr[1].ToString(),
-            //        ContentType = dr[2].ToString(),
-
-            //    };
-            //    Response.ClearContent();
-            //    Response.AddHeader("Content-Disposition", "attachment; filename=" + dFile.FileName);
-            //    Response.ContentType = dFile.ContentType;
-            //    Response.AddHeader("Content-Length", dFile.FileData.Length.ToString());
-            //    Response.BinaryWrite(dFile.FileData);
-            //    Response.Flush();
-            //    Response.End();
-
-            //}
-            
-
-        //}
-
         protected void rfi_Documents_SelectedIndexChanged(object sender, EventArgs e)
         {
             string name = rfi_Documents.SelectedItem.Text;
@@ -168,6 +206,49 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     Response.End();
                 }
             }
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string qry = "Select VT.VendorID, VT.CompanyName From VendorTable VT Left Join SellTable ST on ST.VendorID = VT.VendorID Left Join CategoryTable CT on CT.CategoryID = ST.ID Where CT.Category = @Category";
+            DataTable dt = new DataTable();
+            using(SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+            {
+                con.Open();
+                using(SqlCommand com = new SqlCommand(qry,con))
+                {
+                    com.Parameters.AddWithValue("@Category", category.Text);
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            gridEditVendors.Visible = true;
+            listBoxParticipants.Visible = false;
+            listBoxParticipants.Visible = false;
+            particpantsHeader.Visible = false;
+            viewersHeader.Visible = false;
+            Button1.Visible = false;
+            btnVendorCancel.Visible = true;
+
+            if(dt != null && dt.Rows.Count > 0)
+            {
+                gridEditVendors.DataSource = dt;
+                gridEditVendors.DataBind();
+            }
+
+        }
+
+        protected void btnVendorCancel_Click(object sender, EventArgs e)
+        {
+            listBoxParticipants.Visible = true;
+            listBoxViewers.Visible = true;
+            gridEditVendors.Visible = false;
+            Button1.Visible = true;
+            particpantsHeader.Visible = true;
+            viewersHeader.Visible = true;
 
         }
 

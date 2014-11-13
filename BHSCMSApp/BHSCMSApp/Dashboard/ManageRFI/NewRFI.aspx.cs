@@ -182,17 +182,19 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             {
                 CheckBoxList rb = (CheckBoxList)row.FindControl("chkBoxParticipate");
                 
-                if (rb.SelectedItem.Value == "1" || rb.SelectedItem.Value == "2")
-               {
-                    int vendorid = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Values[0]);
-                    int permissionid = Convert.ToInt32(rb.SelectedItem.Value);
-                    string company = (GridView1.DataKeys[row.RowIndex].Values[1]).ToString();
+                if(rb.SelectedItem != null)
+                {
+                    if (rb.SelectedItem.Value == "1" || rb.SelectedItem.Value == "2")
+                    {
+                        int vendorid = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Values[0]);
+                        int permissionid = Convert.ToInt32(rb.SelectedItem.Value);
+                        string company = (GridView1.DataKeys[row.RowIndex].Values[1]).ToString();
 
-                    vendorlist.Add(vendorid);
-                    permissionlist.Add(permissionid);
-                    companylist.Add(company);
-               }
-
+                        vendorlist.Add(vendorid);
+                        permissionlist.Add(permissionid);
+                        companylist.Add(company);
+                    }
+                }
             }
 
             StringBuilder builderParticipate = new StringBuilder();

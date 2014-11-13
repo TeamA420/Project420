@@ -67,7 +67,7 @@
                                                                                      
                             </asp:TemplateField>                              
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/>                                              
-                            <asp:BoundField DataField="CompanyName" HeaderText="Company"/> 
+                            <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
                             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone Number"/>
                              <asp:BoundField DataField="State" HeaderText="State"/>       
                                                 

@@ -116,31 +116,49 @@
           <h4>Selected Vendors</h4>
         <br />
         <div class="form-group">
-        
-       <h5 style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">Participants:</h5>
 
-        <asp:label runat="server" ID="participatelist"></asp:label>
-            <asp:Label runat="server" ID="p1" Text="G&G Co"></asp:Label>
-            <br />
-            <asp:Label runat="server" ID="Label1" Text="Health Supplies"></asp:Label>
+            <asp:GridView ID="gridEditVendors" runat="server" AutoGenerateColumns="false" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:CheckBoxList ID="chkBoxList" runat="server" ItemStyle-HorizontalAlign="Center" HeaderText="Permissions" >
+                                <asp:ListItem Text="Participate" Value="1" />
+                                <asp:ListItem Text="View" Value="2" />
+                            </asp:CheckBoxList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
+                </Columns>
+            </asp:GridView>
+
+
+
+
+       <h5 id="particpantsHeader" runat="server" style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">Participants:</h5>
+       <asp:ListBox ID="listBoxParticipants" runat="server">
+           
+       </asp:ListBox>
+        
         <br />
        </div>
 
          <div class="form-group">
         
-          <h5 style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">View Only:</h5>
-        <asp:label runat="server" ID="viewlist"></asp:label>
-              <asp:Label runat="server" ID="Label2" Text="AMC Co"></asp:Label>
+          <h5 id="viewersHeader" runat="server" style="background-color:lightgray; width:90px; padding:4px; border-radius:4px">View Only:</h5>
+           <asp:ListBox ID="listBoxViewers" runat="server">
+
+           </asp:ListBox>
+              
             <br />
-            <asp:Label runat="server" ID="Label3" Text="Cardinal Supplies"></asp:Label>
+            
         <br />
        </div>
          <br />
          <br />
          <div class="form-actions">
-								<asp:Button runat="server" Text="Edit selection"  ID="Button1" class="btn btn-info" ToolTip="Click to modify participants list"/>
-                                
-							</div>
+		<asp:Button runat="server" Text="Edit selection"  ID="Button1" class="btn btn-info" OnClick="Button1_Click" ToolTip="Click to modify participants list"/>
+        <asp:Button runat="server" Text="Cancel" ID="btnVendorCancel" class="btn btn-info" OnClick="btnVendorCancel_Click" ToolTip="Click to cancel vendor changes" />
+	</div>
      </div>
           
         </div>
