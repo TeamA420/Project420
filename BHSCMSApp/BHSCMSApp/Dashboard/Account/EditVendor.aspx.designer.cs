@@ -13,6 +13,15 @@ namespace BHSCMSApp.Dashboard.Register {
     public partial class EditVendor {
         
         /// <summary>
+        /// ddstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddstatus;
+        
+        /// <summary>
         /// txtcompany control.
         /// </summary>
         /// <remarks>
@@ -83,15 +92,6 @@ namespace BHSCMSApp.Dashboard.Register {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtZipcode;
-        
-        /// <summary>
-        /// ddstatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddstatus;
         
         /// <summary>
         /// txttaxid control.

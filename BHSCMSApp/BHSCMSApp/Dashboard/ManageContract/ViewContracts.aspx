@@ -56,6 +56,13 @@
 
                         </Columns>
                     </asp:GridView>
+
+
+              <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                        <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                        </p>
+              </asp:PlaceHolder>
                     <asp:Button  ID="addnewContract" runat="server" Text="Create New Contract" CssClass="btn btn-info" OnClick="addnewContract_Click" />
           
                 </div>

@@ -68,15 +68,27 @@ namespace BHSCMSApp.Dashboard.ManageContract
 
         protected void ddstatusfilter_SelectedIndexChanged1(object sender, EventArgs e)
         {
+            ErrorMessage.Visible = false;
 
             if (Request.Form[ddstatusfilter.UniqueID] == "2")
             {
                 BindGridExistingContracts();
+                if (dt.Rows.Count == 0)
+                {
+                    ErrorMessage.Visible = true;
+                    FailureText.Text = "There are no existing contracts";
+                }
+               
 
             }
             else if (Request.Form[ddstatusfilter.UniqueID] == "3")
             {
                 BindGridExpiredContracts();
+                if (dt.Rows.Count ==0)
+                {
+                    ErrorMessage.Visible = true;
+                    FailureText.Text = "There are no expired contracts";
+                }
             }
             else
             {
@@ -163,7 +175,7 @@ namespace BHSCMSApp.Dashboard.ManageContract
                 if (Convert.ToDateTime(enddate) < DateTime.Today)
                 {
                     e.Row.Cells[7].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
-                    e.Row.Cells[7].Text = "Closed";
+                    e.Row.Cells[7].Text = "Expired";
                 }
 
             }

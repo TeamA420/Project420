@@ -53,8 +53,8 @@
           <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Current Price:</asp:Label>
             <div class="col-md-8">        
-                <asp:TextBox runat="server" ID="currentPrice"></asp:TextBox>   
-                 <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="currentPrice" CssClass="text-danger"
+                <asp:TextBox runat="server" ID="txtcurrentPrice"></asp:TextBox>   
+                 <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="txtcurrentPrice" CssClass="text-danger"
           ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
 
                                       
@@ -88,7 +88,7 @@
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI Documents:</asp:Label>
                             <div class="col-md-8"> 
                                 
-                             <asp:ListBox ID="rfi_Documents" runat="server"  OnSelectedIndexChanged="rfi_Documents_SelectedIndexChanged" OnLoad="rfi_Documents_Load" AutoPostBack="true" SelectionMode="Single" />
+                             <asp:ListBox ID="rfi_Documents" runat="server"  OnSelectedIndexChanged="rfi_Documents_SelectedIndexChanged" OnLoad="rfi_Documents_Load" SelectionMode="Single" />
                              <%--<asp:LinkButton runat="server"  OnClick="rfiDoc_Click" ID="rfiDoc" ForeColor="#529ABB"  ><span class="glyphicon glyphicon-download"></span>Price notification letter</asp:LinkButton>	 --%>
                              <br />                                                              
 

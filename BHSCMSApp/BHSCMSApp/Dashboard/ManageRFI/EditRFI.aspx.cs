@@ -131,7 +131,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                     this.category.Text = reader["Category"].ToString();
                     this.StartDate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();                    
                     this.EndDate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
-                    this.currentPrice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["CurrentPrice"]));
+                    this.txtcurrentPrice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["CurrentPrice"]));
                     this.productDescription.Text = reader["ProductDescription"].ToString();
                 }
                 
@@ -150,6 +150,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         protected void savebtn_Click(object sender, EventArgs e)
         {
+            string currentPrice;
             if (Convert.ToDateTime(Request.Form[EndDate.UniqueID]) < Convert.ToDateTime(Request.Form[StartDate.UniqueID]))
             {
                 ErrorMessage.Visible = true;
@@ -157,7 +158,12 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             }
             else
             {
-                rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(Request.Form[currentPrice.UniqueID]), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
+
+                currentPrice = Request.Form[txtcurrentPrice.UniqueID];
+                currentPrice = currentPrice.Replace("$", string.Empty);
+                    
+                    
+                rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(currentPrice), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
                 UpdateVendorParticipation();
 
                 Page.Response.Redirect("ViewRFIList.aspx");

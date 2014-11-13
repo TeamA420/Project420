@@ -8,8 +8,21 @@
                             <br />
                            <fieldset>
 							<h4>Edit Information</h4>
-                            
-
+                             <br />
+                                <br />
+                            <div class="control-group">
+                            <asp:Label runat="server" class="control-label" AssociatedControlID="ddstatus" Text="Status:   "/>
+                            <div class="controls">
+                            <asp:DropDownList ID="ddstatus" runat="server" CssClass="form-control" AutoPostBack="true" Width="25%">
+                                            <asp:ListItem Value="1">Approved</asp:ListItem>
+                                            <asp:ListItem Value="2">Pending</asp:ListItem>
+                                             <asp:ListItem Value="3">Disapproved</asp:ListItem>
+                                             <asp:ListItem Value="4">Sanctioned</asp:ListItem>
+                            </asp:DropDownList>
+                           </div>
+						   </div>	
+                            <br /> 
+                               <br />
 
                             <div class="control-group">
                             <asp:Label runat="server" class="control-label" AssociatedControlID="txtcompany" Text="Company Name: "/>
@@ -76,17 +89,7 @@
 						   </div>								
                            <br />	
 
-                           <div class="control-group">
-                            <asp:Label runat="server" class="control-label" AssociatedControlID="ddstatus" Text="Status:   "/>
-                            <div class="controls">
-                            <asp:DropDownList ID="ddstatus" runat="server" CssClass="form-control" AutoPostBack="true" Width="25%">
-                                            <asp:ListItem Value="1">Approved</asp:ListItem>
-                                            <asp:ListItem Value="2">Pending</asp:ListItem>
-                                             <asp:ListItem Value="3">Disapproved</asp:ListItem>
-                                             <asp:ListItem Value="4">Sanctioned</asp:ListItem>
-                            </asp:DropDownList>
-                           </div>
-						   </div>								
+                         							
                            <br />	
                                
 

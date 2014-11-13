@@ -4,7 +4,8 @@
      <div class="row" style="background-color:white; width:100%">
           <div class="col-md-12">
               
-      <h4>List of employees registered in the system</h4>
+                   <div style="width:60%; margin-left:10px"><img  src="/img/employees.png" class="img-responsive" alt="Responsive image" width="70%"/></div>
+
     <hr />         
               <div class="form-group">     
                <asp:Label runat="server" AssociatedControlID="ddrolefilter" CssClass="col-md-2 control-label">Filter by Role:</asp:Label>

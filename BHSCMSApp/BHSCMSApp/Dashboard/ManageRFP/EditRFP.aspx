@@ -14,7 +14,7 @@
                            <div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFP ID</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="rfpid" ReadOnly="true"/>
+									<asp:TextBox runat="server" id="rfpid" ReadOnly="true" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />                            
@@ -22,49 +22,51 @@
 							<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="80%"/>
+									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="80%" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />
                            
                             <br />
                              
-                            <hr />
+                         
 
-                          <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
-                        <p class="text-danger">
-                            <asp:Literal runat="server" ID="FailureText" />
-                        </p>
-                        </asp:PlaceHolder>
 
                            <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description:</asp:Label>
             <div class="col-md-8">        
-                <asp:TextBox runat="server" ID="productDescription" ReadOnly="true"></asp:TextBox>   
+                <asp:TextBox runat="server" ID="productDescription" ReadOnly="true" BorderColor="Transparent"></asp:TextBox>   
                    <asp:RequiredFieldValidator runat="server" ControlToValidate="productDescription" 
                     CssClass="text-danger" ErrorMessage="The product description field is required." />                                 
             </div>
          </div>
          <br />
          <br />
-         
+          
+                            
+                          <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                        <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                        </p>
+                        </asp:PlaceHolder>
           <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Current Price:</asp:Label>
             <div class="col-md-8">        
-                <asp:TextBox runat="server" ID="currentPrice" ReadOnly="true"></asp:TextBox>   
+                <asp:TextBox runat="server" ID="currentPrice" ReadOnly="true"  BorderColor="Transparent"></asp:TextBox>   
                  <asp:RegularExpressionValidator ID="revNumber" runat="server" ControlToValidate="currentPrice" CssClass="text-danger"
           ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
 
                                       
             </div>
          </div>
-         <br />
+         <hr />
+        
          <br />
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Gateway Price:</asp:Label>
             <div class="col-md-8">        
-                <asp:TextBox runat="server" ID="gatewayprice"></asp:TextBox>   
-                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="gatewayprice" CssClass="text-danger"
+                <asp:TextBox runat="server" ID="txtgatewayprice"></asp:TextBox>   
+                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtgatewayprice" CssClass="text-danger"
           ErrorMessage="Enter valid number" ValidationExpression="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$"></asp:RegularExpressionValidator>
 
                                       
