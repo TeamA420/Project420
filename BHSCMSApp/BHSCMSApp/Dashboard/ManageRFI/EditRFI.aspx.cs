@@ -18,6 +18,10 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         RFI rfi = new RFI();
         Employee emp = new Employee();
 
+        List<int> vendorlist = new List<int>();
+        List<int> permissionlist = new List<int>();
+        List<string> companylist = new List<string>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _rfiid = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
@@ -154,7 +158,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             else
             {
                 rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(Request.Form[currentPrice.UniqueID]), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
-
+                UpdateVendorParticipation();
 
                 Page.Response.Redirect("ViewRFIList.aspx");
             }
@@ -165,6 +169,45 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
         private void UpdateVendorParticipation()
         {
+            string insertQry = "Insert into [BHSCMS].[dbo].[VendorRFITable] (RFI_ID, VendorID, PermissionID) Values (@rfiId, @vendorid, @permissionId)";
+            
+
+            foreach(GridViewRow gvr in gridEditVendors.Rows)
+            {
+                CheckBoxList chkBox = (CheckBoxList)gvr.FindControl("chkBoxList");
+                if(chkBox.SelectedItem != null)
+                {
+                    if(chkBox.SelectedItem.Value == "1" || chkBox.SelectedItem.Value =="2" )
+                    {
+                        int vendorid = Convert.ToInt32(gridEditVendors.DataKeys[gvr.RowIndex].Values[1]);
+                        int permissionid = Convert.ToInt32(chkBox.SelectedItem.Value);
+                        string company = (gridEditVendors.DataKeys[gvr.RowIndex].Values[0]).ToString();
+
+                        vendorlist.Add(vendorid);
+                        permissionlist.Add(permissionid);
+                    }
+                }
+            }
+
+            int index = 0;
+            foreach(var vendor in vendorlist)
+            {
+                string connString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+
+                SqlConnection conn = new SqlConnection(connString);
+                SqlCommand cmd = new SqlCommand(insertQry, conn);
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@rfiId", _rfiid);
+                cmd.Parameters.AddWithValue("@vendorid", vendor);
+                cmd.Parameters.AddWithValue("@permissionId", permissionlist[index]);
+                cmd.ExecuteNonQuery();
+
+
+                conn.Close();
+
+                index++;
+            }
 
         }
 

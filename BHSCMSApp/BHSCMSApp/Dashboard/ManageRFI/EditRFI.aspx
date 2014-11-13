@@ -128,6 +128,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
+                    <asp:BoundField DataField="VendorID" Visible="false" />
                 </Columns>
             </asp:GridView>
 
