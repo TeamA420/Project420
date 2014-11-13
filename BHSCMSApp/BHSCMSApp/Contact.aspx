@@ -58,7 +58,7 @@
                     Message:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtMessage" runat="server" Columns="40" Rows="5" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMessage" runat="server" Columns="40" Rows="5" TextMode="MultiLine" CssClass="form-control" style="resize:none"></asp:TextBox>
                  <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMessage" ValidationGroup="contact" CssClass="text-danger" ErrorMessage="Please enter your message." />
                 </td>
             </tr>

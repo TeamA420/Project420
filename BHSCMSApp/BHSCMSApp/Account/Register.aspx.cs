@@ -54,6 +54,35 @@ namespace BHSCMSApp.Account
             }
         }
 
+
+
+        public bool BooleanRegistration()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString;
+            conn.Open();
+
+            string regCode = RegCode.Text;
+            SqlCommand cmd = new SqlCommand("Select RegistrationCode from [BHSCMS].[dbo].[RegistrationTable] where RegistrationCode = @regCode", conn);
+            cmd.Parameters.Add(new SqlParameter("@regCode", RegCode));
+
+            string result = ((string)cmd.ExecuteScalar());
+            conn.Close();
+            
+
+            if(result == regCode)
+                {
+                    return true;
+
+                }
+
+            else
+                {
+                    return false;
+                }
+
+        }
+
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             
@@ -78,7 +107,7 @@ namespace BHSCMSApp.Account
             #endregion
 
            
-            if (IsValid)
+            if (IsValid && BooleanRegistration() == true)
             {
                 v.RegisterUser(username, password, priEmail, secEmail, roleid);
 

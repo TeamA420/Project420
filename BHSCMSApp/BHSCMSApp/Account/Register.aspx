@@ -234,8 +234,8 @@
             <asp:Label runat="server" AssociatedControlID="RegCode" CssClass="col-md-4 control-label">Registration Code</asp:Label>
             <div class="col-md-8">
                 <asp:TextBox runat="server" ID="RegCode" CssClass="form-control"/>
-                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
-                    CssClass="text-danger" ErrorMessage="The alternate email address field is required." />--%>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="RegCode"
+                    CssClass="text-danger" ErrorMessage="Registration Code is required." />
             </div>
         </div>
         <div class="form-group">
