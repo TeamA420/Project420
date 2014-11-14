@@ -238,7 +238,10 @@ namespace BHSCMSApp.Dashboard.ManageContract
             
             c.CreateNewContract(this.txtTitle.Text, this.txtDescription.Text, lblstartdate.Text, lblenddate.Text, Convert.ToInt32(ddvendor.SelectedValue), UserInfoBoxControl.UserID, Convert.ToInt32(ddRFP.SelectedValue), Convert.ToDecimal(this.contractPrice.Text));
             contractid = c.GetLastContract_IDinserted();
-                    
+          
+
+
+           
 
 
             if (fileList != null && fileList.Count > 0)

@@ -4,9 +4,8 @@
           <div class="col-md-12">
             
     
-              <div style="width:60%; margin-left:10px"><img  src="/img/vendors.png" class="img-responsive" alt="Responsive image" width="70%"/></div>
 
-     
+      <h4>List of vendors registered in the system:</h4>
     <hr />   
            
             <div class="form-group">     

@@ -74,6 +74,7 @@ namespace BHSCMSApp
 
 
         //This funtion is used to retrieve RFI closing dates for the following two months
+
         public static DataTable GetRFIClosingDates()
         {
             DataSet ds = new DataSet();
@@ -114,88 +115,6 @@ namespace BHSCMSApp
 
         }
 
-        //This funtion is used to retrieve RFP closing dates for the following two months
-        public static DataTable GetRFPClosingDates()
-        {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();//DataTable use to store retrieved data
-
-
-            string connectionString = GetConnectionString();
-            string strSQL = "";
-            int thismonth = Convert.ToInt32(DateTime.Today.Month);
-            int nextmonth = Convert.ToInt32(DateTime.Today.AddMonths(1).Month);
-            int year = Convert.ToInt32(DateTime.Today.Year);
-
-            try
-            {
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-
-                    strSQL = string.Format(FunctionsHelper.GetFileContents("/Dashboard/SQL/RFPclosingdate.sql"), thismonth, nextmonth, year);
-                    SqlDataAdapter adapter = new SqlDataAdapter(strSQL, connection);
-
-                    adapter.Fill(ds);
-                    dt = ds.Tables[0];
-
-
-                }
-            }
-
-            catch (Exception e)
-            {
-                //System.Console.Error.Write(e.Message);
-
-            }
-
-            return dt;
-
-        }
-
-
-        //This funtion is used to retrieve COntracts expiring dates for the following two months
-        public static DataTable GetContractExpiring()
-        {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();//DataTable use to store retrieved data
-
-
-            string connectionString = GetConnectionString();
-            string strSQL = "";
-            int thismonth = Convert.ToInt32(DateTime.Today.Month);
-            int nextmonth = Convert.ToInt32(DateTime.Today.AddMonths(1).Month);
-            int year = Convert.ToInt32(DateTime.Today.Year);
-
-            try
-            {
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-
-                    strSQL = string.Format(FunctionsHelper.GetFileContents("/Dashboard/SQL/ContractExpiringdate.sql"), thismonth, nextmonth, year);
-                    SqlDataAdapter adapter = new SqlDataAdapter(strSQL, connection);
-
-                    adapter.Fill(ds);
-                    dt = ds.Tables[0];
-
-
-                }
-            }
-
-            catch (Exception e)
-            {
-                //System.Console.Error.Write(e.Message);
-
-            }
-
-            return dt;
-
-        }
 
 
 

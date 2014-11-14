@@ -8,10 +8,10 @@
    
      <asp:Panel runat="server" Visible="false" ID="RFPsubmit">
         
-    <asp:Label runat="server" ID="lblsuccess" CssClass="text-success"></asp:Label> <span class="glyphicon glyphicon-ok"></span>
+    <asp:Label runat="server" ID="lblsuccess"></asp:Label> <span class="glyphicon glyphicon-ok"></span>
      <br />
         <br />
-    <asp:HyperLink runat="server" ID="viewRFI" NavigateUrl="/Dashboard/ManageRFP/ViewRFP.aspx" Text="Go to RFP's list" ForeColor="#6BBAEC"></asp:HyperLink>
+    <asp:HyperLink runat="server" ID="viewRFI" NavigateUrl="/Dashboard/ManageRFP/ViewRFPList.aspx" Text="Go to RFP's list" ForeColor="#6BBAEC"></asp:HyperLink>
        
      </asp:Panel>
 
@@ -40,8 +40,10 @@
         
       <h4>Select vendor participants:</h4>
     <hr />
-                
-          
+       
+           
+            <%--<p style="text-align: center;">Demo by Priya Darshini - Tutorial @ <a href="http://www.programming-free.com/2013/09/gridview-crud-bootstrap-modal-popup.html">Programmingfree</a></p>--%>
+            
                 
            
                     <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center"
@@ -170,7 +172,7 @@
           <br />
          <br />
          <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFP document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload RFI document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               
 
                 <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />      

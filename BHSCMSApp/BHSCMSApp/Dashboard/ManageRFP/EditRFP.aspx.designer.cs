@@ -40,15 +40,6 @@ namespace BHSCMSApp.Dashboard.ManageRFP {
         protected global::System.Web.UI.WebControls.TextBox category;
         
         /// <summary>
-        /// productDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productDescription;
-        
-        /// <summary>
         /// ErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace BHSCMSApp.Dashboard.ManageRFP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal FailureText;
+        
+        /// <summary>
+        /// productDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox productDescription;
         
         /// <summary>
         /// currentPrice control.
@@ -85,13 +85,13 @@ namespace BHSCMSApp.Dashboard.ManageRFP {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revNumber;
         
         /// <summary>
-        /// txtgatewayprice control.
+        /// gatewayprice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtgatewayprice;
+        protected global::System.Web.UI.WebControls.TextBox gatewayprice;
         
         /// <summary>
         /// RegularExpressionValidator1 control.

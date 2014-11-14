@@ -8,7 +8,7 @@
           <div class="col-md-6">
               
               
-              <div style="width:70%; margin-left:10px"><img  src="../img/notifications.png" class="img-responsive" alt="Responsive image" width="90%"/></div>
+              <div style="width:70%; margin-left:10px"><img  src="../img/purple-Notifications2.png" class="img-responsive" alt="Responsive image" width="90%"/></div>
               <hr />
               <asp:HyperLink runat="server" ID="vendorlink" NavigateUrl="~/Dashboard/Account/ManageVendors.aspx" ForeColor="#5C5F60"></asp:HyperLink>
               <asp:label runat="server" ID="vendor"></asp:label>
@@ -32,11 +32,11 @@
           </div>--%>
 
         <div class="col-md-6">
-            <div style="width:70%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="50%"/></div>
+            <div style="width:80%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="60%"/></div>
 
             <%--<h4> Upcoming Events:</h4>--%>
             <hr />
-            <asp:Calendar runat="server" Width="60%" ID="calendar" TitleStyle-BackColor="#D06730" TitleStyle-ForeColor="White"
+            <asp:Calendar runat="server" Width="80%" ID="calendar" TitleStyle-BackColor="#D06730" TitleStyle-ForeColor="White"
                  Font-Bold="true" TitleFormat="Month" SelectedDayStyle-BackColor="#539BBC" cellpadding="3" cellspacing="3"/>
               
               <hr />

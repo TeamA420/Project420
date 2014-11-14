@@ -5,8 +5,7 @@
      <div class="row" style="background-color:white; width:100%">
           <div class="col-md-12">
               
-                   <div style="width:50%; margin-left:10px"><img  src="/img/rfis.png" class="img-responsive" alt="Responsive image" width="60%"/></div>
-
+      <h4>RFIs waiting for decision</h4>
     <hr />        
               <div class="form-group">     
                <asp:Label runat="server" AssociatedControlID="ddstatusfilter" CssClass="col-md-2 control-label">Filter by Status:</asp:Label>

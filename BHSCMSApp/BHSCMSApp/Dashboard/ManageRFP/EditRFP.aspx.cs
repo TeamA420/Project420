@@ -48,7 +48,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
                     this.StartDate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();
                     this.EndDate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
                     this.currentPrice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["CurrentPrice"]));
-                    this.txtgatewayprice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["GatewayPrice"]));
+                    this.gatewayprice.Text = String.Format("{0:C}", Convert.ToDecimal(reader["GatewayPrice"]));
                     this.productDescription.Text = reader["ProductDescription"].ToString();
                 }
 
@@ -68,8 +68,6 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
         protected void savebtn_Click(object sender, EventArgs e)
         {
-            string gatewayprice;
-
             if (Convert.ToDateTime(Request.Form[EndDate.UniqueID]) < Convert.ToDateTime(Request.Form[StartDate.UniqueID]))
             {
                 ErrorMessage.Visible = true;
@@ -77,10 +75,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
             }
             else
             {
-                gatewayprice = Request.Form[txtgatewayprice.UniqueID];
-                gatewayprice = gatewayprice.Replace("$", string.Empty);
-
-                rfp.UpdateRFP(Convert.ToDecimal(gatewayprice), Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], _rfpid);
+                rfp.UpdateRFP(Convert.ToDecimal(Request.Form[gatewayprice.UniqueID]), Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], _rfpid);
                 Page.Response.Redirect("ViewRFP.aspx");
             }
 

@@ -67,13 +67,13 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         protected global::System.Web.UI.WebControls.TextBox productDescription;
         
         /// <summary>
-        /// txtcurrentPrice control.
+        /// currentPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcurrentPrice;
+        protected global::System.Web.UI.WebControls.TextBox currentPrice;
         
         /// <summary>
         /// revNumber control.

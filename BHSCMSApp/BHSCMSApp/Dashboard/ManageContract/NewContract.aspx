@@ -54,7 +54,7 @@
             </div>
      </div>
     <br />
-   
+    <hr />
  <asp:Button ID="btnCont" runat="server" Text="Next" CssClass="btn btn" OnClick="btnCont_Click"/>
 
     
@@ -94,8 +94,6 @@
          <br />
          <br />
          <hr />
-           <h4>Contract Details:</h4>
-         <br />
            <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Title:</asp:Label>
             <div class="col-md-8">               
@@ -126,7 +124,7 @@
          <br />
          <hr />
          <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload Contract <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
+            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload Contract document <span class="glyphicon glyphicon-paperclip"></span></asp:Label>
             <div class="col-md-8">               
 
                 <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />      
