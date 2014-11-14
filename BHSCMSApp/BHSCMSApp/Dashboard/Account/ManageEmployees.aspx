@@ -12,11 +12,12 @@
                  
                  <div class="col-md-8">
              
-                  <asp:DropDownList runat="server" ID="ddrolefilter" AutoPostBack="true" CssClass="form-control" Width="20%">
-                    <asp:ListItem Value="1">Show All</asp:ListItem>
-                    <asp:ListItem Value="2">Admin</asp:ListItem>
-                    <asp:ListItem Value="3">Employee</asp:ListItem>                      
+                  <asp:DropDownList runat="server" ID="ddrolefilter" AutoPostBack="true" CssClass="form-control" DataSourceID="DropDownDataSource" Width="20%" 
+                    DataTextField="Role" DataValueField="Role" AppendDataBoundItems="true">
+                    <asp:ListItem Text="Show All" Value=""></asp:ListItem>                    
                 </asp:DropDownList>
+                     <asp:SqlDataSource ID="DropDownDataSource" runat="server" ConnectionString="<%$ connectionStrings:BHSCMS %>"
+                         SelectCommand="SELECT Distinct r.Role From BHSCMS.dbo.EmployeeTable e join BHSCMS.dbo.RoleTable r on e.RoleID = r.RoleID"></asp:SqlDataSource>
 
              </div>
         </div>
@@ -31,6 +32,7 @@
                         HorizontalAlign="Center" 
                         AutoGenerateColumns="false" 
                         AllowPaging="true" 
+                        DataSourceID="GridDataSource"
                         OnRowDataBound="GridView1_RowDataBound" 
                         OnPageIndexChanging="GridView1_PageIndexChanging"
                         DataKeyNames="UserID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
@@ -68,6 +70,13 @@
                             <asp:BoundField DataField="Role" HeaderText="Role" />
                         </Columns>
                     </asp:GridView>
+                    <asp:SqlDataSource ID="GridDataSource" runat="server" ConnectionString="<%$ connectionStrings:BHSCMS %>"
+                        SelectCommand="Select U.UserID, U. UserName, E.LastName, E.FirstName, R.Role from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.RoleTable R on U.RoleID=R.RoleID join BHSCMS.dbo.EmployeeTable E on U.UserID=E.UserID" 
+                        FilterExpression="Role = '{0}'">
+                        <FilterParameters>
+                            <asp:ControlParameter Name="Role" ControlID="ddrolefilter" PropertyName="SelectedValue" />
+                        </FilterParameters>
+                    </asp:SqlDataSource>
                     <asp:Button ID="btnAdd" runat="server" Text="Add New Employee" CssClass="btn btn-info" OnClick="btnAdd_Click" />
              
                 </div>

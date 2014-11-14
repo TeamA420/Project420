@@ -14,13 +14,12 @@
                  
                  <div class="col-md-8">
              
-                  <asp:DropDownList runat="server" ID="ddstatusfilter" AutoPostBack="true" CssClass="form-control" Width="20%">
-                    <asp:ListItem Value="1">Show All</asp:ListItem>
-                    <asp:ListItem Value="2">Approved</asp:ListItem>
-                    <asp:ListItem Value="3">Pending</asp:ListItem>
-                      <asp:ListItem Value="4">Disapproved</asp:ListItem>
-                      <asp:ListItem Value="5">Sanctioned</asp:ListItem>
+                 <asp:DropDownList runat="server" ID="ddstatusfilter" AutoPostBack="true" CssClass="form-control" Width="20%" DataSourceID="DropDownDataSource"
+                      DataTextField="Status" DataValueField="Status" AppendDataBoundItems="true">
+                     <asp:ListItem Text="Show All" Value=""></asp:ListItem>
                 </asp:DropDownList>
+                     <asp:SqlDataSource ID="DropDownDataSource" runat="server" ConnectionString="<%$ connectionStrings:BHSCMS %>"
+                         SelectCommand="SELECT Distinct r.Status From BHSCMS.dbo.VendorTable e join BHSCMS.dbo.StatusTable r on e.StatusID = r.StatusID"></asp:SqlDataSource>
 
              </div>
         </div>
@@ -34,6 +33,7 @@
                         HorizontalAlign="Center"
                         AutoGenerateColumns="false" 
                         AllowPaging="true" 
+                        DataSourceID="GridDataSource"
                         OnRowDataBound="GridView1_RowDataBound" 
                         OnPageIndexChanging="GridView1_PageIndexChanging"
                         DataKeyNames="UserID" CssClass="table" 
@@ -79,6 +79,13 @@
                          </asp:TemplateField>
 
                         </Columns>
+                         <asp:SqlDataSource ID="GridDataSource" runat="server" ConnectionString="<%$ connectionStrings:BHSCMS %>"
+                        SelectCommand="Select v.UserID, v.CompanyName, v.State, s.Status, u.PrimaryEmail from BHSCMS.dbo.VendorTable v join BHSCMS.dbo.StatusTable s on v.StatusID= s.StatusID join BHSCMS.dbo.SysUserTable u on v.UserID = u.UserID" 
+                        FilterExpression="Status = '{0}'">
+                        <FilterParameters>
+                            <asp:ControlParameter Name="Status" ControlID="ddstatusfilter" PropertyName="SelectedValue" />
+                        </FilterParameters>
+                    </asp:SqlDataSource>
                     </asp:GridView>
                     <asp:Button ID="btnAdd" runat="server" Text="Add New Vendor" CssClass="btn btn-info" OnClick="btnAdd_Click" />
               

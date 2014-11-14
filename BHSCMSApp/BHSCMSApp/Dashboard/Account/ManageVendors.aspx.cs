@@ -42,7 +42,6 @@ namespace BHSCMSApp.Dashboard
                 adapter.Fill(ds);
                 dt = ds.Tables[0];
                 //Bind the fetched data to gridview
-                GridView1.DataSource = dt;
                 GridView1.DataBind();
 
             }
