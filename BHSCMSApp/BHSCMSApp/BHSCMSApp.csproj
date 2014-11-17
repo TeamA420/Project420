@@ -320,6 +320,7 @@
     <Content Include="Dashboard\ManageRFP\ViewRFP.aspx" />
     <Content Include="Dashboard\Request\VendorRequest.aspx" />
     <Content Include="Dashboard\SQL\RFIclosingdate.sql" />
+    <Content Include="Dashboard\Tools\RegCode.aspx" />
     <Content Include="Dashboard\Tools\Reports.aspx" />
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
     <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
@@ -684,6 +685,13 @@
     </Compile>
     <Compile Include="Dashboard\Request\VendorRequest.aspx.designer.cs">
       <DependentUpon>VendorRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Tools\RegCode.aspx.cs">
+      <DependentUpon>RegCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Tools\RegCode.aspx.designer.cs">
+      <DependentUpon>RegCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Tools\Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>

@@ -32,7 +32,9 @@
           </div>--%>
 
         <div class="col-md-6">
-            <div style="width:80%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="60%"/></div>
+            <div style="width:80%; z-index:-1; margin-left:10px">
+
+                <img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="60%"/></div>
 
             <%--<h4> Upcoming Events:</h4>--%>
             <hr />

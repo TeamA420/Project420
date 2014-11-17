@@ -156,10 +156,14 @@
                      <li class='active has-sub'><a href='#'><span>Tools</span></a>
                       <ul>
                          <li><a href='/Dashboard/Tools/Reports'><span>Reports</span></a></li>
-                         <li><a href='/Dashboard/Tools/Categories'><span>Modify categories</span></a>                            
-                         </li>
+                         <li><a href='/Dashboard/Tools/Categories'><span>Categories</span></a></li>                        
                       </ul>
-                   </li>         
+                   </li>
+                    <li class='active has-sub'><a href='#'><span>Modify RegistrationCode</span></a>
+                      <ul>                      
+                         <li><a href='/Dashboard/Tools/RegCode'><span>Registration Code</span></a></li> 
+                      </ul>
+                   </li>               
                                  
                 </ul>
 
